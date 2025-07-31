@@ -18,6 +18,7 @@ import {
   UserCircleIcon,
 } from "../icons/index";
 import SidebarWidget from "./SidebarWidget";
+import { ShoppingCart } from "lucide-react";
 
 type NavItem = {
   name: string;
@@ -32,21 +33,19 @@ const navItems: NavItem[] = [
     name: "Dashboard",
     subItems: [{ name: "Ecommerce", path: "/", pro: false }],
   },
-  {
-    icon: <CalenderIcon />,
-    name: "Calendar",
-    path: "/calendar",
-  },
-  {
-    icon: <UserCircleIcon />,
-    name: "User Profile",
-    path: "/profile",
-  },
+  
+ 
 
   {
-    name: "Forms",
-    icon: <ListIcon />,
-    subItems: [{ name: "Form Elements", path: "/form-elements", pro: false }],
+    name: "Orders",
+    icon: <ShoppingCart />,
+    subItems: [{ name: "All", path: "/order-list-all", pro: false },{ name: "Pending", path: "/order-list-pending", pro: false },
+      { name: "Confirmed", path: "/order-list-confirmed", pro: false },
+     { name: "Packaging", path: "/order-list-packaging", pro: false },
+    { name: "Delivered", path: "/order-list-delivery", pro: false },
+  { name: "Returned", path: "/order-list-returned", pro: false },
+{ name: "Failed To Deliver", path: "/order-list-failed", pro: false },
+{ name: "Canceled", path: "/order-list-canceled", pro: false },],
   },
   {
     name: "Tables",
@@ -225,7 +224,7 @@ const AppSidebar: React.FC = () => {
   );
 
   const [openSubmenu, setOpenSubmenu] = useState<{
-    type: "main" | "others";
+    type: "main" | "Order management";
     index: number;
   } | null>(null);
   const [subMenuHeight, setSubMenuHeight] = useState<Record<string, number>>(
@@ -239,7 +238,7 @@ const AppSidebar: React.FC = () => {
   useEffect(() => {
     // Check if the current path matches any submenu item
     let submenuMatched = false;
-    ["main", "others"].forEach((menuType) => {
+    ["main", "Order management"].forEach((menuType) => {
       const items = menuType === "main" ? navItems : othersItems;
       items.forEach((nav, index) => {
         if (nav.subItems) {
@@ -275,7 +274,7 @@ const AppSidebar: React.FC = () => {
     }
   }, [openSubmenu]);
 
-  const handleSubmenuToggle = (index: number, menuType: "main" | "others") => {
+  const handleSubmenuToggle = (index: number, menuType: "main" | "Order management") => {
     setOpenSubmenu((prevOpenSubmenu) => {
       if (
         prevOpenSubmenu &&
@@ -365,7 +364,7 @@ const AppSidebar: React.FC = () => {
                 }`}
               >
                 {isExpanded || isHovered || isMobileOpen ? (
-                  "Others"
+                  "Order management"
                 ) : (
                   <HorizontaLDots />
                 )}
