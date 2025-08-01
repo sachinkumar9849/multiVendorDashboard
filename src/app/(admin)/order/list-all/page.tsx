@@ -1,8 +1,11 @@
+import OrderPage from '@/components/orders/OrderPage'
 import React from 'react'
 
 const page = () => {
   return (
-    <div>page</div>
+    <>
+    <OrderPage/>
+    </>
   )
 }
 
