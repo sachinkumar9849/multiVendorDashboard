@@ -64,17 +64,17 @@ const mockOrders: Order[] = [
 const getStatusVariant = (status: string) => {
   switch (status) {
     case 'delivered':
-      return 'bg-success text-success-foreground hover:bg-success/80';
+      return 'status-delivered';
     case 'processing':
-      return 'bg-info text-info-foreground hover:bg-info/80';
+      return 'status-processing';
     case 'shipped':
-      return 'bg-warning text-warning-foreground hover:bg-warning/80';
+      return 'status-shipped';
     case 'pending':
-      return 'bg-muted text-muted-foreground hover:bg-muted/80';
+      return 'status-pending';
     case 'cancelled':
-      return 'bg-destructive text-destructive-foreground hover:bg-destructive/80';
+      return 'status-cancelled';
     default:
-      return 'bg-muted text-muted-foreground hover:bg-muted/80';
+      return 'status-pending';
   }
 };
 
@@ -91,19 +91,19 @@ export function OrderTable({ searchTerm, setSearchTerm }: OrderTableProps) {
   );
 
   return (
-    <div className="bg-card rounded-lg border border-border shadow-sm">
+    <div className="table-card">
       {/* Header */}
-      <div className="p-6 border-b border-border">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-          <div>
-            <h2 className="text-xl font-semibold text-foreground">Order List</h2>
-            <p className="text-sm text-muted-foreground mt-1">
+      <div className="table-header">
+        <div className="table-header-content">
+          <div className="table-title-section">
+            <h2 className="table-title">Order List</h2>
+            <p className="table-subtitle">
               {filteredOrders.length} {filteredOrders.length === 1 ? 'order' : 'orders'} found
             </p>
           </div>
           
-          <div className="relative w-full sm:w-80">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+          <div className="search-container">
+            <Search className="search-icon" />
             <Input
               placeholder="Search orders..."
               value={searchTerm}
@@ -115,7 +115,7 @@ export function OrderTable({ searchTerm, setSearchTerm }: OrderTableProps) {
       </div>
 
       {/* Table */}
-      <div className="overflow-x-auto">
+      <div className="table-container">
         <Table>
           <TableHeader>
             <TableRow className="bg-muted/50">
@@ -130,7 +130,7 @@ export function OrderTable({ searchTerm, setSearchTerm }: OrderTableProps) {
           </TableHeader>
           <TableBody>
             {filteredOrders.map((order, index) => (
-              <TableRow key={order.id} className="hover:bg-muted/30 transition-colors">
+              <TableRow key={order.id} className="table-row-hover">
                 <TableCell className="font-medium text-foreground">
                   {index + 1}
                 </TableCell>
@@ -141,36 +141,36 @@ export function OrderTable({ searchTerm, setSearchTerm }: OrderTableProps) {
                   {new Date(order.orderDate).toLocaleDateString('en-GB')}
                 </TableCell>
                 <TableCell>
-                  <div className="space-y-1">
-                    <div className="font-medium text-foreground">{order.customerInfo.name}</div>
-                    <div className="text-sm text-muted-foreground">{order.customerInfo.email}</div>
+                  <div className="customer-info">
+                    <div className="customer-name">{order.customerInfo.name}</div>
+                    <div className="customer-email">{order.customerInfo.email}</div>
                   </div>
                 </TableCell>
                 <TableCell className="font-semibold text-foreground">
                   ${order.totalAmount.toFixed(2)}
                 </TableCell>
                 <TableCell>
-                  <Badge className={cn("capitalize", getStatusVariant(order.orderStatus))}>
+                  <Badge className={cn("status-badge", getStatusVariant(order.orderStatus))}>
                     {order.orderStatus}
                   </Badge>
                 </TableCell>
                 <TableCell className="text-center">
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                      <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+                      <Button variant="ghost" size="sm" className="action-button">
                         <MoreHorizontal className="h-4 w-4" />
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end" className="w-48">
-                      <DropdownMenuItem className="cursor-pointer">
+                      <DropdownMenuItem className="dropdown-item">
                         <Eye className="mr-2 h-4 w-4" />
                         View Details
                       </DropdownMenuItem>
-                      <DropdownMenuItem className="cursor-pointer">
+                      <DropdownMenuItem className="dropdown-item">
                         <Edit className="mr-2 h-4 w-4" />
                         Edit Order
                       </DropdownMenuItem>
-                      <DropdownMenuItem className="cursor-pointer text-destructive">
+                      <DropdownMenuItem className="dropdown-item-destructive">
                         <Trash2 className="mr-2 h-4 w-4" />
                         Delete Order
                       </DropdownMenuItem>
@@ -185,8 +185,8 @@ export function OrderTable({ searchTerm, setSearchTerm }: OrderTableProps) {
 
       {/* Empty State */}
       {filteredOrders.length === 0 && (
-        <div className="p-8 text-center">
-          <p className="text-muted-foreground">No orders found matching your search criteria.</p>
+        <div className="empty-state">
+          <p className="empty-state-text">No orders found matching your search criteria.</p>
         </div>
       )}
     </div>

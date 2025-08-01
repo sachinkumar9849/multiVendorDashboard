@@ -27,13 +27,13 @@ export function OrderFilters({
   onFilter
 }: OrderFiltersProps) {
   return (
-    <div className="bg-card rounded-lg border border-border p-6 mb-6 shadow-sm">
-      <h2 className="text-lg font-semibold text-foreground mb-4">Filter Orders</h2>
+    <div className="filter-card">
+      <h2 className="filter-title">Filter Orders</h2>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="filter-grid">
         {/* Order Type */}
-        <div className="space-y-2">
-          <label className="text-sm font-medium text-foreground">Order Type</label>
+        <div className="filter-field">
+          <label className="filter-label">Order Type</label>
           <Select value={orderType} onValueChange={setOrderType}>
             <SelectTrigger className="w-full bg-background border-border">
               <SelectValue placeholder="Select your option" />
@@ -48,8 +48,8 @@ export function OrderFilters({
         </div>
 
         {/* Start Date */}
-        <div className="space-y-2">
-          <label className="text-sm font-medium text-foreground">Start Date</label>
+        <div className="filter-field">
+          <label className="filter-label">Start Date</label>
           <Popover>
             <PopoverTrigger asChild>
               <Button
@@ -76,8 +76,8 @@ export function OrderFilters({
         </div>
 
         {/* End Date */}
-        <div className="space-y-2">
-          <label className="text-sm font-medium text-foreground">End Date</label>
+        <div className="filter-field">
+          <label className="filter-label">End Date</label>
           <Popover>
             <PopoverTrigger asChild>
               <Button
@@ -104,8 +104,8 @@ export function OrderFilters({
         </div>
 
         {/* Filter Button */}
-        <div className="space-y-2">
-          <label className="text-sm font-medium text-transparent">Filter</label>
+        <div className="filter-field">
+          <label className="filter-label-hidden">Filter</label>
           <Button 
             onClick={onFilter}
             className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
