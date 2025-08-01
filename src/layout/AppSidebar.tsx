@@ -18,7 +18,7 @@ import {
   UserCircleIcon,
 } from "../icons/index";
 import SidebarWidget from "./SidebarWidget";
-import { Refrigerator, ShoppingBasket, ShoppingCart, Star } from "lucide-react";
+import { PackageSearch, Refrigerator, ShoppingBasket, ShoppingCart, Star } from "lucide-react";
 
 type NavItem = {
   name: string;
@@ -60,11 +60,20 @@ const othersItems: NavItem[] = [
     icon: <ShoppingBasket />,
     name: "Products",
     subItems: [
-      { name: "Product List", path: "/products-list-all", pro: false },
-      { name: "Approved Product List", path: "/products-list-approved", pro: false },
-      { name: "New Product Request", path: "/products-list-new-request", pro: false },
-      { name: "Denied Product Request", path: "/products-list-denied", pro: false },
+      { name: "Product List", path: "/products/list-all", pro: false },
+      { name: "Approved Product List", path: "/products/list-approved", pro: false },
+      { name: "New Product Request", path: "/products/list-new-request", pro: false },
+      { name: "Denied Product Request", path: "/products/list-denied", pro: false },
       { name: "Add New Product", path: "/products-add", pro: false },
+ 
+    ],
+  },
+   {
+    icon:  <PackageSearch />,
+    name: "Vendor Management",
+    subItems: [
+      { name: "Vendor", path: "/vendor/list-all", pro: false },
+     
  
     ],
   },
