@@ -1,12 +1,12 @@
-import BrandAdd from '@/components/brand/BrandAdd'
-import React from 'react'
+import BrandAdd from "@/components/brand/BrandAdd";
+import React from "react";
 
 const page = () => {
   return (
     <>
-    <BrandAdd/>
+      <BrandAdd />
     </>
-  )
-}
+  );
+};
 
-export default page
+export default page;

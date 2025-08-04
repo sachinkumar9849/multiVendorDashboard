@@ -1,14 +1,6 @@
 "use client";
 import React, { useState, useMemo } from "react";
-import {
-  Search,
-  Plus,
-  Download,
-  AlertCircle,
-  Eye,
-  Edit,
-  Trash2,
-} from "lucide-react";
+import { Search, Plus, Download, Eye, Edit, Trash2 } from "lucide-react";
 import { Switch } from "../ui/switch";
 
 interface Product {
@@ -261,7 +253,7 @@ const ProductList: React.FC = () => {
               >
                 Reset
               </button>
-              <button className="rounded-lg bgBlue px-6 py-2 font-medium text-white transition-colors hover:bg-blue-700">
+              <button className="bgBlue rounded-lg px-6 py-2 font-medium text-white transition-colors hover:bg-blue-700">
                 Show data
               </button>
             </div>
@@ -284,7 +276,7 @@ const ProductList: React.FC = () => {
                   className="w-full rounded-lg border border-gray-300 py-2 pr-4 pl-10 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
                 />
               </div>
-              <button className="rounded-lg bgBlue px-6 py-2 font-medium text-white transition-colors hover:bg-blue-700">
+              <button className="bgBlue rounded-lg px-6 py-2 font-medium text-white transition-colors hover:bg-blue-700">
                 Search
               </button>
             </div>
@@ -294,8 +286,8 @@ const ProductList: React.FC = () => {
                 <Download className="h-4 w-4" />
                 Export
               </button>
-            
-              <button className="flex items-center gap-2 rounded-lg bgBlue px-4 py-2 font-medium text-white transition-colors hover:bg-blue-700">
+
+              <button className="bgBlue flex items-center gap-2 rounded-lg px-4 py-2 font-medium text-white transition-colors hover:bg-blue-700">
                 <Plus className="h-4 w-4" />
                 Add new product
               </button>

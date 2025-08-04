@@ -1,10 +1,10 @@
-import BrandList from "@/components/brand/BrandList";
+import CustomerList from "@/components/customer/CustomerList";
 import React from "react";
 
 const page = () => {
   return (
     <>
-      <BrandList />
+      <CustomerList />
     </>
   );
 };

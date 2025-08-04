@@ -1,94 +1,12 @@
 "use client";
-import React, { useState, useMemo } from "react";
-import { Search, Edit, Trash2 } from "lucide-react";
-import { Switch } from "../ui/switch";
+import React, { useState } from "react";
+
 import ImageComponent from "../common/ImageComponent";
 
-interface Product {
-  id: number;
-  name: string;
-  type: "Digital" | "Physical";
-  price: number;
-  verifyStatus: "Approved" | "Pending" | "Rejected";
-  activeStatus: boolean;
-  brand: string;
-  category: string;
-  subCategory: string;
-  subSubCategory: string;
-}
-
 const BrandAdd: React.FC = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedBrand, setSelectedBrand] = useState("All brand");
-  const [selectedCategory, setSelectedCategory] = useState("Select category");
-
-  const products: Product[] = [
-    {
-      id: 1,
-      name: "Norton Utilities Ultimate",
-      type: "Digital",
-      price: 40.0,
-      verifyStatus: "Approved",
-      activeStatus: true,
-      brand: "Norton",
-      category: "Electronics & Gadgets",
-      subCategory: "Software",
-      subSubCategory: "Security",
-    },
-    {
-      id: 2,
-      name: "Office 2021 Professional",
-      type: "Digital",
-      price: 150.0,
-      verifyStatus: "Approved",
-      activeStatus: true,
-      brand: "Microsoft",
-      category: "Electronics & Gadgets",
-      subCategory: "Software",
-      subSubCategory: "Productivity",
-    },
-    {
-      id: 3,
-      name: "125 Childrens AudioBooks",
-      type: "Digital",
-      price: 50.0,
-      verifyStatus: "Approved",
-      activeStatus: true,
-      brand: "AudioPress",
-      category: "Books & Stationery",
-      subCategory: "AudioBooks",
-      subSubCategory: "Children",
-    },
-    {
-      id: 4,
-      name: "Kill Code Fiction",
-      type: "Physical",
-      price: 16.0,
-      verifyStatus: "Approved",
-      activeStatus: true,
-      brand: "BookPress",
-      category: "Books & Stationery",
-      subCategory: "Fiction",
-      subSubCategory: "Thriller",
-    },
-  ];
-
-  const categories = ["Set priority", "1", "2", "3", "4", "5", "6"];
-
-  const filteredProducts = useMemo(() => {
-    return products.filter((product) => {
-      const matchesSearch = product.name
-        .toLowerCase()
-        .includes(searchTerm.toLowerCase());
-      const matchesBrand =
-        selectedBrand === "All brand" || product.brand === selectedBrand;
-      const matchesCategory =
-        selectedCategory === "Select category" ||
-        product.category === selectedCategory;
-
-      return matchesSearch && matchesBrand && matchesCategory;
-    });
-  }, [searchTerm, selectedBrand, selectedCategory, products]);
+  const [, setSearchTerm] = useState("");
+  const [, setSelectedBrand] = useState("All brand");
+  const [, setSelectedCategory] = useState("Select category");
 
   const resetFilters = () => {
     setSearchTerm("");
@@ -136,19 +54,16 @@ const BrandAdd: React.FC = () => {
                     required
                   />
                 </div>
-
-
               </div>
-               <div className="col-span-1">
-              <div>
-                <label className="mb-2 block text-sm font-medium text-gray-700">
-                 Brand Image
-                </label>
-                <ImageComponent />
+              <div className="col-span-1">
+                <div>
+                  <label className="mb-2 block text-sm font-medium text-gray-700">
+                    Brand Image
+                  </label>
+                  <ImageComponent />
+                </div>
               </div>
             </div>
-            </div>
-           
           </div>
 
           <div className="mt-3 flex justify-end gap-3">
@@ -164,10 +79,7 @@ const BrandAdd: React.FC = () => {
           </div>
         </div>
       </div>
-
-
     </div>
-
   );
 };
 

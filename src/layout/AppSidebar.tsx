@@ -9,10 +9,16 @@ import {
   GridIcon,
   HorizontaLDots,
   PlugInIcon,
-  UserCircleIcon,
 } from "../icons/index";
 
-import { ShoppingBasket, ShoppingCart, Star, Tag, UserCog } from "lucide-react";
+import {
+  ShoppingBasket,
+  ShoppingCart,
+  Star,
+  Tag,
+  User,
+  UserCog,
+} from "lucide-react";
 
 type NavItem = {
   name: string;
@@ -86,13 +92,12 @@ const othersItems: NavItem[] = [
       { name: "Sub Sub Categories", path: "/sub-sub-categories", pro: false },
     ],
   },
-   {
+  {
     icon: <Tag />,
     name: "Brands",
     subItems: [
       { name: "Add new", path: "/brand/add-new", pro: false },
       { name: "List", path: "/brand/list", pro: false },
-     
     ],
   },
 
@@ -119,6 +124,14 @@ const othersItems: NavItem[] = [
 
 const userManagement: NavItem[] = [
   {
+    icon: <User />,
+    name: "Customers",
+    subItems: [
+      { name: "Customer List", path: "/customer/list", pro: false },
+      { name: "Customer Reviews", path: "/customer/reviews", pro: false },
+    ],
+  },
+  {
     icon: <UserCog />,
     name: "Vendors",
     subItems: [
@@ -126,7 +139,6 @@ const userManagement: NavItem[] = [
       { name: "Add New Vendor", path: "/vendor/add", pro: false },
     ],
   },
-  
 ];
 
 const AppSidebar: React.FC = () => {

@@ -17,8 +17,6 @@ interface Product {
 
 const BrandList: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedBrand, setSelectedBrand] = useState("All brand");
-  const [selectedCategory, setSelectedCategory] = useState("Select category");
 
   const products: Product[] = [
     {
@@ -71,37 +69,14 @@ const BrandList: React.FC = () => {
     },
   ];
 
-  const categories = ["Set priority", "1", "2", "3", "4", "5", "6"];
-  const mainCategory = [
-    "Select main category",
-    "Men's Fashion",
-    " Women's Fashion",
-    " KId's Fashion",
-    "Health & Beauty",
-  ];
-
   const filteredProducts = useMemo(() => {
     return products.filter((product) => {
       const matchesSearch = product.name
         .toLowerCase()
         .includes(searchTerm.toLowerCase());
-      const matchesBrand =
-        selectedBrand === "All brand" || product.brand === selectedBrand;
-      const matchesCategory =
-        selectedCategory === "Select category" ||
-        product.category === selectedCategory;
-
-      return matchesSearch && matchesBrand && matchesCategory;
+      return matchesSearch;
     });
-  }, [searchTerm, selectedBrand, selectedCategory, products]);
-
-  const resetFilters = () => {
-    setSearchTerm("");
-    setSelectedBrand("All brand");
-    setSelectedCategory("Select category");
-    setSelectedCategory("Select Sub Category");
-    setSelectedCategory("Select Sub Sub Category");
-  };
+  }, [searchTerm, products]);
 
   return (
     <div className="">
@@ -111,21 +86,14 @@ const BrandList: React.FC = () => {
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-orange-400 to-red-500">
               <div className="h-4 w-4 rounded-sm bg-white"></div>
             </div>
-            <h1 className="text-2xl font-bold text-gray-900">
-              Brand List
-
-            </h1>
+            <h1 className="text-2xl font-bold text-gray-900">Brand List</h1>
           </div>
-
-          
         </div>
 
         <div className="rounded-xl border border-gray-200 bg-white shadow-sm">
           <div className="flex flex-col items-start justify-between gap-4 p-6 md:flex-row md:items-center">
             <div className="flex gap-3">
-              <p className="text-xl font-semibold text-gray-900">
-                Brand list
-              </p>
+              <p className="text-xl font-semibold text-gray-900">Brand list</p>
               <p className="rounded-md bg-gray-200 px-2 py-1 text-[12px]">
                 128
               </p>
@@ -141,7 +109,7 @@ const BrandList: React.FC = () => {
                   className="w-full rounded-lg border border-gray-300 py-2 pr-4 pl-10 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
                 />
               </div>
-              <button className="bgBlue rounded-lg px-6 py-2 font-medium text-white transition-colors">
+              <button className="rounded-lg bg-blue-600 px-6 py-2 font-medium text-white transition-colors hover:bg-blue-700">
                 Search
               </button>
             </div>
@@ -152,10 +120,10 @@ const BrandList: React.FC = () => {
                 <thead className="bg-gray-50">
                   <tr>
                     <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
-                     SL
+                      SL
                     </th>
                     <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
-                     Brand Logo
+                      Brand Logo
                     </th>
                     <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
                       Name
@@ -163,15 +131,14 @@ const BrandList: React.FC = () => {
                     <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
                       Total Product
                     </th>
-
                     <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
                       Total Order
                     </th>
                     <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
-                    Status
+                      Status
                     </th>
                     <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
-                    Action
+                      Action
                     </th>
                   </tr>
                 </thead>
@@ -181,28 +148,31 @@ const BrandList: React.FC = () => {
                       <td className="px-6 py-4 text-sm text-gray-900">
                         {index + 1}
                       </td>
-                        <td className="px-6 py-4">
+                      <td className="px-6 py-4">
                         <div className="flex items-center gap-3">
                           <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-blue-100 to-blue-200">
                             <img
                               src="https://sb.kaleidousercontent.com/67418/1920x1100/0135fd63fd/transparent-boots.png"
-                              alt=""
+                              alt="Brand logo"
+                              className="h-8 w-8 object-contain"
                             />
                           </div>
                         </div>
                       </td>
-
                       <td className="px-6 py-4 text-sm text-gray-900">
-                        {product.name}
+                        {product.brand}
                       </td>
                       <td className="px-6 py-4 text-sm font-medium text-gray-900">
-                       22
+                        22
                       </td>
                       <td className="px-6 py-4 text-sm font-medium text-gray-900">
-                       44
+                        44
                       </td>
-
-                      <td className="px-6 py-4">1</td>
+                      <td className="px-6 py-4">
+                        <span className="inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800">
+                          Active
+                        </span>
+                      </td>
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-2">
                           <button className="rounded-lg p-2 text-gray-600 transition-colors hover:bg-gray-50">

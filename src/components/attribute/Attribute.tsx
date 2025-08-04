@@ -1,8 +1,6 @@
 "use client";
 import React, { useState, useMemo } from "react";
 import { Search, Edit, Trash2 } from "lucide-react";
-import { Switch } from "../ui/switch";
-import ImageComponent from "../common/ImageComponent";
 
 interface Product {
   id: number;
@@ -48,8 +46,6 @@ const Attribute: React.FC = () => {
       subSubCategory: "Productivity",
     },
   ];
-
-  const categories = ["Set priority", "1", "2", "3", "4", "5", "6"];
 
   const filteredProducts = useMemo(() => {
     return products.filter((product) => {
