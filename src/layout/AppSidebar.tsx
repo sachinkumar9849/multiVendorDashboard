@@ -68,6 +68,17 @@ const othersItems: NavItem[] = [
 
     ],
   },
+   {
+    icon: <GridIcon />,
+    name: "Category Setup",
+    subItems: [
+      { name: "Categories", path: "/categories", pro: false },
+      { name: "Sub Categories", path: "/sub-categories", pro: false },
+      { name: "Sub Sub Categories", path: "/sub-sub-categories", pro: false },
+     
+
+    ],
+  },
  
   {
     icon: <Star />,

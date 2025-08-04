@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import { Plus, Search, Edit2, Trash2, Eye, Filter, Download, MoreVertical } from 'lucide-react';
+import Link from 'next/link';
 
 const VendorDashboard = () => {
   const [vendors, setVendors] = useState([
@@ -183,13 +184,13 @@ const VendorDashboard = () => {
                 ))}
               </select>
             </div>
-            <button
-              onClick={() => setShowAddModal(true)}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors"
+            <Link
+             href="/vendor/add"
+              className="bgBlue hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors"
             >
               <Plus className="h-4 w-4" />
               Add Vendor
-            </button>
+            </Link>
           </div>
         </div>
 
@@ -349,7 +350,7 @@ const VendorDashboard = () => {
                   <button
                     type="submit"
                     onClick={handleAddVendor}
-                    className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                    className="flex-1 px-4 py-2 bgBlue text-white rounded-lg hover:bg-blue-700 transition-colors"
                   >
                     Add Vendor
                   </button>
