@@ -12,7 +12,7 @@ import {
   UserCircleIcon,
 } from "../icons/index";
 
-import { ShoppingBasket, ShoppingCart, Star, UserCog } from "lucide-react";
+import { ShoppingBasket, ShoppingCart, Star, Tag, UserCog } from "lucide-react";
 
 type NavItem = {
   name: string;
@@ -34,13 +34,13 @@ const navItems: NavItem[] = [
     icon: <ShoppingCart />,
     subItems: [
       { name: "All", path: "/order/list-all", pro: false },
-      { name: "Pending", path: "/order-list-pending", pro: false },
-      { name: "Confirmed", path: "/order-list-confirmed", pro: false },
-      { name: "Packaging", path: "/order-list-packaging", pro: false },
-      { name: "Delivered", path: "/order-list-delivery", pro: false },
-      { name: "Returned", path: "/order-list-returned", pro: false },
-      { name: "Failed To Deliver", path: "/order-list-failed", pro: false },
-      { name: "Canceled", path: "/order-list-canceled", pro: false },
+      // { name: "Pending", path: "/order-list-pending", pro: false },
+      // { name: "Confirmed", path: "/order-list-confirmed", pro: false },
+      // { name: "Packaging", path: "/order-list-packaging", pro: false },
+      // { name: "Delivered", path: "/order-list-delivery", pro: false },
+      // { name: "Returned", path: "/order-list-returned", pro: false },
+      // { name: "Failed To Deliver", path: "/order-list-failed", pro: false },
+      // { name: "Canceled", path: "/order-list-canceled", pro: false },
     ],
   },
   // {
@@ -59,22 +59,22 @@ const othersItems: NavItem[] = [
     name: "Products",
     subItems: [
       { name: "Product List", path: "/products/list-all", pro: false },
-      {
-        name: "Approved Product List",
-        path: "/products/list-approved",
-        pro: false,
-      },
-      {
-        name: "New Product Request",
-        path: "/products/list-new-request",
-        pro: false,
-      },
-      {
-        name: "Denied Product Request",
-        path: "/products/list-denied",
-        pro: false,
-      },
-      { name: "Add New Product", path: "/products-add", pro: false },
+      // {
+      //   name: "Approved Product List",
+      //   path: "/products/list-approved",
+      //   pro: false,
+      // },
+      // {
+      //   name: "New Product Request",
+      //   path: "/products/list-new-request",
+      //   pro: false,
+      // },
+      // {
+      //   name: "Denied Product Request",
+      //   path: "/products/list-denied",
+      //   pro: false,
+      // },
+      // { name: "Add New Product", path: "/products-add", pro: false },
     ],
   },
   {
@@ -84,6 +84,15 @@ const othersItems: NavItem[] = [
       { name: "Categories", path: "/categories", pro: false },
       { name: "Sub Categories", path: "/sub-categories", pro: false },
       { name: "Sub Sub Categories", path: "/sub-sub-categories", pro: false },
+    ],
+  },
+   {
+    icon: <Tag />,
+    name: "Brands",
+    subItems: [
+      { name: "Add new", path: "/brand/add-new", pro: false },
+      { name: "List", path: "/brand/list", pro: false },
+     
     ],
   },
 
@@ -117,14 +126,7 @@ const userManagement: NavItem[] = [
       { name: "Add New Vendor", path: "/vendor/add", pro: false },
     ],
   },
-  {
-    icon: <UserCircleIcon />,
-    name: "Customer Engagement",
-    subItems: [
-      { name: "Email Templates", path: "/marketing/emails", pro: false },
-      { name: "Loyalty Program", path: "/marketing/loyalty", pro: true },
-    ],
-  },
+  
 ];
 
 const AppSidebar: React.FC = () => {

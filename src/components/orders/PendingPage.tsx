@@ -115,7 +115,7 @@ const OrderPage = () => {
                 <Download className="h-4 w-4" />
                 Export
               </button>
-              <button className="flex items-center rounded-md bg-blue-600 px-4 py-2 text-white transition-colors hover:bg-blue-700">
+              <button className="flex items-center rounded-md bgBlue px-4 py-2 text-white transition-colors hover:bg-blue-700">
                 <Plus /> Add Order
               </button>
             </div>
@@ -198,7 +198,7 @@ const OrderPage = () => {
               <label className="mb-2 block text-sm font-medium text-gray-700 opacity-0">
                 f
               </label>
-              <Button className="w-full bg-blue-600 py-[20px]">
+              <Button className="w-full bgBlue py-[20px]">
                 Apply Filter
               </Button>
             </div>
@@ -331,7 +331,7 @@ const OrderPage = () => {
                 <button className="rounded-md border border-gray-300 px-3 py-1 text-sm text-gray-500 transition-colors hover:bg-gray-50">
                   Previous
                 </button>
-                <button className="rounded-md bg-blue-600 px-3 py-1 text-sm text-white transition-colors hover:bg-blue-700">
+                <button className="rounded-md bgBlue px-3 py-1 text-sm text-white transition-colors hover:bg-blue-700">
                   1
                 </button>
                 <button className="rounded-md border border-gray-300 px-3 py-1 text-sm text-gray-500 transition-colors hover:bg-gray-50">

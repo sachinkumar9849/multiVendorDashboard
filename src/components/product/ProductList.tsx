@@ -261,7 +261,7 @@ const ProductList: React.FC = () => {
               >
                 Reset
               </button>
-              <button className="rounded-lg bg-blue-600 px-6 py-2 font-medium text-white transition-colors hover:bg-blue-700">
+              <button className="rounded-lg bgBlue px-6 py-2 font-medium text-white transition-colors hover:bg-blue-700">
                 Show data
               </button>
             </div>
@@ -284,7 +284,7 @@ const ProductList: React.FC = () => {
                   className="w-full rounded-lg border border-gray-300 py-2 pr-4 pl-10 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
                 />
               </div>
-              <button className="rounded-lg bg-blue-600 px-6 py-2 font-medium text-white transition-colors hover:bg-blue-700">
+              <button className="rounded-lg bgBlue px-6 py-2 font-medium text-white transition-colors hover:bg-blue-700">
                 Search
               </button>
             </div>
@@ -294,11 +294,8 @@ const ProductList: React.FC = () => {
                 <Download className="h-4 w-4" />
                 Export
               </button>
-              <button className="flex items-center gap-2 rounded-lg bg-cyan-500 px-4 py-2 font-medium text-white transition-colors hover:bg-cyan-600">
-                <AlertCircle className="h-4 w-4" />
-                Limited Stocks
-              </button>
-              <button className="flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 font-medium text-white transition-colors hover:bg-blue-700">
+            
+              <button className="flex items-center gap-2 rounded-lg bgBlue px-4 py-2 font-medium text-white transition-colors hover:bg-blue-700">
                 <Plus className="h-4 w-4" />
                 Add new product
               </button>
@@ -367,7 +364,7 @@ const ProductList: React.FC = () => {
                       <td className="px-6 py-4">
                         <div className="flex items-center">
                           {/* <button
-                                                        className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${product.activeStatus ? 'bg-blue-600' : 'bg-gray-200'
+                                                        className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${product.activeStatus ? 'bgBlue' : 'bg-gray-200'
                                                             }`}
                                                     >
                                                         <span
