@@ -88,6 +88,12 @@ const othersItems: NavItem[] = [
   },
 
   {
+    icon: <GridIcon />,
+    name: "Product Attribute Setup",
+    path: "/attribute",
+  },
+
+  {
     icon: <Star />,
     name: "Product Reviews",
     path: "/",
