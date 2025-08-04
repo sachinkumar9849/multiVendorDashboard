@@ -1,12 +1,12 @@
-import AddVendor from '@/components/vendor/AddVendor'
-import React from 'react'
+import AddVendor from "@/components/vendor/AddVendor";
+import React from "react";
 
 const page = () => {
   return (
-   <>
-   <AddVendor/>
-   </>
-  )
-}
+    <>
+      <AddVendor />
+    </>
+  );
+};
 
-export default page
+export default page;

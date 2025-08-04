@@ -1,65 +1,70 @@
 "use client";
-import React, { useState } from 'react';
-import { Upload, User, Store, FileText, Eye, EyeOff } from 'lucide-react';
-import ImageComponent from '../common/ImageComponent';
+import React, { useState } from "react";
+import { Upload, User, Store, FileText, Eye, EyeOff } from "lucide-react";
+import ImageComponent from "../common/ImageComponent";
 
 export default function AddVendor() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    phone: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-    shopName: '',
-    shopAddress: '',
-    tin: '',
-    expireDate: ''
+    firstName: "",
+    lastName: "",
+    phone: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    shopName: "",
+    shopAddress: "",
+    tin: "",
+    expireDate: "",
   });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    console.log("Form submitted:", formData);
     // Handle form submission logic here
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 py-8 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 px-4 py-8">
       <div className="">
         {/* Header */}
-        <div className="flex items-center mb-4">
-          <div className="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full">
-            <Store className="w-5 h-5 text-white" />
+        <div className="mb-4 flex items-center">
+          <div className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-blue-600 to-purple-600">
+            <Store className="h-5 w-5 text-white" />
           </div>
-          <h1 className="text-2xl font-bold text-gray-900 ml-2">Add New Vendor</h1>
-        
+          <h1 className="ml-2 text-2xl font-bold text-gray-900">
+            Add New Vendor
+          </h1>
         </div>
 
         <div className="space-y-8">
           {/* Vendor Information Card */}
-          <div className="bg-white rounded-md shadow-sm border border-gray-100 overflow-hidden pb-5">
-            <div className=" px-6 py-4">
+          <div className="overflow-hidden rounded-md border border-gray-100 bg-white pb-5 shadow-sm">
+            <div className="px-6 py-4">
               <div className="flex items-center">
-                <User className="w-6 h-6 text-black mr-3" />
-                <h2 className="text-xl font-semibold text-black">Vendor Information</h2>
+                <User className="mr-3 h-6 w-6 text-black" />
+                <h2 className="text-xl font-semibold text-black">
+                  Vendor Information
+                </h2>
               </div>
-              <p className="text-gray-500 text-sm mt-1">Provide all mandatory details to create a new vendor profile</p>
+              <p className="mt-1 text-sm text-gray-500">
+                Provide all mandatory details to create a new vendor profile
+              </p>
             </div>
-            
+
             <div className="px-6 py-0">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="mb-2 block text-sm font-medium text-gray-700">
                     First name <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -67,14 +72,14 @@ export default function AddVendor() {
                     name="firstName"
                     value={formData.firstName}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 transition-all duration-200 focus:border-transparent focus:ring-2 focus:ring-blue-500"
                     placeholder="Enter first name"
                     required
                   />
                 </div>
-                
+
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="mb-2 block text-sm font-medium text-gray-700">
                     Last name <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -82,18 +87,18 @@ export default function AddVendor() {
                     name="lastName"
                     value={formData.lastName}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 transition-all duration-200 focus:border-transparent focus:ring-2 focus:ring-blue-500"
                     placeholder="Enter last name"
                     required
                   />
                 </div>
-                
+
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="mb-2 block text-sm font-medium text-gray-700">
                     Phone <span className="text-red-500">*</span>
                   </label>
                   <div className="flex">
-                    <span className="inline-flex items-center px-3 rounded-l-lg border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
+                    <span className="inline-flex items-center rounded-l-lg border border-r-0 border-gray-300 bg-gray-50 px-3 text-sm text-gray-500">
                       +977
                     </span>
                     <input
@@ -101,38 +106,40 @@ export default function AddVendor() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="flex-1 px-4 py-3 border border-gray-300 rounded-r-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                      className="flex-1 rounded-r-lg border border-gray-300 px-4 py-3 transition-all duration-200 focus:border-transparent focus:ring-2 focus:ring-blue-500"
                       placeholder="Enter phone number"
                       required
                     />
                   </div>
                 </div>
-                <div className='col-span-3'>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                <div className="col-span-3">
+                  <label className="mb-2 block text-sm font-medium text-gray-700">
                     Vendor Image
                   </label>
-                  <ImageComponent/>
+                  <ImageComponent />
                 </div>
-                
               </div>
             </div>
           </div>
 
           {/* Account Information Card */}
-          <div className="bg-white rounded-md shadow-sm border border-gray-100 overflow-hidden">
-           
-            <div className=" px-6 py-4">
+          <div className="overflow-hidden rounded-md border border-gray-100 bg-white shadow-sm">
+            <div className="px-6 py-4">
               <div className="flex items-center">
-                <User className="w-6 h-6 text-black mr-3" />
-                <h2 className="text-xl font-semibold text-black">Account Information</h2>
+                <User className="mr-3 h-6 w-6 text-black" />
+                <h2 className="text-xl font-semibold text-black">
+                  Account Information
+                </h2>
               </div>
-              <p className="text-gray-500 text-sm mt-1">Provide the account details required for vendor operations</p>
+              <p className="mt-1 text-sm text-gray-500">
+                Provide the account details required for vendor operations
+              </p>
             </div>
-            
+
             <div className="p-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 <div className="md:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="mb-2 block text-sm font-medium text-gray-700">
                     Email <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -140,14 +147,14 @@ export default function AddVendor() {
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200"
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 transition-all duration-200 focus:border-transparent focus:ring-2 focus:ring-green-500"
                     placeholder="Enter email address"
                     required
                   />
                 </div>
-                
+
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="mb-2 block text-sm font-medium text-gray-700">
                     Password <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
@@ -156,26 +163,26 @@ export default function AddVendor() {
                       name="password"
                       value={formData.password}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200"
+                      className="w-full rounded-lg border border-gray-300 px-4 py-3 pr-12 transition-all duration-200 focus:border-transparent focus:ring-2 focus:ring-green-500"
                       placeholder="Enter password"
                       required
                     />
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                      className="absolute inset-y-0 right-0 flex items-center pr-3"
                     >
                       {showPassword ? (
-                        <EyeOff className="w-5 h-5 text-gray-400" />
+                        <EyeOff className="h-5 w-5 text-gray-400" />
                       ) : (
-                        <Eye className="w-5 h-5 text-gray-400" />
+                        <Eye className="h-5 w-5 text-gray-400" />
                       )}
                     </button>
                   </div>
                 </div>
-                
+
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="mb-2 block text-sm font-medium text-gray-700">
                     Confirm password <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
@@ -184,19 +191,21 @@ export default function AddVendor() {
                       name="confirmPassword"
                       value={formData.confirmPassword}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-200"
+                      className="w-full rounded-lg border border-gray-300 px-4 py-3 pr-12 transition-all duration-200 focus:border-transparent focus:ring-2 focus:ring-green-500"
                       placeholder="Confirm password"
                       required
                     />
                     <button
                       type="button"
-                      onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                      className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                      onClick={() =>
+                        setShowConfirmPassword(!showConfirmPassword)
+                      }
+                      className="absolute inset-y-0 right-0 flex items-center pr-3"
                     >
                       {showConfirmPassword ? (
-                        <EyeOff className="w-5 h-5 text-gray-400" />
+                        <EyeOff className="h-5 w-5 text-gray-400" />
                       ) : (
-                        <Eye className="w-5 h-5 text-gray-400" />
+                        <Eye className="h-5 w-5 text-gray-400" />
                       )}
                     </button>
                   </div>
@@ -206,21 +215,23 @@ export default function AddVendor() {
           </div>
 
           {/* Shop Information Card */}
-          <div className="bg-white rounded-md shadow-sm border border-gray-100 overflow-hidden">
-
-
-              <div className=" px-6 py-4">
+          <div className="overflow-hidden rounded-md border border-gray-100 bg-white shadow-sm">
+            <div className="px-6 py-4">
               <div className="flex items-center">
-                <Store className="w-6 h-6 text-black mr-3" />
-                <h2 className="text-xl font-semibold text-black">Shop Information</h2>
+                <Store className="mr-3 h-6 w-6 text-black" />
+                <h2 className="text-xl font-semibold text-black">
+                  Shop Information
+                </h2>
               </div>
-              <p className="text-gray-500 text-sm mt-1">Basic shop details provide below</p>
+              <p className="mt-1 text-sm text-gray-500">
+                Basic shop details provide below
+              </p>
             </div>
-            
+
             <div className="p-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="mb-2 block text-sm font-medium text-gray-700">
                     Shop name <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -228,63 +239,65 @@ export default function AddVendor() {
                     name="shopName"
                     value={formData.shopName}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 transition-all duration-200 focus:border-transparent focus:ring-2 focus:ring-purple-500"
                     placeholder="Enter shop name"
                     required
                   />
                 </div>
-                
+
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="mb-2 block text-sm font-medium text-gray-700">
                     Shop address
                   </label>
                   <div className="relative">
-                  
-                     <input
-                    type="text"
-                    name="shopName"
-                    value={formData.shopName}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
-                    placeholder="Enter shop address"
-                    required
-                  />
-                    
+                    <input
+                      type="text"
+                      name="shopName"
+                      value={formData.shopName}
+                      onChange={handleInputChange}
+                      className="w-full rounded-lg border border-gray-300 px-4 py-3 transition-all duration-200 focus:border-transparent focus:ring-2 focus:ring-purple-500"
+                      placeholder="Enter shop address"
+                      required
+                    />
                   </div>
                 </div>
-                
+
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="mb-2 block text-sm font-medium text-gray-700">
                     Shop logo
                   </label>
-                  <ImageComponent/>
+                  <ImageComponent />
                 </div>
-                
+
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="mb-2 block text-sm font-medium text-gray-700">
                     Shop cover image
                   </label>
-                   <ImageComponent/>
+                  <ImageComponent />
                 </div>
               </div>
             </div>
           </div>
 
           {/* Business TIN Card */}
-          <div className="bg-white rounded-md shadow-sm border border-gray-100 overflow-hidden">
-         
-              <div className=" px-6 py-4">
+          <div className="overflow-hidden rounded-md border border-gray-100 bg-white shadow-sm">
+            <div className="px-6 py-4">
               <div className="flex items-center">
-                <FileText className="w-6 h-6 text-black mr-3" />
-                <h2 className="text-xl font-semibold text-black">Business TIN</h2>
+                <FileText className="mr-3 h-6 w-6 text-black" />
+                <h2 className="text-xl font-semibold text-black">
+                  Business TIN
+                </h2>
               </div>
-              <p className="text-gray-500 text-sm mt-1">Provide vendor business tin and related information for taxpayer verification</p>
+              <p className="mt-1 text-sm text-gray-500">
+                Provide vendor business tin and related information for taxpayer
+                verification
+              </p>
             </div>
-            
+
             <div className="p-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="mb-2 block text-sm font-medium text-gray-700">
                     Taxpayer identification number (TIN)
                   </label>
                   <input
@@ -292,13 +305,13 @@ export default function AddVendor() {
                     name="tin"
                     value={formData.tin}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200"
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 transition-all duration-200 focus:border-transparent focus:ring-2 focus:ring-orange-500"
                     placeholder="Enter TIN number"
                   />
                 </div>
-                
+
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="mb-2 block text-sm font-medium text-gray-700">
                     Expire Date
                   </label>
                   <input
@@ -306,16 +319,16 @@ export default function AddVendor() {
                     name="expireDate"
                     value={formData.expireDate}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200"
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 transition-all duration-200 focus:border-transparent focus:ring-2 focus:ring-orange-500"
                   />
                 </div>
-                
+
                 <div className="md:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="mb-2 block text-sm font-medium text-gray-700">
                     TIN Certificate
                   </label>
-                 
-                  <ImageComponent/>
+
+                  <ImageComponent />
                 </div>
               </div>
             </div>
@@ -325,7 +338,7 @@ export default function AddVendor() {
           <div className="flex justify-center pt-4">
             <button
               type="submit"
-              className="px-8 text-white py-4 rounded-md bg-[#1455ac]"
+              className="rounded-md bg-[#1455ac] px-8 py-4 text-white"
             >
               Create Vendor Profile
             </button>

@@ -1,12 +1,12 @@
-import VendorDashboard from '@/components/vendor/VendorDashboard'
-import React from 'react'
+import VendorDashboard from "@/components/vendor/VendorDashboard";
+import React from "react";
 
 const page = () => {
   return (
-   <>
-   <VendorDashboard/>
-   </>
-  )
-}
+    <>
+      <VendorDashboard />
+    </>
+  );
+};
 
-export default page
+export default page;

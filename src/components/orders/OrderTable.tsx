@@ -1,9 +1,21 @@
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { MoreHorizontal, Search, Eye, Edit, Trash2 } from "lucide-react";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 
 interface Order {
@@ -15,7 +27,7 @@ interface Order {
     email: string;
   };
   totalAmount: number;
-  orderStatus: 'pending' | 'processing' | 'shipped' | 'delivered' | 'cancelled';
+  orderStatus: "pending" | "processing" | "shipped" | "delivered" | "cancelled";
 }
 
 const mockOrders: Order[] = [
@@ -24,16 +36,16 @@ const mockOrders: Order[] = [
     orderId: "ORD-2024-001",
     orderDate: "2024-01-15",
     customerInfo: { name: "John Doe", email: "john@example.com" },
-    totalAmount: 250.00,
-    orderStatus: "delivered"
+    totalAmount: 250.0,
+    orderStatus: "delivered",
   },
   {
     id: "2",
     orderId: "ORD-2024-002",
     orderDate: "2024-01-14",
     customerInfo: { name: "Jane Smith", email: "jane@example.com" },
-    totalAmount: 180.50,
-    orderStatus: "processing"
+    totalAmount: 180.5,
+    orderStatus: "processing",
   },
   {
     id: "3",
@@ -41,7 +53,7 @@ const mockOrders: Order[] = [
     orderDate: "2024-01-13",
     customerInfo: { name: "Mike Johnson", email: "mike@example.com" },
     totalAmount: 320.75,
-    orderStatus: "shipped"
+    orderStatus: "shipped",
   },
   {
     id: "4",
@@ -49,32 +61,32 @@ const mockOrders: Order[] = [
     orderDate: "2024-01-12",
     customerInfo: { name: "Sarah Wilson", email: "sarah@example.com" },
     totalAmount: 95.25,
-    orderStatus: "pending"
+    orderStatus: "pending",
   },
   {
     id: "5",
     orderId: "ORD-2024-005",
     orderDate: "2024-01-11",
     customerInfo: { name: "David Brown", email: "david@example.com" },
-    totalAmount: 445.00,
-    orderStatus: "cancelled"
-  }
+    totalAmount: 445.0,
+    orderStatus: "cancelled",
+  },
 ];
 
 const getStatusVariant = (status: string) => {
   switch (status) {
-    case 'delivered':
-      return 'status-delivered';
-    case 'processing':
-      return 'status-processing';
-    case 'shipped':
-      return 'status-shipped';
-    case 'pending':
-      return 'status-pending';
-    case 'cancelled':
-      return 'status-cancelled';
+    case "delivered":
+      return "status-delivered";
+    case "processing":
+      return "status-processing";
+    case "shipped":
+      return "status-shipped";
+    case "pending":
+      return "status-pending";
+    case "cancelled":
+      return "status-cancelled";
     default:
-      return 'status-pending';
+      return "status-pending";
   }
 };
 
@@ -84,10 +96,13 @@ interface OrderTableProps {
 }
 
 export function OrderTable({ searchTerm, setSearchTerm }: OrderTableProps) {
-  const filteredOrders = mockOrders.filter(order =>
-    order.orderId.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    order.customerInfo.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    order.customerInfo.email.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredOrders = mockOrders.filter(
+    (order) =>
+      order.orderId.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      order.customerInfo.name
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase()) ||
+      order.customerInfo.email.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   return (
@@ -98,17 +113,18 @@ export function OrderTable({ searchTerm, setSearchTerm }: OrderTableProps) {
           <div className="table-title-section">
             <h2 className="table-title">Order List</h2>
             <p className="table-subtitle">
-              {filteredOrders.length} {filteredOrders.length === 1 ? 'order' : 'orders'} found
+              {filteredOrders.length}{" "}
+              {filteredOrders.length === 1 ? "order" : "orders"} found
             </p>
           </div>
-          
+
           <div className="search-container">
             <Search className="search-icon" />
             <Input
               placeholder="Search orders..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 bg-background border-border"
+              className="bg-background border-border pl-10"
             />
           </div>
         </div>
@@ -119,45 +135,72 @@ export function OrderTable({ searchTerm, setSearchTerm }: OrderTableProps) {
         <Table>
           <TableHeader>
             <TableRow className="bg-muted/50">
-              <TableHead className="font-semibold text-foreground">SL</TableHead>
-              <TableHead className="font-semibold text-foreground">Order ID</TableHead>
-              <TableHead className="font-semibold text-foreground">Order Date</TableHead>
-              <TableHead className="font-semibold text-foreground">Customer Info</TableHead>
-              <TableHead className="font-semibold text-foreground">Total Amount</TableHead>
-              <TableHead className="font-semibold text-foreground">Order Status</TableHead>
-              <TableHead className="font-semibold text-foreground text-center">Action</TableHead>
+              <TableHead className="text-foreground font-semibold">
+                SL
+              </TableHead>
+              <TableHead className="text-foreground font-semibold">
+                Order ID
+              </TableHead>
+              <TableHead className="text-foreground font-semibold">
+                Order Date
+              </TableHead>
+              <TableHead className="text-foreground font-semibold">
+                Customer Info
+              </TableHead>
+              <TableHead className="text-foreground font-semibold">
+                Total Amount
+              </TableHead>
+              <TableHead className="text-foreground font-semibold">
+                Order Status
+              </TableHead>
+              <TableHead className="text-foreground text-center font-semibold">
+                Action
+              </TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {filteredOrders.map((order, index) => (
               <TableRow key={order.id} className="table-row-hover">
-                <TableCell className="font-medium text-foreground">
+                <TableCell className="text-foreground font-medium">
                   {index + 1}
                 </TableCell>
-                <TableCell className="font-medium text-primary">
+                <TableCell className="text-primary font-medium">
                   {order.orderId}
                 </TableCell>
                 <TableCell className="text-foreground">
-                  {new Date(order.orderDate).toLocaleDateString('en-GB')}
+                  {new Date(order.orderDate).toLocaleDateString("en-GB")}
                 </TableCell>
                 <TableCell>
                   <div className="customer-info">
-                    <div className="customer-name">{order.customerInfo.name}</div>
-                    <div className="customer-email">{order.customerInfo.email}</div>
+                    <div className="customer-name">
+                      {order.customerInfo.name}
+                    </div>
+                    <div className="customer-email">
+                      {order.customerInfo.email}
+                    </div>
                   </div>
                 </TableCell>
-                <TableCell className="font-semibold text-foreground">
+                <TableCell className="text-foreground font-semibold">
                   ${order.totalAmount.toFixed(2)}
                 </TableCell>
                 <TableCell>
-                  <Badge className={cn("status-badge", getStatusVariant(order.orderStatus))}>
+                  <Badge
+                    className={cn(
+                      "status-badge",
+                      getStatusVariant(order.orderStatus),
+                    )}
+                  >
                     {order.orderStatus}
                   </Badge>
                 </TableCell>
                 <TableCell className="text-center">
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                      <Button variant="ghost" size="sm" className="action-button">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="action-button"
+                      >
                         <MoreHorizontal className="h-4 w-4" />
                       </Button>
                     </DropdownMenuTrigger>
@@ -186,7 +229,9 @@ export function OrderTable({ searchTerm, setSearchTerm }: OrderTableProps) {
       {/* Empty State */}
       {filteredOrders.length === 0 && (
         <div className="empty-state">
-          <p className="empty-state-text">No orders found matching your search criteria.</p>
+          <p className="empty-state-text">
+            No orders found matching your search criteria.
+          </p>
         </div>
       )}
     </div>

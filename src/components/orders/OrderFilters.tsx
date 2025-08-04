@@ -1,8 +1,18 @@
 import { Calendar } from "@/components/ui/calendar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import { CalendarIcon } from "lucide-react";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
@@ -24,18 +34,18 @@ export function OrderFilters({
   setStartDate,
   endDate,
   setEndDate,
-  onFilter
+  onFilter,
 }: OrderFiltersProps) {
   return (
     <div className="filter-card">
       <h2 className="filter-title">Filter Orders</h2>
-      
+
       <div className="filter-grid">
         {/* Order Type */}
         <div className="filter-field">
           <label className="filter-label">Order Type</label>
           <Select value={orderType} onValueChange={setOrderType}>
-            <SelectTrigger className="w-full bg-background border-border">
+            <SelectTrigger className="bg-background border-border w-full">
               <SelectValue placeholder="Select your option" />
             </SelectTrigger>
             <SelectContent>
@@ -55,8 +65,8 @@ export function OrderFilters({
               <Button
                 variant="outline"
                 className={cn(
-                  "w-full justify-start text-left font-normal bg-background border-border",
-                  !startDate && "text-muted-foreground"
+                  "bg-background border-border w-full justify-start text-left font-normal",
+                  !startDate && "text-muted-foreground",
                 )}
               >
                 <CalendarIcon className="mr-2 h-4 w-4" />
@@ -69,7 +79,7 @@ export function OrderFilters({
                 selected={startDate}
                 onSelect={setStartDate}
                 initialFocus
-                className="p-3 pointer-events-auto"
+                className="pointer-events-auto p-3"
               />
             </PopoverContent>
           </Popover>
@@ -83,8 +93,8 @@ export function OrderFilters({
               <Button
                 variant="outline"
                 className={cn(
-                  "w-full justify-start text-left font-normal bg-background border-border",
-                  !endDate && "text-muted-foreground"
+                  "bg-background border-border w-full justify-start text-left font-normal",
+                  !endDate && "text-muted-foreground",
                 )}
               >
                 <CalendarIcon className="mr-2 h-4 w-4" />
@@ -97,7 +107,7 @@ export function OrderFilters({
                 selected={endDate}
                 onSelect={setEndDate}
                 initialFocus
-                className="p-3 pointer-events-auto"
+                className="pointer-events-auto p-3"
               />
             </PopoverContent>
           </Popover>
@@ -106,9 +116,9 @@ export function OrderFilters({
         {/* Filter Button */}
         <div className="filter-field">
           <label className="filter-label-hidden">Filter</label>
-          <Button 
+          <Button
             onClick={onFilter}
-            className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground w-full"
           >
             Apply Filter
           </Button>

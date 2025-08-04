@@ -26,7 +26,7 @@ interface Product {
   subSubCategory: string;
 }
 
-const Category: React.FC = () => {
+const SubCategory: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedBrand, setSelectedBrand] = useState("All brand");
   const [selectedCategory, setSelectedCategory] = useState("Select category");
@@ -101,6 +101,13 @@ const Category: React.FC = () => {
   ];
 
   const categories = ["Set priority", "1", "2", "3", "4", "5", "6"];
+  const mainCategory = [
+    "Select main category",
+    "Men's Fashion",
+    " Women's Fashion",
+    " KId's Fashion",
+    "Health & Beauty",
+  ];
 
   const filteredProducts = useMemo(() => {
     return products.filter((product) => {
@@ -147,54 +154,59 @@ const Category: React.FC = () => {
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-orange-400 to-red-500">
               <div className="h-4 w-4 rounded-sm bg-white"></div>
             </div>
-            <h1 className="text-2xl font-bold text-gray-900">Category Setup</h1>
+            <h1 className="text-2xl font-bold text-gray-900">
+              Sub Category Setup
+            </h1>
           </div>
 
           {/* Filter Section */}
           <div className="mb-6 rounded-xl bg-white p-6 shadow-sm">
-            <div className="grid grid-cols-2 gap-5">
-              <div className="col-span-1">
-                <div className="mb-6 grid grid-cols-1 gap-4">
-                  {/* Brand Filter */}
-                  <div>
-                    <label className="mb-2 block text-sm font-medium text-gray-700">
-                      Category Name<span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      name="lastName"
-                      className="w-full rounded-lg border border-gray-300 px-4 py-2 transition-all duration-200 focus:border-transparent focus:ring-2 focus:ring-blue-500"
-                      placeholder="New Category"
-                      required
-                    />
-                  </div>
-
-                  {/* Category Filter */}
-                  <div>
-                    <label className="mb-2 block text-sm font-medium text-gray-700">
-                      Priority
-                    </label>
-                    <select
-                      value={selectedCategory}
-                      onChange={(e) => setSelectedCategory(e.target.value)}
-                      className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
-                    >
-                      {categories.map((category) => (
-                        <option key={category} value={category}>
-                          {category}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
+            <div className="mb-6 grid grid-cols-3 gap-4">
+              {/* Brand Filter */}
+              <div>
+                <label className="mb-2 block text-sm font-medium text-gray-700">
+                  Sub category name<span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  name="lastName"
+                  className="w-full rounded-lg border border-gray-300 px-4 py-2 transition-all duration-200 focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                  placeholder="New Sub Category"
+                  required
+                />
               </div>
-              <div className="col-span-1">
-                <div>
-                  <label className="mb-2 block text-sm font-medium text-gray-700">
-                    Category logo
-                  </label>
-                  <ImageComponent />
-                </div>
+
+              <div>
+                <label className="mb-2 block text-sm font-medium text-gray-700">
+                  Main Category
+                </label>
+                <select
+                  value={selectedCategory}
+                  onChange={(e) => setSelectedCategory(e.target.value)}
+                  className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+                >
+                  {mainCategory.map((category) => (
+                    <option key={category} value={category}>
+                      {category}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label className="mb-2 block text-sm font-medium text-gray-700">
+                  Main Category
+                </label>
+                <select
+                  value={selectedCategory}
+                  onChange={(e) => setSelectedCategory(e.target.value)}
+                  className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+                >
+                  {categories.map((category) => (
+                    <option key={category} value={category}>
+                      {category}
+                    </option>
+                  ))}
+                </select>
               </div>
             </div>
 
@@ -220,9 +232,11 @@ const Category: React.FC = () => {
           <div className="flex flex-col items-start justify-between gap-4 p-6 md:flex-row md:items-center">
             <div className="flex gap-3">
               <p className="text-xl font-semibold text-gray-900">
-                Category list
+                Sub category list
               </p>
-              <p className="rounded-md bg-gray-200 px-2 py-1 text-[12px]">18</p>
+              <p className="rounded-md bg-gray-200 px-2 py-1 text-[12px]">
+                128
+              </p>
             </div>
             <div className="flex max-w-md flex-1 gap-2">
               <div className="relative flex-1">
@@ -249,17 +263,15 @@ const Category: React.FC = () => {
                       ID
                     </th>
                     <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
-                      Category Image
+                      Sub category name
                     </th>
                     <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
-                      Name
+                      Category name
                     </th>
                     <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
                       Priority
                     </th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
-                      Home category status
-                    </th>
+
                     <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
                       Action
                     </th>
@@ -271,37 +283,15 @@ const Category: React.FC = () => {
                       <td className="px-6 py-4 text-sm text-gray-900">
                         {index + 1}
                       </td>
-                      <td className="px-6 py-4">
-                        <div className="flex items-center gap-3">
-                          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-blue-100 to-blue-200">
-                            <img
-                              src="https://sb.kaleidousercontent.com/67418/1920x1100/0135fd63fd/transparent-boots.png"
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                      </td>
+
                       <td className="px-6 py-4 text-sm text-gray-900">
                         {product.name}
                       </td>
                       <td className="px-6 py-4 text-sm font-medium text-gray-900">
-                        1
+                        Digital Products
                       </td>
 
-                      <td className="px-6 py-4">
-                        <div className="flex items-center">
-                          {/* <button
-                                                        className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${product.activeStatus ? 'bg-blue-600' : 'bg-gray-200'
-                                                            }`}
-                                                    >
-                                                        <span
-                                                            className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${product.activeStatus ? 'translate-x-6' : 'translate-x-1'
-                                                                }`}
-                                                        />
-                                                    </button> */}
-                          <Switch />
-                        </div>
-                      </td>
+                      <td className="px-6 py-4">1</td>
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-2">
                           <button className="rounded-lg p-2 text-gray-600 transition-colors hover:bg-gray-50">
@@ -332,4 +322,4 @@ const Category: React.FC = () => {
   );
 };
 
-export default Category;
+export default SubCategory;

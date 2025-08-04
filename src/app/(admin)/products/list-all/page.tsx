@@ -1,12 +1,12 @@
-import ProductList from '@/components/product/ProductList'
-import React from 'react'
+import ProductList from "@/components/product/ProductList";
+import React from "react";
 
 const page = () => {
   return (
     <>
-    <ProductList/>
+      <ProductList />
     </>
-  )
-}
+  );
+};
 
-export default page
+export default page;

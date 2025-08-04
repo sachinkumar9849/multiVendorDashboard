@@ -1,14 +1,13 @@
-import OrderPage from '@/components/orders/OrderPage'
-import ProductList from '@/components/product/ProductList'
-import React from 'react'
+import OrderPage from "@/components/orders/OrderPage";
+import ProductList from "@/components/product/ProductList";
+import React from "react";
 
 const page = () => {
   return (
     <>
-    <OrderPage/>
-  
+      <OrderPage />
     </>
-  )
-}
+  );
+};
 
-export default page
+export default page;
