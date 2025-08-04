@@ -18,7 +18,7 @@ import {
   UserCircleIcon,
 } from "../icons/index";
 import SidebarWidget from "./SidebarWidget";
-import { PackageSearch, Refrigerator, ShoppingBasket, ShoppingCart, Star } from "lucide-react";
+import { PackageSearch, Refrigerator, ShoppingBasket, ShoppingCart, Star, UserCog } from "lucide-react";
 
 type NavItem = {
   name: string;
@@ -65,18 +65,10 @@ const othersItems: NavItem[] = [
       { name: "New Product Request", path: "/products/list-new-request", pro: false },
       { name: "Denied Product Request", path: "/products/list-denied", pro: false },
       { name: "Add New Product", path: "/products-add", pro: false },
- 
+
     ],
   },
-   {
-    icon:  <PackageSearch />,
-    name: "Vendor Management",
-    subItems: [
-      { name: "Vendor", path: "/vendor/list-all", pro: false },
-     
  
-    ],
-  },
   {
     icon: <Star />,
     name: "Product Reviews",
@@ -91,6 +83,28 @@ const othersItems: NavItem[] = [
     ],
   },
 ];
+
+
+const userManagement: NavItem[] = [
+ {
+    icon: <UserCog />,
+    name: "Vendors",
+    subItems: [
+      { name: "Vendor List", path: "/vendor/list", pro: false },
+ { name: "Add New Vendor", path: "/vendor/add", pro: false },
+
+    ],
+  },
+  {
+    icon: <UserCircleIcon />,
+    name: "Customer Engagement",
+    subItems: [
+      { name: "Email Templates", path: "/marketing/emails", pro: false },
+      { name: "Loyalty Program", path: "/marketing/loyalty", pro: true },
+    ],
+  },
+];
+
 
 const AppSidebar: React.FC = () => {
   const { isExpanded, isMobileOpen, isHovered, setIsHovered } = useSidebar();
@@ -356,6 +370,12 @@ const AppSidebar: React.FC = () => {
                 )}
               </h2>
               {renderMenuItems(othersItems, "others")}
+            </div>
+            <div>
+              <h2 className={`mb-4 text-xs uppercase flex leading-[20px] text-gray-400 ${!isExpanded && !isHovered ? "lg:justify-center" : "justify-start"}`}>
+                {isExpanded || isHovered || isMobileOpen ? "User management" : <HorizontaLDots />}
+              </h2>
+              {renderMenuItems(userManagement, "User management")}
             </div>
           </div>
         </nav>
