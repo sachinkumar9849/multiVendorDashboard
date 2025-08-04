@@ -71,7 +71,7 @@ const VendorDashboard = () => {
   ];
   const statuses = ["All", "Active", "Pending", "Suspended"];
 
-  const handleAddVendor = (e) => {
+  const handleAddVendor = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     if (
       !newVendor.name ||
@@ -99,11 +99,11 @@ const VendorDashboard = () => {
     setShowAddModal(false);
   };
 
-  const handleDeleteVendor = (id) => {
+  const handleDeleteVendor = (id: number) => {
     setVendors(vendors.filter((vendor) => vendor.id !== id));
   };
 
-  const handleStatusChange = (id, newStatus) => {
+  const handleStatusChange = (id: number, newStatus: string) => {
     setVendors(
       vendors.map((vendor) =>
         vendor.id === id ? { ...vendor, status: newStatus } : vendor,
@@ -120,7 +120,7 @@ const VendorDashboard = () => {
     return matchesSearch && matchesFilter;
   });
 
-  const getStatusColor = (status) => {
+  const getStatusColor = (status: string) => {
     switch (status) {
       case "Active":
         return "bg-green-100 text-green-800";

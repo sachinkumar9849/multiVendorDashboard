@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { Upload, User, Store, FileText, Eye, EyeOff } from "lucide-react";
+import { User, Store, FileText, Eye, EyeOff } from "lucide-react";
 import ImageComponent from "../common/ImageComponent";
 
 export default function AddVendor() {
@@ -19,18 +19,12 @@ export default function AddVendor() {
     expireDate: "",
   });
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-    // Handle form submission logic here
   };
 
   return (

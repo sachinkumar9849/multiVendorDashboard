@@ -1,15 +1,6 @@
 "use client";
 import React, { useState, useMemo } from "react";
-import {
-  Search,
-  Plus,
-  Download,
-  AlertCircle,
-  Eye,
-  Edit,
-  Trash2,
-  BarChart3,
-} from "lucide-react";
+import { Search, Edit, Trash2 } from "lucide-react";
 import { Switch } from "../ui/switch";
 import ImageComponent from "../common/ImageComponent";
 
@@ -30,14 +21,7 @@ const Category: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedBrand, setSelectedBrand] = useState("All brand");
   const [selectedCategory, setSelectedCategory] = useState("Select category");
-  const [selectedSubCategory, setSelectedSubCategory] = useState(
-    "Select Sub Category",
-  );
-  const [selectedSubSubCategory, setSelectedSubSubCategory] = useState(
-    "Select Sub Sub Category",
-  );
 
-  // Sample data based on your image
   const products: Product[] = [
     {
       id: 1,
@@ -89,17 +73,6 @@ const Category: React.FC = () => {
     },
   ];
 
-  const brands = [
-    "All brand",
-    "Norton",
-    "Microsoft",
-    "AudioPress",
-    "BookPress",
-    "Francisco Electrical",
-    "Timmerman",
-    "Borcelle ElectricVehicle",
-  ];
-
   const categories = ["Set priority", "1", "2", "3", "4", "5", "6"];
 
   const filteredProducts = useMemo(() => {
@@ -121,27 +94,13 @@ const Category: React.FC = () => {
     setSearchTerm("");
     setSelectedBrand("All brand");
     setSelectedCategory("Select category");
-    setSelectedSubCategory("Select Sub Category");
-    setSelectedSubSubCategory("Select Sub Sub Category");
-  };
-
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case "Approved":
-        return "text-green-600 bg-green-50 border-green-200";
-      case "Pending":
-        return "text-yellow-600 bg-yellow-50 border-yellow-200";
-      case "Rejected":
-        return "text-red-600 bg-red-50 border-red-200";
-      default:
-        return "text-gray-600 bg-gray-50 border-gray-200";
-    }
+    setSelectedCategory("Select Sub Category");
+    setSelectedCategory("Select Sub Sub Category");
   };
 
   return (
     <div className="">
       <div className="mx-auto max-w-7xl">
-        {/* Header */}
         <div className="mb-8">
           <div className="mb-6 flex items-center gap-3">
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-orange-400 to-red-500">
@@ -150,12 +109,10 @@ const Category: React.FC = () => {
             <h1 className="text-2xl font-bold text-gray-900">Category Setup</h1>
           </div>
 
-          {/* Filter Section */}
           <div className="mb-6 rounded-xl bg-white p-6 shadow-sm">
             <div className="grid grid-cols-2 gap-5">
               <div className="col-span-1">
                 <div className="mb-6 grid grid-cols-1 gap-4">
-                  {/* Brand Filter */}
                   <div>
                     <label className="mb-2 block text-sm font-medium text-gray-700">
                       Category Name<span className="text-red-500">*</span>
@@ -169,7 +126,6 @@ const Category: React.FC = () => {
                     />
                   </div>
 
-                  {/* Category Filter */}
                   <div>
                     <label className="mb-2 block text-sm font-medium text-gray-700">
                       Priority
@@ -198,7 +154,6 @@ const Category: React.FC = () => {
               </div>
             </div>
 
-            {/* Action Buttons */}
             <div className="mt-3 flex justify-end gap-3">
               <button
                 onClick={resetFilters}
@@ -211,11 +166,8 @@ const Category: React.FC = () => {
               </button>
             </div>
           </div>
-
-          {/* Search and Actions */}
         </div>
-        {/* bg-white rounded-xl shadow-sm border border-gray-200 */}
-        {/* Product Table */}
+
         <div className="rounded-xl border border-gray-200 bg-white shadow-sm">
           <div className="flex flex-col items-start justify-between gap-4 p-6 md:flex-row md:items-center">
             <div className="flex gap-3">
@@ -290,15 +242,6 @@ const Category: React.FC = () => {
 
                       <td className="px-6 py-4">
                         <div className="flex items-center">
-                          {/* <button
-                                                        className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${product.activeStatus ? 'bg-blue-600' : 'bg-gray-200'
-                                                            }`}
-                                                    >
-                                                        <span
-                                                            className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${product.activeStatus ? 'translate-x-6' : 'translate-x-1'
-                                                                }`}
-                                                        />
-                                                    </button> */}
                           <Switch />
                         </div>
                       </td>

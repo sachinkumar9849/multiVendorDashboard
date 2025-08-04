@@ -8,7 +8,6 @@ import {
   Eye,
   Edit,
   Trash2,
-  BarChart3,
 } from "lucide-react";
 import { Switch } from "../ui/switch";
 

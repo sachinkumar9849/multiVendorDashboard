@@ -5,27 +5,14 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useSidebar } from "../context/SidebarContext";
 import {
-  BoxCubeIcon,
-  CalenderIcon,
   ChevronDownIcon,
   GridIcon,
   HorizontaLDots,
-  ListIcon,
-  PageIcon,
-  PieChartIcon,
   PlugInIcon,
-  TableIcon,
   UserCircleIcon,
 } from "../icons/index";
-import SidebarWidget from "./SidebarWidget";
-import {
-  PackageSearch,
-  Refrigerator,
-  ShoppingBasket,
-  ShoppingCart,
-  Star,
-  UserCog,
-} from "lucide-react";
+
+import { ShoppingBasket, ShoppingCart, Star, UserCog } from "lucide-react";
 
 type NavItem = {
   name: string;
@@ -33,6 +20,8 @@ type NavItem = {
   path?: string;
   subItems?: { name: string; path: string; pro?: boolean; new?: boolean }[];
 };
+
+type MenuType = "main" | "products" | "users";
 
 const navItems: NavItem[] = [
   {
@@ -136,10 +125,31 @@ const AppSidebar: React.FC = () => {
   const { isExpanded, isMobileOpen, isHovered, setIsHovered } = useSidebar();
   const pathname = usePathname();
 
-  const renderMenuItems = (
-    navItems: NavItem[],
-    menuType: "main" | "others",
-  ) => (
+  const [openSubmenu, setOpenSubmenu] = useState<{
+    type: MenuType;
+    index: number;
+  } | null>(null);
+  const [subMenuHeight, setSubMenuHeight] = useState<Record<string, number>>(
+    {},
+  );
+  const subMenuRefs = useRef<Record<string, HTMLDivElement | null>>({});
+
+  const isActive = useCallback((path: string) => path === pathname, [pathname]);
+
+  const handleSubmenuToggle = (index: number, menuType: MenuType) => {
+    setOpenSubmenu((prevOpenSubmenu) => {
+      if (
+        prevOpenSubmenu &&
+        prevOpenSubmenu.type === menuType &&
+        prevOpenSubmenu.index === index
+      ) {
+        return null;
+      }
+      return { type: menuType, index };
+    });
+  };
+
+  const renderMenuItems = (navItems: NavItem[], menuType: MenuType) => (
     <ul className="flex flex-col gap-4">
       {navItems.map((nav, index) => (
         <li key={nav.name}>
@@ -262,36 +272,44 @@ const AppSidebar: React.FC = () => {
     </ul>
   );
 
-  const [openSubmenu, setOpenSubmenu] = useState<{
-    type: "main" | "Product management";
-    index: number;
-  } | null>(null);
-  const [subMenuHeight, setSubMenuHeight] = useState<Record<string, number>>(
-    {},
-  );
-  const subMenuRefs = useRef<Record<string, HTMLDivElement | null>>({});
-
-  // const isActive = (path: string) => path === pathname;
-  const isActive = useCallback((path: string) => path === pathname, [pathname]);
-
   useEffect(() => {
     // Check if the current path matches any submenu item
     let submenuMatched = false;
-    ["main", "Product management"].forEach((menuType) => {
-      const items = menuType === "main" ? navItems : othersItems;
-      items.forEach((nav, index) => {
-        if (nav.subItems) {
-          nav.subItems.forEach((subItem) => {
-            if (isActive(subItem.path)) {
-              setOpenSubmenu({
-                type: menuType as "main" | "others",
-                index,
-              });
-              submenuMatched = true;
-            }
-          });
-        }
-      });
+
+    // Check main menu items
+    navItems.forEach((nav, index) => {
+      if (nav.subItems) {
+        nav.subItems.forEach((subItem) => {
+          if (isActive(subItem.path)) {
+            setOpenSubmenu({ type: "main", index });
+            submenuMatched = true;
+          }
+        });
+      }
+    });
+
+    // Check product management items
+    othersItems.forEach((nav, index) => {
+      if (nav.subItems) {
+        nav.subItems.forEach((subItem) => {
+          if (isActive(subItem.path)) {
+            setOpenSubmenu({ type: "products", index });
+            submenuMatched = true;
+          }
+        });
+      }
+    });
+
+    // Check user management items
+    userManagement.forEach((nav, index) => {
+      if (nav.subItems) {
+        nav.subItems.forEach((subItem) => {
+          if (isActive(subItem.path)) {
+            setOpenSubmenu({ type: "users", index });
+            submenuMatched = true;
+          }
+        });
+      }
     });
 
     // If no submenu item matches, close the open submenu
@@ -312,22 +330,6 @@ const AppSidebar: React.FC = () => {
       }
     }
   }, [openSubmenu]);
-
-  const handleSubmenuToggle = (
-    index: number,
-    menuType: "main" | "Product management",
-  ) => {
-    setOpenSubmenu((prevOpenSubmenu) => {
-      if (
-        prevOpenSubmenu &&
-        prevOpenSubmenu.type === menuType &&
-        prevOpenSubmenu.index === index
-      ) {
-        return null;
-      }
-      return { type: menuType, index };
-    });
-  };
 
   return (
     <aside
@@ -408,7 +410,7 @@ const AppSidebar: React.FC = () => {
                   <HorizontaLDots />
                 )}
               </h2>
-              {renderMenuItems(othersItems, "others")}
+              {renderMenuItems(othersItems, "products")}
             </div>
             <div>
               <h2
@@ -420,7 +422,7 @@ const AppSidebar: React.FC = () => {
                   <HorizontaLDots />
                 )}
               </h2>
-              {renderMenuItems(userManagement, "User management")}
+              {renderMenuItems(userManagement, "users")}
             </div>
           </div>
         </nav>

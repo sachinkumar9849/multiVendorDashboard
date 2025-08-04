@@ -17,10 +17,7 @@ const OrderPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [orderType, setOrderType] = useState("all");
   const [customer, setCustomer] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
 
-  // Sample order data
   const orders = [
     {
       id: "ORD-001",
@@ -84,7 +81,7 @@ const OrderPage = () => {
     },
   ];
 
-  const getStatusColor = (status) => {
+  const getStatusColor = (status: string) => {
     switch (status) {
       case "completed":
         return "bg-green-100 text-green-800 border-green-200";

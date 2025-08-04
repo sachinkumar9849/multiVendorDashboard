@@ -1,22 +1,28 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, ChangeEvent, DragEvent } from "react";
+
+interface FileWithPreview extends File {
+  preview?: string;
+}
 
 const ImageComponent = () => {
   const [isDragOver, setIsDragOver] = useState(false);
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [imagePreview, setImagePreview] = useState(null);
-  const fileInputRef = useRef(null);
+  const [selectedFile, setSelectedFile] = useState<FileWithPreview | null>(
+    null,
+  );
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const handleDragOver = (e) => {
+  const handleDragOver = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     setIsDragOver(true);
   };
 
-  const handleDragLeave = (e) => {
+  const handleDragLeave = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     setIsDragOver(false);
   };
 
-  const handleDrop = (e) => {
+  const handleDrop = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     setIsDragOver(false);
 
@@ -26,7 +32,7 @@ const ImageComponent = () => {
     }
   };
 
-  const handleFileSelection = (file) => {
+  const handleFileSelection = (file: File) => {
     // Check file type
     const allowedTypes = ["image/jpeg", "image/jpg", "image/png"];
     if (!allowedTypes.includes(file.type)) {
@@ -46,13 +52,13 @@ const ImageComponent = () => {
     // Create image preview
     const reader = new FileReader();
     reader.onload = (e) => {
-      setImagePreview(e.target.result);
+      setImagePreview(e.target?.result as string);
     };
     reader.readAsDataURL(file);
   };
 
-  const handleFileInputChange = (e) => {
-    const file = e.target.files[0];
+  const handleFileInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
     if (file) {
       handleFileSelection(file);
     }
@@ -62,7 +68,7 @@ const ImageComponent = () => {
     fileInputRef.current?.click();
   };
 
-  const formatFileSize = (bytes) => {
+  const formatFileSize = (bytes: number) => {
     if (bytes === 0) return "0 Bytes";
     const k = 1024;
     const sizes = ["Bytes", "KB", "MB", "GB"];
