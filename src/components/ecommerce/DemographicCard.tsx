@@ -151,16 +151,7 @@ const DemographicCard = () => {
       label: "Delivered",
       description: "Successfully delivered orders",
     },
-    {
-      key: "canceled",
-      label: "Canceled",
-      description: "Orders canceled by customer or system",
-    },
-    {
-      key: "returned",
-      label: "Returned",
-      description: "Orders returned by customers",
-    },
+
     {
       key: "failedDelivery",
       label: "Failed to Delivery",
@@ -303,31 +294,6 @@ const DemographicCard = () => {
               data={orderStats[category.key]}
             />
           ))}
-        </div>
-
-        {/* Quick Actions */}
-        <div className="mt-8 rounded-xl border border-gray-100 bg-white p-6 shadow-sm">
-          <h3 className="mb-4 text-lg font-semibold text-gray-900">
-            Quick Actions
-          </h3>
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-            <button className="flex items-center justify-center space-x-2 rounded-lg bg-blue-50 px-4 py-3 text-blue-700 transition-colors hover:bg-blue-100">
-              <Clock className="h-4 w-4" />
-              <span className="text-sm font-medium">View Pending</span>
-            </button>
-            <button className="flex items-center justify-center space-x-2 rounded-lg bg-yellow-50 px-4 py-3 text-yellow-700 transition-colors hover:bg-yellow-100">
-              <Package className="h-4 w-4" />
-              <span className="text-sm font-medium">Process Orders</span>
-            </button>
-            <button className="flex items-center justify-center space-x-2 rounded-lg bg-green-50 px-4 py-3 text-green-700 transition-colors hover:bg-green-100">
-              <Truck className="h-4 w-4" />
-              <span className="text-sm font-medium">Track Shipments</span>
-            </button>
-            <button className="flex items-center justify-center space-x-2 rounded-lg bg-red-50 px-4 py-3 text-red-700 transition-colors hover:bg-red-100">
-              <AlertTriangle className="h-4 w-4" />
-              <span className="text-sm font-medium">Handle Issues</span>
-            </button>
-          </div>
         </div>
       </div>
     </div>

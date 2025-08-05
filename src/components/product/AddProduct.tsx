@@ -1,0 +1,526 @@
+"use client";
+import React, { useState } from "react";
+import { ChevronDown } from "lucide-react";
+import ImageComponent from "../common/ImageComponent";
+
+const AddProduct = () => {
+  const [productType, setProductType] = useState("Physical");
+  const [discountType, setDiscountType] = useState("Flat");
+  const [taxCalculation, setTaxCalculation] = useState("Include with product");
+  const [selectedColors] = useState([]);
+  const [selectedAttributes] = useState([]);
+
+  const [showColorPicker, setShowColorPicker] = useState(false);
+  const [showAttributePicker, setShowAttributePicker] = useState(false);
+
+  const categories = [
+    "Men's Fashion",
+    "Women's Fashion",
+    "Kid's Fashion",
+    "Health & Beauty",
+    "Pet Supplies",
+    "Home & Kitchen",
+    "Baby & Toddler",
+    "Sports & Outdoor",
+    "Phone & Gadgets",
+    "Electronics & Gadgets",
+    "Travel & Luggage",
+    "Books & Stationery",
+    "Groceries & Dailies",
+    "Musical Instruments",
+    "Gifts & Crafts",
+    "Automotive",
+    "Digital Products",
+  ];
+
+  const brands = [
+    "Francisco Electrical",
+    "Timmerman",
+    "Borcelle",
+    "ElectricVehicle",
+    "Power Energy",
+    "OTO",
+    "Speedios",
+    "Tech Connect",
+    "Cool Sneakers",
+    "UrbanEdge",
+    "Global Tech",
+    "Electronic Store",
+    "Electrical Charge",
+    "Keithston",
+  ];
+
+  const units = ["kg", "pc", "gms", "ltrs", "pair", "oz", "lb"];
+
+  const colors = [
+    "Red",
+    "Blue",
+    "Green",
+    "Yellow",
+    "Purple",
+    "Orange",
+    "Pink",
+    "Black",
+    "White",
+    "Gray",
+    "Brown",
+    "Navy",
+    "Teal",
+    "Lime",
+    "Maroon",
+    "Olive",
+    "Silver",
+    "Gold",
+    "Violet",
+    "Turquoise",
+    "Magenta",
+    "Cyan",
+    "Indigo",
+    "Crimson",
+    "Coral",
+    "Salmon",
+    "Khaki",
+    "Beige",
+    "Tan",
+    "Azure",
+  ];
+
+  const attributes = ["type", "size"];
+
+  return (
+    <>
+      <div>
+        <h1 className="mb-4 text-[25px] font-semibold text-gray-900 md:mb-6">
+          Add New Product
+        </h1>
+      </div>
+      <div className="mb-6 rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+        {/* Header */}
+        {/* <div className="bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-6">
+      <h1 className="text-3xl font-bold text-white">Add New Product</h1>
+      <p className="text-blue-100 mt-2">Create and configure your product listing</p>
+    </div> */}
+
+        <form className="">
+          {/* Language Tabs */}
+          {/* <div className="border-b border-gray-200">
+      <div className="flex space-x-8">
+        {languages.map((lang) => (
+          <button
+            key={lang.code}
+            type="button"
+            onClick={() => setActiveTab(lang.code)}
+            className={`pb-4 px-1 text-sm font-medium border-b-2 transition-colors ${
+              activeTab === lang.code
+                ? 'border-blue-500 text-blue-600'
+                : 'border-transparent text-gray-500 hover:text-gray-700'
+            }`}
+          >
+            {lang.name} ({lang.code})
+          </button>
+        ))}
+      </div>
+    </div> */}
+
+          {/* Product Information */}
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-1">
+            <div>
+              <label className="mb-2 block text-sm font-semibold text-gray-700">
+                Product name
+              </label>
+              <input
+                type="text"
+                className="w-full rounded-lg border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                placeholder="Enter product name"
+              />
+            </div>
+          </div>
+
+          <div className="mt-3">
+            <label className="mb-2 block text-sm font-semibold text-gray-700">
+              Description
+            </label>
+            <textarea
+              className="w-full rounded-lg border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
+              placeholder="Enter product description"
+            />
+          </div>
+
+          {/* General Setup */}
+          <div className="mt-3 rounded-xl bg-gray-50 p-3 md:p-6">
+            <h3 className="mb-4 text-lg font-semibold text-gray-800">
+              General Setup
+            </h3>
+            <div className="mb-4 grid grid-cols-1 gap-4 md:grid-cols-3">
+              <div>
+                <label className="mb-2 block text-sm font-semibold text-gray-700">
+                  Category *
+                </label>
+                <select className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-blue-500">
+                  <option>Select category</option>
+                  {categories.map((cat) => (
+                    <option key={cat} value={cat}>
+                      {cat}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label className="mb-2 block text-sm font-semibold text-gray-700">
+                  Sub Category
+                </label>
+                <select className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-blue-500">
+                  <option>Select Sub Category</option>
+                </select>
+              </div>
+              <div>
+                <label className="mb-2 block text-sm font-semibold text-gray-700">
+                  Sub Sub Category
+                </label>
+                <select className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-blue-500">
+                  <option>Select Sub Sub Category</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+              <div>
+                <label className="mb-2 block text-sm font-semibold text-gray-700">
+                  Brand
+                </label>
+                <select className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-blue-500">
+                  <option>Select Brand</option>
+                  {brands.map((brand) => (
+                    <option key={brand} value={brand}>
+                      {brand}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label className="mb-2 block text-sm font-semibold text-gray-700">
+                  Unit *
+                </label>
+                <select className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-blue-500">
+                  {units.map((unit) => (
+                    <option key={unit} value={unit}>
+                      {unit}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <div className="mt-4">
+              <label className="mb-3 block text-sm font-semibold text-gray-700">
+                Product type *
+              </label>
+              <div className="flex gap-4">
+                {["Physical", "Digital"].map((type) => (
+                  <label
+                    key={type}
+                    className="flex cursor-pointer items-center"
+                  >
+                    <input
+                      type="radio"
+                      name="productType"
+                      value={type}
+                      checked={productType === type}
+                      onChange={(e) => setProductType(e.target.value)}
+                      className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-500"
+                    />
+                    <span className="ml-2 text-gray-700">{type}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Pricing & Others */}
+          <div className="mt-3 rounded-xl bg-blue-50 p-6">
+            <h3 className="mb-4 text-lg font-semibold text-gray-800">
+              Pricing & Others
+            </h3>
+            <div className="mb-4 grid grid-cols-1 gap-4 md:grid-cols-3">
+              <div>
+                <label className="mb-2 block text-sm font-semibold text-gray-700">
+                  Unit price
+                </label>
+                <input
+                  type="number"
+                  className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                  placeholder="0.00"
+                />
+              </div>
+              <div>
+                <label className="mb-2 block text-sm font-semibold text-gray-700">
+                  Minimum order qty *
+                </label>
+                <input
+                  type="number"
+                  className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                  placeholder="1"
+                />
+              </div>
+              <div>
+                <label className="mb-2 block text-sm font-semibold text-gray-700">
+                  Current stock qty *
+                </label>
+                <input
+                  type="number"
+                  className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                  placeholder="0"
+                />
+              </div>
+            </div>
+
+            <div className="mb-4 grid grid-cols-1 gap-4 md:grid-cols-2">
+              <div>
+                <label className="mb-2 block text-sm font-semibold text-gray-700">
+                  Discount Type *
+                </label>
+                <div className="flex gap-4">
+                  {["Flat", "Percent"].map((type) => (
+                    <label
+                      key={type}
+                      className="flex cursor-pointer items-center"
+                    >
+                      <input
+                        type="radio"
+                        name="discountType"
+                        value={type}
+                        checked={discountType === type}
+                        onChange={(e) => setDiscountType(e.target.value)}
+                        className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-500"
+                      />
+                      <span className="ml-2 text-gray-700">{type}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <label className="mb-2 block text-sm font-semibold text-gray-700">
+                  Discount amount
+                </label>
+                <input
+                  type="number"
+                  className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                  placeholder="0.00"
+                />
+              </div>
+            </div>
+
+            <div className="mb-4 grid grid-cols-1 gap-4 md:grid-cols-2">
+              <div>
+                <label className="mb-2 block text-sm font-semibold text-gray-700">
+                  Tax amount (%) *
+                </label>
+                <input
+                  type="number"
+                  className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                  placeholder="0"
+                />
+              </div>
+              <div>
+                <label className="mb-2 block text-sm font-semibold text-gray-700">
+                  Shipping cost
+                </label>
+                <input
+                  type="number"
+                  className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                  placeholder="0.00"
+                />
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <div>
+                <label className="mb-2 block text-sm font-semibold text-gray-700">
+                  Tax calculation *
+                </label>
+                <div className="flex gap-4">
+                  {["Include with product", "Exclude with product"].map(
+                    (calc) => (
+                      <label
+                        key={calc}
+                        className="flex cursor-pointer items-center"
+                      >
+                        <input
+                          type="radio"
+                          name="taxCalculation"
+                          value={calc}
+                          checked={taxCalculation === calc}
+                          onChange={(e) => setTaxCalculation(e.target.value)}
+                          className="h-4 w-4 border-gray-300 text-blue-600 focus:ring-blue-500"
+                        />
+                        <span className="ml-2 text-gray-700">{calc}</span>
+                      </label>
+                    ),
+                  )}
+                </div>
+              </div>
+              <div className="flex items-center">
+                <input
+                  type="checkbox"
+                  className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                />
+                <span className="ml-2 text-gray-700">
+                  Shipping cost multiply with quantity
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Product Variation Setup */}
+          <div className="mt-3 rounded-xl bg-purple-50 p-6">
+            <h3 className="mb-4 text-lg font-semibold text-gray-800">
+              Product Variation Setup
+            </h3>
+
+            {/* Colors */}
+            <div className="grid gap-5 md:grid-cols-2">
+              <div className="col-span-1">
+                <div className="">
+                  <label className="mb-2 block text-sm font-semibold text-gray-700">
+                    Select colors:
+                  </label>
+                  <div className="relative">
+                    <button
+                      type="button"
+                      onClick={() => setShowColorPicker(!showColorPicker)}
+                      className="flex w-full items-center justify-between rounded-lg border border-gray-300 px-4 py-3 text-left focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                    >
+                      <span className="text-gray-700">
+                        {selectedColors.length > 0
+                          ? `${selectedColors.length} colors selected`
+                          : "Select colors"}
+                      </span>
+                      <ChevronDown className="h-5 w-5 text-gray-400" />
+                    </button>
+
+                    {showColorPicker && (
+                      <div className="absolute z-10 mt-1 max-h-64 w-full overflow-y-auto rounded-lg border border-gray-300 bg-white shadow-sm">
+                        <div className="grid grid-cols-4 gap-2 p-4">
+                          {colors.map((color) => (
+                            <label
+                              key={color}
+                              className="flex cursor-pointer items-center rounded p-2 hover:bg-gray-50"
+                            >
+                              <input
+                                type="checkbox"
+                                className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                              />
+                              <span className="ml-2 text-sm text-gray-700">
+                                {color}
+                              </span>
+                            </label>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+              <div className="col-span-1">
+                {/* Attributes */}
+                <div>
+                  <label className="mb-2 block text-sm font-semibold text-gray-700">
+                    Select attributes:
+                  </label>
+                  <div className="relative">
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setShowAttributePicker(!showAttributePicker)
+                      }
+                      className="flex w-full items-center justify-between rounded-lg border border-gray-300 px-4 py-3 text-left focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                    >
+                      <span className="text-gray-700">
+                        {selectedAttributes.length > 0
+                          ? selectedAttributes.join(", ")
+                          : "Select attributes"}
+                      </span>
+                      <ChevronDown className="h-5 w-5 text-gray-400" />
+                    </button>
+
+                    {showAttributePicker && (
+                      <div className="absolute z-10 mt-1 w-full rounded-lg border border-gray-300 bg-white shadow-sm">
+                        <div className="p-4">
+                          {attributes.map((attr) => (
+                            <label
+                              key={attr}
+                              className="flex cursor-pointer items-center rounded p-2 hover:bg-gray-50"
+                            >
+                              <input
+                                type="checkbox"
+                                className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                              />
+                              <span className="ml-2 text-gray-700">{attr}</span>
+                            </label>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Images */}
+          <div className="mt-3 rounded-xl bg-green-50 p-6">
+            <h3 className="mb-4 text-lg font-semibold text-gray-800">
+              Product Images
+            </h3>
+
+            <div className="grid gap-6 md:grid-cols-2">
+              <div className="col-span-1">
+                <ImageComponent />
+              </div>
+
+              <div className="col-span-1">
+                <ImageComponent />
+              </div>
+            </div>
+          </div>
+
+          {/* Product Video */}
+          <div className="rounded-xl bg-yellow-50 p-6">
+            <h3 className="mb-4 text-lg font-semibold text-gray-800">
+              Product Video
+            </h3>
+            <div>
+              <label className="mb-2 block text-sm font-semibold text-gray-700">
+                Youtube video link (Optional - please provide embed link not
+                direct link)
+              </label>
+              <input
+                type="url"
+                className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                placeholder="https://www.youtube.com/embed/..."
+              />
+            </div>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex gap-4 pt-6">
+            <button
+              type="submit"
+              className="bgBlue flex-1 transform rounded-lg px-8 py-2 font-semibold text-white shadow-sm transition-all hover:scale-[1.02] hover:from-blue-700 hover:to-purple-700"
+            >
+              Add Product
+            </button>
+            <button
+              type="button"
+              className="rounded-lg border border-gray-300 px-8 py-3 font-semibold text-gray-700 transition-colors hover:bg-gray-50"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </>
+  );
+};
+
+export default AddProduct;

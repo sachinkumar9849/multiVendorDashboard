@@ -2,6 +2,7 @@
 import React, { useState, useMemo } from "react";
 import { Search, Plus, Download, Eye, Edit, Trash2 } from "lucide-react";
 import { Switch } from "../ui/switch";
+import Link from "next/link";
 
 interface Product {
   id: number;
@@ -163,7 +164,7 @@ const ProductList: React.FC = () => {
           </div>
 
           {/* Filter Section */}
-          <div className="mb-6 rounded-xl bg-white p-6 shadow-sm">
+          <div className="mb-6 rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
             <h2 className="mb-4 text-lg font-semibold text-gray-900">
               Filter Products
             </h2>
@@ -286,11 +287,12 @@ const ProductList: React.FC = () => {
                 <Download className="h-4 w-4" />
                 Export
               </button>
-
-              <button className="bgBlue flex items-center gap-2 rounded-lg px-4 py-2 font-medium text-white transition-colors hover:bg-blue-700">
-                <Plus className="h-4 w-4" />
-                Add new product
-              </button>
+              <Link href="/products/add-product">
+                <button className="bgBlue flex items-center gap-2 rounded-lg px-4 py-2 font-medium text-white transition-colors hover:bg-blue-700">
+                  <Plus className="h-4 w-4" />
+                  Add new product
+                </button>
+              </Link>
             </div>
           </div>
           <div className="overflow-hidden rounded-xl bg-white shadow-sm">

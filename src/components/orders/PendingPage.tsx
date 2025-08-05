@@ -28,7 +28,7 @@ const OrderPage = () => {
         email: "john@example.com",
         phone: "+1234567890",
       },
-      total: "$1,250.00",
+      total: "Rs.1,250.00",
       status: "completed",
       type: "online",
     },

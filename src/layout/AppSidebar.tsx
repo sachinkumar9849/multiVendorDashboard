@@ -11,14 +11,7 @@ import {
   PlugInIcon,
 } from "../icons/index";
 
-import {
-  ShoppingBasket,
-  ShoppingCart,
-  Star,
-  Tag,
-  User,
-  UserCog,
-} from "lucide-react";
+import { ShoppingBasket, ShoppingCart, Tag, User, UserCog } from "lucide-react";
 
 type NavItem = {
   name: string;
@@ -65,6 +58,7 @@ const othersItems: NavItem[] = [
     name: "Products",
     subItems: [
       { name: "Product List", path: "/products/list-all", pro: false },
+      { name: "Add Product", path: "/products/add-product", pro: false },
       // {
       //   name: "Approved Product List",
       //   path: "/products/list-approved",
@@ -107,11 +101,11 @@ const othersItems: NavItem[] = [
     path: "/attribute",
   },
 
-  {
-    icon: <Star />,
-    name: "Product Reviews",
-    path: "/",
-  },
+  // {
+  //   icon: <Star />,
+  //   name: "Product Reviews",
+  //   path: "/",
+  // },
   {
     icon: <PlugInIcon />,
     name: "Authentication",
@@ -126,10 +120,7 @@ const userManagement: NavItem[] = [
   {
     icon: <User />,
     name: "Customers",
-    subItems: [
-      { name: "Customer List", path: "/customer/list", pro: false },
-      { name: "Customer Reviews", path: "/customer/reviews", pro: false },
-    ],
+    subItems: [{ name: "Customer List", path: "/customer/list", pro: false }],
   },
   {
     icon: <UserCog />,
@@ -371,7 +362,7 @@ const AppSidebar: React.FC = () => {
         <Link href="/">
           {isExpanded || isHovered || isMobileOpen ? (
             <>
-              <Image
+              {/* <Image
                 className="dark:hidden"
                 src="/images/logo/logo.png"
                 alt="Logo"
@@ -384,7 +375,8 @@ const AppSidebar: React.FC = () => {
                 alt="Logo"
                 width={150}
                 height={40}
-              />
+              /> */}
+              <p className="text-[25px] font-extrabold">Mercy</p>
             </>
           ) : (
             <Image
@@ -396,7 +388,7 @@ const AppSidebar: React.FC = () => {
           )}
         </Link>
       </div>
-      <div className="no-scrollbar flex flex-col overflow-y-auto duration-300 ease-linear">
+      <div className="no-scrollbar flex flex-col overflow-y-auto pb-[100px] duration-300 ease-linear md:pb-[0px]">
         <nav className="mb-6">
           <div className="flex flex-col gap-4">
             <div>

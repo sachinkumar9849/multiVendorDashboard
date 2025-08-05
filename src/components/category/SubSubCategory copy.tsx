@@ -118,8 +118,8 @@ const SubSubCategory: React.FC = () => {
           </div>
 
           {/* Filter Section */}
-          <div className="mb-6 rounded-xl bg-white p-6 shadow-sm">
-            <div className="mb-6 grid grid-cols-4 gap-4">
+          <div className="mb-6 rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+            <div className="mb-6 grid gap-4 md:grid-cols-4">
               {/* Brand Filter */}
               <div>
                 <label className="mb-2 block text-sm font-medium text-gray-700">

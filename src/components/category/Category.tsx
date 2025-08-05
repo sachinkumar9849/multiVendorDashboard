@@ -109,8 +109,8 @@ const Category: React.FC = () => {
             <h1 className="text-2xl font-bold text-gray-900">Category Setup</h1>
           </div>
 
-          <div className="mb-6 rounded-xl bg-white p-6 shadow-sm">
-            <div className="grid grid-cols-2 gap-5">
+          <div className="mb-6 rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+            <div className="grid gap-5 md:grid-cols-2">
               <div className="col-span-1">
                 <div className="mb-6 grid grid-cols-1 gap-4">
                   <div>
