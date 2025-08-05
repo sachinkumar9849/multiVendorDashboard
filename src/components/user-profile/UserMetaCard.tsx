@@ -37,7 +37,7 @@ export default function UserMetaCard() {
                 </p>
                 <div className="hidden h-3.5 w-px bg-gray-300 xl:block dark:bg-gray-700"></div>
                 <p className="text-sm text-gray-500 dark:text-gray-400">
-                  Arizona, United States
+                  kathmandu , Nepal
                 </p>
               </div>
             </div>

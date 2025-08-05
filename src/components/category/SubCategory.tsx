@@ -116,8 +116,8 @@ const SubCategory: React.FC = () => {
             </h1>
           </div>
 
-          <div className="mb-6 rounded-xl bg-white p-6 shadow-sm">
-            <div className="mb-6 grid grid-cols-3 gap-4">
+          <div className="mb-6 rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+            <div className="mb-6 grid gap-4 md:grid-cols-3">
               <div>
                 <label className="mb-2 block text-sm font-medium text-gray-700">
                   Sub category name<span className="text-red-500">*</span>

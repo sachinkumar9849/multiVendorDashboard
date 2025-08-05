@@ -83,7 +83,7 @@ const Attribute: React.FC = () => {
             </h1>
           </div>
 
-          <div className="mb-6 rounded-xl bg-white p-6 shadow-sm">
+          <div className="mb-6 rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
             <div className="grid grid-cols-1 gap-5">
               <div className="col-span-1">
                 <div className="mb-6 grid grid-cols-1 gap-4">
@@ -96,7 +96,7 @@ const Attribute: React.FC = () => {
                       type="text"
                       name="lastName"
                       className="w-full rounded-lg border border-gray-300 px-4 py-2 transition-all duration-200 focus:border-transparent focus:ring-2 focus:ring-blue-500"
-                      placeholder="New Category"
+                      placeholder="Enter Attribute Name"
                       required
                     />
                   </div>

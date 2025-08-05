@@ -2,7 +2,6 @@ import GridShape from "@/components/common/GridShape";
 import ThemeTogglerTwo from "@/components/common/ThemeTogglerTwo";
 
 import { ThemeProvider } from "@/context/ThemeContext";
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -22,12 +21,13 @@ export default function AuthLayout({
               <GridShape />
               <div className="flex max-w-xs flex-col items-center">
                 <Link href="/" className="mb-4 block rounded-md bg-white p-3">
-                  <Image
+                  {/* <Image
                     width={231}
                     height={48}
                     src="/images/logo/logo.png"
                     alt="Logo"
-                  />
+                  /> */}
+                  <p className="text-[25px] font-extrabold">Mercy</p>
                 </Link>
                 <p className="text-center text-gray-400 dark:text-white/60">
                   Ecommerce dashboard

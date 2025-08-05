@@ -18,7 +18,7 @@ const CustomerList = () => {
         email: "john@example.com",
         phone: "+1234567890",
       },
-      total: "$1,250.00",
+      total: "Rs.1,250.00",
       status: "completed",
       type: "online",
     },
@@ -201,6 +201,9 @@ const CustomerList = () => {
                   </th>
                   <th className="px-6 py-4 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
                     Total Order
+                  </th>
+                  <th className="px-6 py-4 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
+                    Price
                   </th>
 
                   <th className="px-6 py-4 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
