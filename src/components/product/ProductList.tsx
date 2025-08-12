@@ -164,7 +164,7 @@ const ProductList: React.FC = () => {
           </div>
 
           {/* Filter Section */}
-          <div className="mb-6 rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+          <div className="mb-6 rounded-md border border-gray-200 bg-white p-6 shadow-sm">
             <h2 className="mb-4 text-lg font-semibold text-gray-900">
               Filter Products
             </h2>
@@ -178,7 +178,7 @@ const ProductList: React.FC = () => {
                 <select
                   value={selectedBrand}
                   onChange={(e) => setSelectedBrand(e.target.value)}
-                  className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
                 >
                   {brands.map((brand) => (
                     <option key={brand} value={brand}>
@@ -196,7 +196,7 @@ const ProductList: React.FC = () => {
                 <select
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
                 >
                   {categories.map((category) => (
                     <option key={category} value={category}>
@@ -214,7 +214,7 @@ const ProductList: React.FC = () => {
                 <select
                   value={selectedSubCategory}
                   onChange={(e) => setSelectedSubCategory(e.target.value)}
-                  className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
                 >
                   <option value="Select Sub Category">
                     Select Sub Category
@@ -233,7 +233,7 @@ const ProductList: React.FC = () => {
                 <select
                   value={selectedSubSubCategory}
                   onChange={(e) => setSelectedSubSubCategory(e.target.value)}
-                  className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
                 >
                   <option value="Select Sub Sub Category">
                     Select Sub Sub Category
@@ -262,9 +262,9 @@ const ProductList: React.FC = () => {
 
           {/* Search and Actions */}
         </div>
-        {/* bg-white rounded-xl shadow-sm border border-gray-200 */}
+        {/* bg-white rounded-md shadow-sm border border-gray-200 */}
         {/* Product Table */}
-        <div className="rounded-xl border border-gray-200 bg-white shadow-sm">
+        <div className="rounded-md border border-gray-200 bg-white shadow-sm">
           <div className="flex flex-col items-start justify-between gap-4 p-6 md:flex-row md:items-center">
             <div className="flex max-w-md flex-1 gap-2">
               <div className="relative flex-1">
@@ -295,30 +295,30 @@ const ProductList: React.FC = () => {
               </Link>
             </div>
           </div>
-          <div className="overflow-hidden rounded-xl bg-white shadow-sm">
+          <div className="overflow-hidden rounded-md bg-white shadow-sm">
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
+                    <th className="px-6 py-2 text-left text-sm font-semibold text-gray-900">
                       SL
                     </th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
+                    <th className="px-6 py-2 text-left text-sm font-semibold text-gray-900">
                       Product Name
                     </th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
+                    <th className="px-6 py-2 text-left text-sm font-semibold text-gray-900">
                       Product Type
                     </th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
+                    <th className="px-6 py-2 text-left text-sm font-semibold text-gray-900">
                       Unit Price
                     </th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
+                    <th className="px-6 py-2 text-left text-sm font-semibold text-gray-900">
                       Verify Status
                     </th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
+                    <th className="px-6 py-2 text-left text-sm font-semibold text-gray-900">
                       Active Status
                     </th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
+                    <th className="px-6 py-2 text-left text-sm font-semibold text-gray-900">
                       Action
                     </th>
                   </tr>
@@ -326,10 +326,10 @@ const ProductList: React.FC = () => {
                 <tbody className="divide-y divide-gray-200">
                   {filteredProducts.map((product, index) => (
                     <tr key={product.id} className="hover:bg-gray-50">
-                      <td className="px-6 py-4 text-sm text-gray-900">
+                      <td className="px-6 py-2 text-sm text-gray-900">
                         {index + 1}
                       </td>
-                      <td className="px-6 py-4">
+                      <td className="px-6 py-2">
                         <div className="flex items-center gap-3">
                           <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-blue-100 to-blue-200">
                             <img
@@ -342,20 +342,20 @@ const ProductList: React.FC = () => {
                           </span>
                         </div>
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-900">
+                      <td className="px-6 py-2 text-sm text-gray-900">
                         {product.type}
                       </td>
-                      <td className="px-6 py-4 text-sm font-medium text-gray-900">
+                      <td className="px-6 py-2 text-sm font-medium text-gray-900">
                         ${product.price.toFixed(2)}
                       </td>
-                      <td className="px-6 py-4">
+                      <td className="px-6 py-2">
                         <span
                           className={`inline-flex rounded-full border px-2 py-1 text-xs font-medium ${getStatusColor(product.verifyStatus)}`}
                         >
                           {product.verifyStatus}
                         </span>
                       </td>
-                      <td className="px-6 py-4">
+                      <td className="px-6 py-2">
                         <div className="flex items-center">
                           {/* <button
                                                         className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${product.activeStatus ? 'bgBlue' : 'bg-gray-200'
@@ -369,7 +369,7 @@ const ProductList: React.FC = () => {
                           <Switch />
                         </div>
                       </td>
-                      <td className="px-6 py-4">
+                      <td className="px-6 py-2">
                         <div className="flex items-center gap-2">
                           <button className="rounded-lg p-2 text-cyan-600 transition-colors hover:bg-cyan-50">
                             <Eye className="h-4 w-4" />

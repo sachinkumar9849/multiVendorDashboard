@@ -27,7 +27,7 @@ const BrandAdd: React.FC = () => {
             <h1 className="text-2xl font-bold text-gray-900">Brand Setup</h1>
           </div>
 
-          <div className="mb-6 rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+          <div className="mb-6 rounded-md border border-gray-200 bg-white p-6 shadow-sm">
             <div className="grid gap-5 md:grid-cols-2">
               <div className="col-span-1">
                 <div className="grid grid-cols-1 gap-4 md:mb-6">

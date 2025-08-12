@@ -83,7 +83,7 @@ const Attribute: React.FC = () => {
             </h1>
           </div>
 
-          <div className="mb-6 rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+          <div className="mb-6 rounded-md border border-gray-200 bg-white p-6 shadow-sm">
             <div className="grid grid-cols-1 gap-5">
               <div className="col-span-1">
                 <div className="mb-6 grid grid-cols-1 gap-4">
@@ -118,7 +118,7 @@ const Attribute: React.FC = () => {
           </div>
         </div>
 
-        <div className="rounded-xl border border-gray-200 bg-white shadow-sm">
+        <div className="rounded-md border border-gray-200 bg-white shadow-sm">
           <div className="flex flex-col items-start justify-between gap-4 p-6 md:flex-row md:items-center">
             <div className="flex gap-3">
               <p className="text-xl font-semibold text-gray-900">
@@ -142,18 +142,18 @@ const Attribute: React.FC = () => {
               </button>
             </div>
           </div>
-          <div className="overflow-hidden rounded-xl bg-white shadow-sm">
+          <div className="overflow-hidden rounded-md bg-white shadow-sm">
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
+                    <th className="px-6 py-2 text-left text-sm font-semibold text-gray-900">
                       SL
                     </th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
+                    <th className="px-6 py-2 text-left text-sm font-semibold text-gray-900">
                       Attribute Name
                     </th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
+                    <th className="px-6 py-2 text-left text-sm font-semibold text-gray-900">
                       Action
                     </th>
                   </tr>
@@ -161,15 +161,15 @@ const Attribute: React.FC = () => {
                 <tbody className="divide-y divide-gray-200">
                   {filteredProducts.map((product, index) => (
                     <tr key={product.id} className="hover:bg-gray-50">
-                      <td className="px-6 py-4 text-sm text-gray-900">
+                      <td className="px-6 py-2 text-sm text-gray-900">
                         {index + 1}
                       </td>
 
-                      <td className="px-6 py-4 text-sm text-gray-900">
+                      <td className="px-6 py-2 text-sm text-gray-900">
                         {product.name}
                       </td>
 
-                      <td className="px-6 py-4">
+                      <td className="px-6 py-2">
                         <div className="flex items-center gap-2">
                           <button className="rounded-lg p-2 text-gray-600 transition-colors hover:bg-gray-50">
                             <Edit className="h-4 w-4" />

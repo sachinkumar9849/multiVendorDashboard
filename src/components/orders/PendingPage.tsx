@@ -123,7 +123,7 @@ const OrderPage = () => {
         </div>
 
         {/* Filters */}
-        <div className="mb-6 rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+        <div className="mb-6 rounded-md border border-gray-200 bg-white p-6 shadow-sm">
           <div className="mb-4 flex items-center gap-2">
             <Filter className="h-5 w-5 text-gray-500" />
             <h2 className="text-lg font-semibold text-gray-900">
@@ -204,7 +204,7 @@ const OrderPage = () => {
         </div>
 
         {/* Order List */}
-        <div className="rounded-xl border border-gray-200 bg-white shadow-sm">
+        <div className="rounded-md border border-gray-200 bg-white shadow-sm">
           {/* Table Header */}
           <div className="border-b border-gray-200 p-6">
             <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
@@ -234,25 +234,25 @@ const OrderPage = () => {
             <table className="w-full">
               <thead>
                 <tr className="border-b border-gray-200 bg-gray-50">
-                  <th className="px-6 py-4 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
+                  <th className="px-6 py-2 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
                     SL
                   </th>
-                  <th className="px-6 py-4 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
+                  <th className="px-6 py-2 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
                     Order ID
                   </th>
-                  <th className="px-6 py-4 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
+                  <th className="px-6 py-2 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
                     Order Date
                   </th>
-                  <th className="px-6 py-4 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
+                  <th className="px-6 py-2 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
                     Customer Info
                   </th>
-                  <th className="px-6 py-4 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
+                  <th className="px-6 py-2 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
                     Total Amount
                   </th>
-                  <th className="px-6 py-4 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
+                  <th className="px-6 py-2 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
                     Order Status
                   </th>
-                  <th className="px-6 py-4 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
+                  <th className="px-6 py-2 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
                     Action
                   </th>
                 </tr>
@@ -263,18 +263,18 @@ const OrderPage = () => {
                     key={order.id}
                     className="transition-colors hover:bg-gray-50"
                   >
-                    <td className="px-6 py-4 text-sm whitespace-nowrap text-gray-900">
+                    <td className="px-6 py-2 text-sm whitespace-nowrap text-gray-900">
                       {String(index + 1).padStart(2, "0")}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-6 py-2 whitespace-nowrap">
                       <div className="text-sm font-medium text-blue-600">
                         {order.id}
                       </div>
                     </td>
-                    <td className="px-6 py-4 text-sm whitespace-nowrap text-gray-900">
+                    <td className="px-6 py-2 text-sm whitespace-nowrap text-gray-900">
                       {order.date}
                     </td>
-                    <td className="px-6 py-4">
+                    <td className="px-6 py-2">
                       <div className="flex flex-col">
                         <div className="text-sm font-medium text-gray-900">
                           {order.customer.name}
@@ -287,12 +287,12 @@ const OrderPage = () => {
                         </div>
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-6 py-2 whitespace-nowrap">
                       <div className="text-sm font-semibold text-gray-900">
                         {order.total}
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-6 py-2 whitespace-nowrap">
                       <span
                         className={`inline-flex rounded-full border px-3 py-1 text-xs font-medium ${getStatusColor(order.status)}`}
                       >
@@ -300,7 +300,7 @@ const OrderPage = () => {
                           order.status.slice(1)}
                       </span>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-6 py-2 whitespace-nowrap">
                       <div className="flex items-center gap-2">
                         <button className="rounded-md p-2 text-blue-600 transition-colors hover:bg-blue-50">
                           <Eye className="h-4 w-4" />
@@ -320,7 +320,7 @@ const OrderPage = () => {
           </div>
 
           {/* Pagination */}
-          <div className="border-t border-gray-200 px-6 py-4">
+          <div className="border-t border-gray-200 px-6 py-2">
             <div className="flex items-center justify-between">
               <div className="text-sm text-gray-500">
                 Showing 1 to 5 of 24 results

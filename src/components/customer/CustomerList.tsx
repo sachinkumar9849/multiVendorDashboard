@@ -87,7 +87,7 @@ const CustomerList = () => {
         </div>
 
         {/* Filters */}
-        <div className="mb-6 rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+        <div className="mb-6 rounded-md border border-gray-200 bg-white p-6 shadow-sm">
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-5">
             {/* Order Type */}
             <div>
@@ -160,7 +160,7 @@ const CustomerList = () => {
         </div>
 
         {/* Order List */}
-        <div className="rounded-xl border border-gray-200 bg-white shadow-sm">
+        <div className="rounded-md border border-gray-200 bg-white shadow-sm">
           {/* Table Header */}
           <div className="border-b border-gray-200 p-6">
             <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
@@ -190,23 +190,23 @@ const CustomerList = () => {
             <table className="w-full">
               <thead>
                 <tr className="border-b border-gray-200 bg-gray-50">
-                  <th className="px-6 py-4 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
+                  <th className="px-6 py-2 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
                     SL
                   </th>
-                  <th className="px-6 py-4 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
+                  <th className="px-6 py-2 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
                     Customer name
                   </th>
-                  <th className="px-6 py-4 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
+                  <th className="px-6 py-2 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
                     Contact info
                   </th>
-                  <th className="px-6 py-4 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
+                  <th className="px-6 py-2 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
                     Total Order
                   </th>
-                  <th className="px-6 py-4 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
+                  <th className="px-6 py-2 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
                     Price
                   </th>
 
-                  <th className="px-6 py-4 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
+                  <th className="px-6 py-2 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
                     Action
                   </th>
                 </tr>
@@ -217,16 +217,16 @@ const CustomerList = () => {
                     key={order.id}
                     className="transition-colors hover:bg-gray-50"
                   >
-                    <td className="px-6 py-4 text-sm whitespace-nowrap text-gray-900">
+                    <td className="px-6 py-2 text-sm whitespace-nowrap text-gray-900">
                       {String(index + 1).padStart(2, "0")}
                     </td>
-                    {/* <td className="px-6 py-4 whitespace-nowrap">
+                    {/* <td className="px-6 py-2 whitespace-nowrap">
                         
                       <div className="text-sm font-medium text-blue-600">
                         Rahul Sharma
                       </div>
                     </td> */}
-                    <td className="px-6 py-4">
+                    <td className="px-6 py-2">
                       <div className="flex items-center gap-3">
                         <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-blue-100 to-blue-200">
                           <img
@@ -239,17 +239,17 @@ const CustomerList = () => {
                         </span>
                       </div>
                     </td>
-                    <td className="px-6 py-4 text-sm whitespace-nowrap text-gray-900">
+                    <td className="px-6 py-2 text-sm whitespace-nowrap text-gray-900">
                       98989899
                     </td>
-                    <td className="px-6 py-4">44</td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-6 py-2">44</td>
+                    <td className="px-6 py-2 whitespace-nowrap">
                       <div className="text-sm font-semibold text-gray-900">
                         {order.total}
                       </div>
                     </td>
 
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-6 py-2 whitespace-nowrap">
                       <div className="flex items-center gap-2">
                         <button className="rounded-md p-2 text-blue-600 transition-colors hover:bg-blue-50">
                           <Eye className="h-4 w-4" />
@@ -267,7 +267,7 @@ const CustomerList = () => {
           </div>
 
           {/* Pagination */}
-          <div className="border-t border-gray-200 px-6 py-4">
+          <div className="border-t border-gray-200 px-6 py-2">
             <div className="flex items-center justify-between">
               <div className="text-sm text-gray-500">
                 Showing 1 to 5 of 24 results
