@@ -147,13 +147,25 @@ const Attribute: React.FC = () => {
               <table className="w-full">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th className="px-6 py-2 text-left text-sm font-semibold text-gray-900">
+                    <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
                       SL
                     </th>
-                    <th className="px-6 py-2 text-left text-sm font-semibold text-gray-900">
+                    <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 capitalize uppercase">
                       Attribute Name
                     </th>
-                    <th className="px-6 py-2 text-left text-sm font-semibold text-gray-900">
+                    <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
+                      Slug
+                    </th>
+                    <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
+                      Short order
+                    </th>
+                    <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
+                      Created at
+                    </th>
+                    <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
+                      Status
+                    </th>
+                    <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
                       Action
                     </th>
                   </tr>
@@ -167,6 +179,18 @@ const Attribute: React.FC = () => {
 
                       <td className="px-6 py-2 text-sm text-gray-900">
                         {product.name}
+                      </td>
+                      <td className="px-6 py-2 text-sm text-gray-900">
+                        {product.name}
+                      </td>
+                      <td className="px-6 py-2 text-sm text-gray-900">1</td>
+                      <td className="px-6 py-2 text-sm text-gray-900">
+                        10-05-2025
+                      </td>
+                      <td className="px-6 py-2 text-sm">
+                        <div className="inline rounded-md bg-green-600 p-1 px-3 text-center text-[12px] text-white">
+                          Published
+                        </div>
                       </td>
 
                       <td className="px-6 py-2">

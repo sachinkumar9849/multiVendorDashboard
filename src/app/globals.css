@@ -878,3 +878,7 @@ span.flatpickr-weekday,
 .bgBlue {
   background-color: #1455ac;
 }
+p.text-xl.font-semibold.text-gray-900 {
+  text-transform: uppercase;
+  font-size: 17px;
+}
