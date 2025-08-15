@@ -103,6 +103,14 @@ const othersItems: NavItem[] = [
       { name: "Create", path: "/attribute/create", pro: false },
     ],
   },
+  {
+    icon: <GridIcon />,
+    name: "Product Options",
+    subItems: [
+      { name: "List ", path: "/product-options/list", pro: false },
+      { name: "Create", path: "/product-options/create", pro: false },
+    ],
+  },
 
   // {
   //   icon: <GridIcon />,

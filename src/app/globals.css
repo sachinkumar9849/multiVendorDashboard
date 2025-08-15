@@ -879,6 +879,12 @@ span.flatpickr-weekday,
   background-color: #1455ac;
 }
 p.text-xl.font-semibold.text-gray-900 {
-  text-transform: uppercase;
+  text-transform: capitalize;
   font-size: 17px;
+}
+.bgBlue {
+  background-color: #216bc4;
+}
+.TextBlue {
+  color: #216bc4;
 }

@@ -36,7 +36,7 @@ export default function CategoriesList() {
   return (
     <div className="">
       {/* Search Input */}
-      <div className="relative mb-6">
+      <div className="relative mb-3">
         <input
           type="text"
           placeholder="Search..."
@@ -51,16 +51,17 @@ export default function CategoriesList() {
       <div className="space-y-4">
         {filteredCategories.map((category, index) => (
           <label
+            style={{ fontSize: "14px" }}
             key={index}
-            className="flex cursor-pointer items-center rounded-md p-2 transition-colors hover:bg-gray-50"
+            className="text[12px] flex cursor-pointer items-center rounded-md px-2 transition-colors hover:bg-gray-50"
           >
             <input
               type="checkbox"
               checked={selectedCategories.includes(category)}
               onChange={() => handleCategoryToggle(category)}
-              className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-2 focus:ring-blue-500"
+              className="h-3 w-3 rounded border-gray-300 text-blue-600 focus:ring-2 focus:ring-blue-500"
             />
-            <span className="ml-3 font-medium text-gray-700">{category}</span>
+            <span className="text[12px] ml-3 text-gray-700">{category}</span>
           </label>
         ))}
       </div>

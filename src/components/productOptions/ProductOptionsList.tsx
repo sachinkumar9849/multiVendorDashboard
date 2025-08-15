@@ -27,7 +27,7 @@ interface Product {
   createdAt: string;
 }
 
-const BrandList: React.FC = () => {
+const ProductOptionsList: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedBrand, setSelectedBrand] = useState("All brand");
   const [selectedCategory, setSelectedCategory] = useState("Select category");
@@ -187,13 +187,15 @@ const BrandList: React.FC = () => {
         <div className="rounded-md border border-gray-200 bg-white shadow-sm">
           <div className="flex flex-col items-start justify-between gap-4 p-6 md:flex-row md:items-center">
             <div className="flex gap-3">
-              <p className="text-xl font-semibold text-gray-900">Brands</p>
+              <p className="text-xl font-semibold text-gray-900">
+                Product options
+              </p>
               <p className="rounded-md bg-gray-200 px-2 py-1 text-[12px]">
                 {filteredProducts.length}
               </p>
             </div>
             <div className="flex max-w-lg flex-1 gap-2">
-              <Link href="/brand/add-new">
+              <Link href="/product-options/create">
                 <Button className="bgBlue">
                   {" "}
                   <Plus /> Create
@@ -389,19 +391,13 @@ const BrandList: React.FC = () => {
                       SL
                     </th>
                     <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
-                      Logo
-                    </th>
-                    <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
                       Name
                     </th>
                     <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
-                      Is Featured
+                      Is Required
                     </th>
                     <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
                       Created at
-                    </th>
-                    <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
-                      Status
                     </th>
                     <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
                       Action
@@ -415,14 +411,8 @@ const BrandList: React.FC = () => {
                         {index + 1}
                       </td>
                       <td className="px-6 py-2 text-sm text-gray-900">
-                        <img
-                          className="h-[50px] w-[50px] rounded-sm"
-                          src="https://mapandfire.com/wp-content/uploads/2021/09/apple-brand-logo.jpg"
-                          alt=""
-                        />
+                        {product.name}
                       </td>
-                      <td className="px-6 py-2 text-sm text-gray-900">Apple</td>
-
                       <td className="px-6 py-2 text-sm text-gray-900">
                         <span
                           className={`rounded-sm px-2 py-1 text-[10px] text-white ${
@@ -434,11 +424,6 @@ const BrandList: React.FC = () => {
                       </td>
                       <td className="px-6 py-2 text-sm text-gray-900">
                         {new Date(product.createdAt).toLocaleDateString()}
-                      </td>
-                      <td className="px-6 py-2 text-sm text-gray-900">
-                        <span className="rounded-sm bg-green-600 px-2 py-1 text-[12px] text-white capitalize">
-                          published
-                        </span>
                       </td>
                       <td className="px-6 py-2">
                         <div className="flex items-center gap-2">
@@ -478,4 +463,4 @@ const BrandList: React.FC = () => {
   );
 };
 
-export default BrandList;
+export default ProductOptionsList;
