@@ -1,7 +1,17 @@
 "use client";
 import React, { useState } from "react";
-
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Switch } from "@/components/ui/switch";
 import ImageComponent from "../common/ImageComponent";
+import TextArea from "../form/input/TextArea";
+import CategoriesList from "../attribute/CategoriesSelect";
+import { Save } from "lucide-react";
 
 const BrandAdd: React.FC = () => {
   const [, setSearchTerm] = useState("");
@@ -19,63 +29,121 @@ const BrandAdd: React.FC = () => {
   return (
     <div className="">
       <div className="mx-auto max-w-7xl">
-        <div className="mb-8">
-          <div className="mb-6 flex items-center gap-3">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-orange-400 to-red-500">
-              <div className="h-4 w-4 rounded-sm bg-white"></div>
-            </div>
-            <h1 className="text-2xl font-bold text-gray-900">Brand Setup</h1>
-          </div>
-
-          <div className="mb-6 rounded-md border border-gray-200 bg-white p-6 shadow-sm">
-            <div className="grid gap-5 md:grid-cols-2">
-              <div className="col-span-1">
-                <div className="grid grid-cols-1 gap-4 md:mb-6">
-                  <div>
-                    <label className="mb-2 block text-sm font-medium text-gray-700">
-                      Brand Name<span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      name="lastName"
-                      className="w-full rounded-lg border border-gray-300 px-4 py-2 transition-all duration-200 focus:border-transparent focus:ring-2 focus:ring-blue-500"
-                      placeholder="New Category"
-                      required
-                    />
-                  </div>
+        <div className="grid grid-cols-12 gap-5">
+          <div className="col-span-9">
+            <div className="mb-6 rounded-md border border-gray-200 bg-white p-6 shadow-sm">
+              <div className="mb-3">
+                <p className="text-xl font-semibold text-gray-900">New brand</p>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="col-span-1">
                   <label className="mb-2 block text-sm font-medium text-gray-700">
-                    Image alt text<span className="text-red-500">*</span>
+                    Brand Name<span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
                     name="lastName"
-                    className="w-full rounded-lg border border-gray-300 px-4 py-2 transition-all duration-200 focus:border-transparent focus:ring-2 focus:ring-blue-500"
-                    placeholder="New Category"
+                    className="w-full rounded-md border border-gray-300 px-4 py-2 transition-all duration-200 focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                    placeholder="Name"
                     required
                   />
                 </div>
-              </div>
-              <div className="col-span-1">
-                <div>
+                <div className="col-span-1">
                   <label className="mb-2 block text-sm font-medium text-gray-700">
-                    Brand Image
+                    Permalink <span className="text-red-500">*</span>
                   </label>
-                  <ImageComponent />
+                  <input
+                    type="text"
+                    name="lastName"
+                    className="w-full rounded-md border border-gray-300 px-4 py-2 transition-all duration-200 focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                    placeholder="https://nest.botble.com/brands
+"
+                    required
+                  />
+                </div>
+
+                <div className="col-span-1">
+                  <label className="mb-2 block text-sm font-medium text-gray-700">
+                    Website <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="lastName"
+                    className="w-full rounded-md border border-gray-300 px-4 py-2 transition-all duration-200 focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                    placeholder="Ex: https://example.com
+"
+                    required
+                  />
+                </div>
+                <div className="col-span-1">
+                  <label className="mb-2 block text-sm font-medium text-gray-700">
+                    Sort order
+                  </label>
+                  <input
+                    type="text"
+                    name="lastName"
+                    className="w-full rounded-md border border-gray-300 px-4 py-2 transition-all duration-200 focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                    placeholder="0
+"
+                    required
+                  />
+                </div>
+                <div className="col-span-2">
+                  <label className="mb-2 block text-sm font-medium text-gray-700">
+                    Description
+                  </label>
+                  <TextArea placeholder="Short description" />
                 </div>
               </div>
             </div>
           </div>
-
-          <div className="mt-3 flex justify-end gap-3">
-            <button
-              onClick={resetFilters}
-              className="rounded-lg bg-gray-100 px-4 py-2 font-medium text-gray-700 transition-colors hover:bg-gray-200"
-            >
-              Reset
-            </button>
-            <button className="bgBlue rounded-lg px-6 py-2 font-medium text-white transition-colors">
-              Submit
-            </button>
+          <div className="col-span-3">
+            <div className="mb-6 rounded-md border border-gray-200 bg-white shadow-sm">
+              <p className="p-3"> Publish</p>
+              <hr />
+              <div className="p-3">
+                <button className="bgBlue flex items-center rounded-md px-4 py-2 text-[14px] font-normal text-white transition-colors">
+                  <Save className="mr-1 w-[16px]" /> Save
+                </button>
+              </div>
+            </div>
+            <div className="mb-6 rounded-md border border-gray-200 bg-white shadow-sm">
+              <p className="p-3"> Status</p>
+              <hr />
+              <div className="p-3">
+                <Select>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Published" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="published">Published</SelectItem>
+                    <SelectItem value="draft">Draft</SelectItem>
+                    <SelectItem value="pending">Pending</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+            <div className="mb-6 rounded-md border border-gray-200 bg-white shadow-sm">
+              <p className="p-3"> Logo</p>
+              <hr />
+              <div className="p-3">
+                <ImageComponent />
+              </div>
+            </div>
+            <div className="mb-6 rounded-md border border-gray-200 bg-white shadow-sm">
+              <p className="p-3"> Is featured?</p>
+              <hr />
+              <div className="p-3">
+                <Switch />
+              </div>
+            </div>
+            <div className="mb-6 rounded-md border border-gray-200 bg-white shadow-sm">
+              <p className="p-3"> Categories</p>
+              <hr />
+              <div className="p-3">
+                <CategoriesList />
+              </div>
+            </div>
           </div>
         </div>
       </div>
