@@ -11,7 +11,16 @@ import {
   PlugInIcon,
 } from "../icons/index";
 
-import { ShoppingBasket, ShoppingCart, Tag, User, UserCog } from "lucide-react";
+import {
+  ShoppingBasket,
+  ShoppingCart,
+  Tag,
+  User,
+  UserCog,
+  Store,
+  TrendingUp,
+  Settings,
+} from "lucide-react";
 
 type NavItem = {
   name: string;
@@ -20,7 +29,7 @@ type NavItem = {
   subItems?: { name: string; path: string; pro?: boolean; new?: boolean }[];
 };
 
-type MenuType = "main" | "products" | "users";
+type MenuType = "main" | "products" | "marketplace " | "users";
 
 const navItems: NavItem[] = [
   {
@@ -123,12 +132,26 @@ const othersItems: NavItem[] = [
   //   name: "Product Reviews",
   //   path: "/",
   // },
+];
+
+// New Marketplace section
+const marketplaceItems: NavItem[] = [
   {
-    icon: <PlugInIcon />,
-    name: "Authentication",
+    icon: <Store />,
+    name: "Marketplace",
     subItems: [
-      { name: "Sign In", path: "/signin", pro: false },
-      { name: "Sign Up", path: "/signup", pro: false },
+      { name: "Stores", path: "/marketplace/stores-list", pro: false },
+      // { name: "Stores Create", path: "/marketplace/store-create", pro: false },
+      // { name: "Vendor Performance", path: "/marketplace/analytics/vendor-performance", pro: false },
+    ],
+  },
+
+  {
+    icon: <UserCog />,
+    name: "Vendors",
+    subItems: [
+      { name: "List", path: "/vendor/list", pro: false },
+      { name: "Create", path: "/vendor/add", pro: false },
     ],
   },
 ];
@@ -138,14 +161,6 @@ const userManagement: NavItem[] = [
     icon: <User />,
     name: "Customers",
     subItems: [{ name: "Customer List", path: "/customer/list", pro: false }],
-  },
-  {
-    icon: <UserCog />,
-    name: "Vendors",
-    subItems: [
-      { name: "Vendor List", path: "/vendor/list", pro: false },
-      { name: "Add New Vendor", path: "/vendor/add", pro: false },
-    ],
   },
 ];
 
@@ -327,6 +342,17 @@ const AppSidebar: React.FC = () => {
         });
       }
     });
+    // Check marketplace items
+    marketplaceItems.forEach((nav, index) => {
+      if (nav.subItems) {
+        nav.subItems.forEach((subItem) => {
+          if (isActive(subItem.path)) {
+            setOpenSubmenu({ type: "marketplace", index });
+            submenuMatched = true;
+          }
+        });
+      }
+    });
 
     // Check user management items
     userManagement.forEach((nav, index) => {
@@ -440,6 +466,19 @@ const AppSidebar: React.FC = () => {
                 )}
               </h2>
               {renderMenuItems(othersItems, "products")}
+            </div>
+            {/* New Marketplace section */}
+            <div>
+              <h2
+                className={`mb-4 flex text-xs leading-[20px] text-gray-400 uppercase ${!isExpanded && !isHovered ? "lg:justify-center" : "justify-start"}`}
+              >
+                {isExpanded || isHovered || isMobileOpen ? (
+                  "Marketplace"
+                ) : (
+                  <HorizontaLDots />
+                )}
+              </h2>
+              {renderMenuItems(marketplaceItems, "marketplace")}
             </div>
             <div>
               <h2
