@@ -40,7 +40,7 @@ const StoreCreate: React.FC = () => {
                       </label>
                       <input
                         type="text"
-                        className="w-full rounded-md border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                        className="w-full rounded-sm border border-gray-300 px-4 py-2 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
                         placeholder="Enter Name"
                       />
                     </div>
@@ -52,7 +52,7 @@ const StoreCreate: React.FC = () => {
                       </label>
                       <input
                         type="text"
-                        className="w-full rounded-md border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                        className="w-full rounded-sm border border-gray-300 px-4 py-2 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
                         placeholder="Enter Name"
                       />
                     </div>
@@ -64,7 +64,7 @@ const StoreCreate: React.FC = () => {
                       </label>
                       <input
                         type="text"
-                        className="w-full rounded-md border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                        className="w-full rounded-sm border border-gray-300 px-4 py-2 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
                         placeholder="Enter Phone"
                       />
                     </div>
@@ -76,7 +76,7 @@ const StoreCreate: React.FC = () => {
                       </label>
                       <input
                         type="text"
-                        className="w-full rounded-md border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                        className="w-full rounded-sm border border-gray-300 px-4 py-2 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
                         placeholder="State"
                       />
                     </div>
@@ -88,7 +88,7 @@ const StoreCreate: React.FC = () => {
                       </label>
                       <input
                         type="text"
-                        className="w-full rounded-md border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                        className="w-full rounded-sm border border-gray-300 px-4 py-2 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
                         placeholder="City"
                       />
                     </div>
@@ -100,7 +100,7 @@ const StoreCreate: React.FC = () => {
                       </label>
                       <input
                         type="text"
-                        className="w-full rounded-md border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                        className="w-full rounded-sm border border-gray-300 px-4 py-2 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
                         placeholder="Address"
                       />
                     </div>
@@ -112,7 +112,7 @@ const StoreCreate: React.FC = () => {
                       </label>
                       <input
                         type="text"
-                        className="w-full rounded-md border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                        className="w-full rounded-sm border border-gray-300 px-4 py-2 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
                         placeholder="Company"
                       />
                     </div>
@@ -124,7 +124,7 @@ const StoreCreate: React.FC = () => {
                       </label>
                       <input
                         type="text"
-                        className="w-full rounded-md border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                        className="w-full rounded-sm border border-gray-300 px-4 py-2 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
                         placeholder="Tax ID
 "
                       />
@@ -149,7 +149,7 @@ const StoreCreate: React.FC = () => {
                       </label>
                       <input
                         type="text"
-                        className="w-full rounded-md border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                        className="w-full rounded-sm border border-gray-300 px-4 py-2 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
                         placeholder="Facebook"
                       />
                     </div>
@@ -161,7 +161,7 @@ const StoreCreate: React.FC = () => {
                       </label>
                       <input
                         type="text"
-                        className="w-full rounded-md border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                        className="w-full rounded-sm border border-gray-300 px-4 py-2 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
                         placeholder="Instagram"
                       />
                     </div>
@@ -174,7 +174,7 @@ const StoreCreate: React.FC = () => {
                       </label>
                       <input
                         type="text"
-                        className="w-full rounded-md border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                        className="w-full rounded-sm border border-gray-300 px-4 py-2 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
                         placeholder="Messenger"
                       />
                     </div>
@@ -186,7 +186,7 @@ const StoreCreate: React.FC = () => {
                       </label>
                       <input
                         type="text"
-                        className="w-full rounded-md border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                        className="w-full rounded-sm border border-gray-300 px-4 py-2 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
                         placeholder="Whatsapp"
                       />
                     </div>
@@ -198,7 +198,7 @@ const StoreCreate: React.FC = () => {
                       </label>
                       {/* <input
                                                 type="text"
-                                                className="w-full rounded-md border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                                                className="w-full rounded-sm border border-gray-300 px-4 py-2 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
                                                 placeholder="Short description"
                                             /> */}
                       <TextArea placeholder="Short description" />

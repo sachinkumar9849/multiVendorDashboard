@@ -68,7 +68,7 @@ export default function AddNewAttribute() {
           </label>
           <input
             type="text"
-            className="w-full rounded-md border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
+            className="w-full rounded-sm border border-gray-300 px-4 py-2 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
             placeholder="Enter title"
           />
         </div>

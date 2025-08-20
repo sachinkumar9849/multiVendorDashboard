@@ -888,3 +888,6 @@ p.text-xl.font-semibold.text-gray-900 {
 .TextBlue {
   color: #216bc4;
 }
+body {
+  background: #f9fafb;
+}

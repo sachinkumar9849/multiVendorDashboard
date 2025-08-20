@@ -306,18 +306,23 @@ const ProductList: React.FC = () => {
                     <th className="px-6 py-2 text-left text-sm font-semibold text-gray-900">
                       Product Name
                     </th>
+
                     <th className="px-6 py-2 text-left text-sm font-semibold text-gray-900">
-                      Product Type
+                      Stock status
                     </th>
                     <th className="px-6 py-2 text-left text-sm font-semibold text-gray-900">
-                      Unit Price
+                      Quantity
                     </th>
                     <th className="px-6 py-2 text-left text-sm font-semibold text-gray-900">
-                      Verify Status
+                      Created At
                     </th>
                     <th className="px-6 py-2 text-left text-sm font-semibold text-gray-900">
-                      Active Status
+                      Price
                     </th>
+                    <th className="px-6 py-2 text-left text-sm font-semibold text-gray-900">
+                      Status
+                    </th>
+
                     <th className="px-6 py-2 text-left text-sm font-semibold text-gray-900">
                       Action
                     </th>
@@ -338,15 +343,22 @@ const ProductList: React.FC = () => {
                             />
                           </div>
                           <span className="text-sm font-medium text-gray-900">
-                            {product.name}
+                            {product.name} ({product.type})
                           </span>
                         </div>
                       </td>
-                      <td className="px-6 py-2 text-sm text-gray-900">
-                        {product.type}
+
+                      <td className="px-6 py-2 text-sm font-medium text-[#31b345]">
+                        In Stock
                       </td>
                       <td className="px-6 py-2 text-sm font-medium text-gray-900">
-                        ${product.price.toFixed(2)}
+                        44
+                      </td>
+                      <td className="px-6 py-2 text-sm font-medium text-gray-900">
+                        2025
+                      </td>
+                      <td className="px-6 py-2 text-sm font-medium text-gray-900">
+                        Rs. 323
                       </td>
                       <td className="px-6 py-2">
                         <span
@@ -355,20 +367,7 @@ const ProductList: React.FC = () => {
                           {product.verifyStatus}
                         </span>
                       </td>
-                      <td className="px-6 py-2">
-                        <div className="flex items-center">
-                          {/* <button
-                                                        className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${product.activeStatus ? 'bgBlue' : 'bg-gray-200'
-                                                            }`}
-                                                    >
-                                                        <span
-                                                            className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${product.activeStatus ? 'translate-x-6' : 'translate-x-1'
-                                                                }`}
-                                                        />
-                                                    </button> */}
-                          <Switch />
-                        </div>
-                      </td>
+
                       <td className="px-6 py-2">
                         <div className="flex items-center gap-2">
                           <button className="rounded-lg p-2 text-cyan-600 transition-colors hover:bg-cyan-50">
