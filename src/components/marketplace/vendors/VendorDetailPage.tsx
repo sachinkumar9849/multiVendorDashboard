@@ -4,11 +4,6 @@ import {
   User,
   Mail,
   Phone,
-  Calendar,
-  Clock,
-  ShoppingCart,
-  Package,
-  DollarSign,
   MapPin,
   Star,
   Edit,
@@ -53,7 +48,7 @@ interface VendorData {
 }
 
 const VendorDetailPage: React.FC = () => {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [, setSelectedImage] = useState<string | null>(null);
   const [isEditingImage, setIsEditingImage] = useState(false);
 
   // Mock data based on the image

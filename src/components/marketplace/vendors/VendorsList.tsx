@@ -33,12 +33,8 @@ const VendorsList: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedBrand, setSelectedBrand] = useState("All brand");
   const [selectedCategory, setSelectedCategory] = useState("Select category");
-  const [selectedSubCategory, setSelectedSubCategory] = useState(
-    "Select Sub Category",
-  );
-  const [selectedSubSubCategory, setSelectedSubSubCategory] = useState(
-    "Select Sub Sub Category",
-  );
+  const [, setSelectedSubCategory] = useState("Select Sub Category");
+  const [, setSelectedSubSubCategory] = useState("Select Sub Sub Category");
   const [selectedType, setSelectedType] = useState("All types");
   const [selectedVerifyStatus, setSelectedVerifyStatus] =
     useState("All status");

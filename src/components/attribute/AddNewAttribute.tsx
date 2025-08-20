@@ -1,8 +1,16 @@
 import { useState } from "react";
 import { Trash2, X, ChevronDown, Plus, Edit } from "lucide-react";
 
+interface Attribute {
+  id: number;
+  isDefault: boolean;
+  title: string;
+  color: string;
+  image: string | null;
+}
+
 export default function AddNewAttribute() {
-  const [attributes, setAttributes] = useState([
+  const [attributes, setAttributes] = useState<Attribute[]>([
     {
       id: 1,
       isDefault: true,
@@ -33,11 +41,15 @@ export default function AddNewAttribute() {
     ]);
   };
 
-  const removeAttribute = (id) => {
+  const removeAttribute = (id: number) => {
     setAttributes(attributes.filter((attr) => attr.id !== id));
   };
 
-  const updateAttribute = (id, field, value) => {
+  const updateAttribute = <K extends keyof Attribute>(
+    id: number,
+    field: K,
+    value: Attribute[K],
+  ) => {
     setAttributes(
       attributes.map((attr) =>
         attr.id === id ? { ...attr, [field]: value } : attr,
@@ -45,12 +57,18 @@ export default function AddNewAttribute() {
     );
   };
 
-  const handleImageUpload = (id, event) => {
-    const file = event.target.files[0];
+  const handleImageUpload = (
+    id: number,
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    const file = event.target.files?.[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        updateAttribute(id, "image", e.target.result);
+        const result = e.target?.result;
+        if (typeof result === "string") {
+          updateAttribute(id, "image", result);
+        }
       };
       reader.readAsDataURL(file);
     }
@@ -159,7 +177,7 @@ export default function AddNewAttribute() {
                   className="flex h-8 w-12 cursor-pointer items-center justify-center rounded border border-gray-300"
                   style={{ backgroundColor: attribute.color }}
                   onClick={() =>
-                    document.getElementById(`color-${attribute.id}`).click()
+                    document.getElementById(`color-${attribute.id}`)?.click()
                   }
                 >
                   <div

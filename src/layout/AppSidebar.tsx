@@ -4,12 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useSidebar } from "../context/SidebarContext";
-import {
-  ChevronDownIcon,
-  GridIcon,
-  HorizontaLDots,
-  PlugInIcon,
-} from "../icons/index";
+import { ChevronDownIcon, GridIcon, HorizontaLDots } from "../icons/index";
 
 import {
   ShoppingBasket,
@@ -18,8 +13,6 @@ import {
   User,
   UserCog,
   Store,
-  TrendingUp,
-  Settings,
 } from "lucide-react";
 
 type NavItem = {
@@ -29,7 +22,7 @@ type NavItem = {
   subItems?: { name: string; path: string; pro?: boolean; new?: boolean }[];
 };
 
-type MenuType = "main" | "products" | "marketplace " | "users";
+type MenuType = "main" | "products" | "marketplace" | "users";
 
 const navItems: NavItem[] = [
   {

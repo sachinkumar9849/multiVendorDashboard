@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import {
   Select,
   SelectContent,
@@ -14,18 +14,6 @@ import CategoriesList from "../attribute/CategoriesSelect";
 import { Save } from "lucide-react";
 
 const BrandAdd: React.FC = () => {
-  const [, setSearchTerm] = useState("");
-  const [, setSelectedBrand] = useState("All brand");
-  const [, setSelectedCategory] = useState("Select category");
-
-  const resetFilters = () => {
-    setSearchTerm("");
-    setSelectedBrand("All brand");
-    setSelectedCategory("Select category");
-    setSelectedCategory("Select Sub Category");
-    setSelectedCategory("Select Sub Sub Category");
-  };
-
   return (
     <div className="">
       <div className="mx-auto max-w-7xl">

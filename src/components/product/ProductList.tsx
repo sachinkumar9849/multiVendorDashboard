@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useMemo } from "react";
 import { Search, Plus, Download, Eye, Edit, Trash2 } from "lucide-react";
-import { Switch } from "../ui/switch";
+
 import Link from "next/link";
 
 interface Product {

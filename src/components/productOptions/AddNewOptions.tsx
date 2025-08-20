@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Trash2, X, ChevronDown, Plus, Edit, Save } from "lucide-react";
+import { Trash2, Edit, Save } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -41,27 +41,16 @@ export default function AddNewOptions() {
     ]);
   };
 
-  const removeAttribute = (id) => {
+  const removeAttribute = (id: number) => {
     setAttributes(attributes.filter((attr) => attr.id !== id));
   };
 
-  const updateAttribute = (id, field, value) => {
+  const updateAttribute = (id: number, field: string, value: string) => {
     setAttributes(
       attributes.map((attr) =>
         attr.id === id ? { ...attr, [field]: value } : attr,
       ),
     );
-  };
-
-  const handleImageUpload = (id, event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        updateAttribute(id, "image", e.target.result);
-      };
-      reader.readAsDataURL(file);
-    }
   };
 
   return (

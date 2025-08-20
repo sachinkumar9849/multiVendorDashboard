@@ -2,10 +2,10 @@ import { useState } from "react";
 import { Search } from "lucide-react";
 
 export default function CategoriesList() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
-  const categories = [
+  const categories: string[] = [
     "Milks and Dairies",
     "Clothing & beauty",
     "Pet Toy",
@@ -25,7 +25,7 @@ export default function CategoriesList() {
     category.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
-  const handleCategoryToggle = (category) => {
+  const handleCategoryToggle = (category: string) => {
     setSelectedCategories((prev) =>
       prev.includes(category)
         ? prev.filter((c) => c !== category)
@@ -69,7 +69,7 @@ export default function CategoriesList() {
       {/* No results message */}
       {filteredCategories.length === 0 && searchTerm && (
         <div className="py-8 text-center text-gray-500">
-          No categories found matching "{searchTerm}"
+          No categories found matching {searchTerm}
         </div>
       )}
 

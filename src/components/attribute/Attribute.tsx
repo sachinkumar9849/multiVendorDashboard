@@ -17,8 +17,8 @@ interface Product {
 
 const Attribute: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedBrand, setSelectedBrand] = useState("All brand");
-  const [selectedCategory, setSelectedCategory] = useState("Select category");
+  const [selectedBrand] = useState("All brand");
+  const [selectedCategory] = useState("Select category");
 
   const products: Product[] = [
     {
@@ -61,14 +61,6 @@ const Attribute: React.FC = () => {
       return matchesSearch && matchesBrand && matchesCategory;
     });
   }, [searchTerm, selectedBrand, selectedCategory, products]);
-
-  const resetFilters = () => {
-    setSearchTerm("");
-    setSelectedBrand("All brand");
-    setSelectedCategory("Select category");
-    setSelectedCategory("Select Sub Category");
-    setSelectedCategory("Select Sub Sub Category");
-  };
 
   return (
     <div className="">
