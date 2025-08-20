@@ -20,10 +20,10 @@ const DropzoneComponent: React.FC = () => {
   });
   return (
     <ComponentCard title="Dropzone">
-      <div className="dark:hover:border-brand-500 hover:border-brand-500 cursor-pointer rounded-xl border border-dashed border-gray-300 transition dark:border-gray-700">
+      <div className="dark:hover:border-brand-500 hover:border-brand-500 cursor-pointer rounded-md border border-dashed border-gray-300 transition dark:border-gray-700">
         <form
           {...getRootProps()}
-          className={`dropzone rounded-xl border-dashed border-gray-300 p-7 lg:p-10 ${
+          className={`dropzone rounded-md border-dashed border-gray-300 p-7 lg:p-10 ${
             isDragActive
               ? "border-brand-500 bg-gray-100 dark:bg-gray-800"
               : "border-gray-300 bg-gray-50 dark:border-gray-700 dark:bg-gray-900"

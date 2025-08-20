@@ -17,8 +17,8 @@ interface Product {
 
 const Attribute: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedBrand, setSelectedBrand] = useState("All brand");
-  const [selectedCategory, setSelectedCategory] = useState("Select category");
+  const [selectedBrand] = useState("All brand");
+  const [selectedCategory] = useState("Select category");
 
   const products: Product[] = [
     {
@@ -62,63 +62,10 @@ const Attribute: React.FC = () => {
     });
   }, [searchTerm, selectedBrand, selectedCategory, products]);
 
-  const resetFilters = () => {
-    setSearchTerm("");
-    setSelectedBrand("All brand");
-    setSelectedCategory("Select category");
-    setSelectedCategory("Select Sub Category");
-    setSelectedCategory("Select Sub Sub Category");
-  };
-
   return (
     <div className="">
       <div className="mx-auto max-w-7xl">
-        <div className="mb-8">
-          <div className="mb-6 flex items-center gap-3">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-orange-400 to-red-500">
-              <div className="h-4 w-4 rounded-sm bg-white"></div>
-            </div>
-            <h1 className="text-2xl font-bold text-gray-900">
-              Attribute Setup
-            </h1>
-          </div>
-
-          <div className="mb-6 rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-            <div className="grid grid-cols-1 gap-5">
-              <div className="col-span-1">
-                <div className="mb-6 grid grid-cols-1 gap-4">
-                  <div>
-                    <label className="mb-2 block text-sm font-medium text-gray-700">
-                      Attribute Name* (EN)
-                      <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      name="lastName"
-                      className="w-full rounded-lg border border-gray-300 px-4 py-2 transition-all duration-200 focus:border-transparent focus:ring-2 focus:ring-blue-500"
-                      placeholder="Enter Attribute Name"
-                      required
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-3 flex justify-end gap-3">
-              <button
-                onClick={resetFilters}
-                className="rounded-lg bg-gray-100 px-4 py-2 font-medium text-gray-700 transition-colors hover:bg-gray-200"
-              >
-                Reset
-              </button>
-              <button className="bgBlue rounded-lg px-6 py-2 font-medium text-white transition-colors">
-                Submit
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div className="rounded-xl border border-gray-200 bg-white shadow-sm">
+        <div className="rounded-md border border-gray-200 bg-white shadow-sm">
           <div className="flex flex-col items-start justify-between gap-4 p-6 md:flex-row md:items-center">
             <div className="flex gap-3">
               <p className="text-xl font-semibold text-gray-900">
@@ -142,18 +89,30 @@ const Attribute: React.FC = () => {
               </button>
             </div>
           </div>
-          <div className="overflow-hidden rounded-xl bg-white shadow-sm">
+          <div className="overflow-hidden rounded-md bg-white shadow-sm">
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
+                    <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
                       SL
                     </th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
+                    <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 capitalize uppercase">
                       Attribute Name
                     </th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
+                    <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
+                      Slug
+                    </th>
+                    <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
+                      Short order
+                    </th>
+                    <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
+                      Created at
+                    </th>
+                    <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
+                      Status
+                    </th>
+                    <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
                       Action
                     </th>
                   </tr>
@@ -161,15 +120,27 @@ const Attribute: React.FC = () => {
                 <tbody className="divide-y divide-gray-200">
                   {filteredProducts.map((product, index) => (
                     <tr key={product.id} className="hover:bg-gray-50">
-                      <td className="px-6 py-4 text-sm text-gray-900">
+                      <td className="px-6 py-2 text-sm text-gray-900">
                         {index + 1}
                       </td>
 
-                      <td className="px-6 py-4 text-sm text-gray-900">
+                      <td className="px-6 py-2 text-sm text-gray-900">
                         {product.name}
                       </td>
+                      <td className="px-6 py-2 text-sm text-gray-900">
+                        {product.name}
+                      </td>
+                      <td className="px-6 py-2 text-sm text-gray-900">1</td>
+                      <td className="px-6 py-2 text-sm text-gray-900">
+                        10-05-2025
+                      </td>
+                      <td className="px-6 py-2 text-sm">
+                        <div className="inline rounded-md bg-green-600 p-1 px-3 text-center text-[12px] text-white">
+                          Published
+                        </div>
+                      </td>
 
-                      <td className="px-6 py-4">
+                      <td className="px-6 py-2">
                         <div className="flex items-center gap-2">
                           <button className="rounded-lg p-2 text-gray-600 transition-colors hover:bg-gray-50">
                             <Edit className="h-4 w-4" />

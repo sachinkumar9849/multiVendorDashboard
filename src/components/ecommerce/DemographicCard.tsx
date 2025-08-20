@@ -218,7 +218,7 @@ const DemographicCard = () => {
 
           {/* Summary Cards */}
           <div className="mb-8 grid grid-cols-1 gap-6 md:grid-cols-4">
-            <div className="rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 p-6 text-white">
+            <div className="rounded-md bg-gradient-to-r from-blue-600 to-blue-700 p-6 text-white">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-blue-100">
@@ -232,7 +232,7 @@ const DemographicCard = () => {
               </div>
             </div>
 
-            <div className="rounded-xl bg-gradient-to-r from-green-600 to-green-700 p-6 text-white">
+            <div className="rounded-md bg-gradient-to-r from-green-600 to-green-700 p-6 text-white">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-green-100">
@@ -249,7 +249,7 @@ const DemographicCard = () => {
               </div>
             </div>
 
-            <div className="rounded-xl bg-gradient-to-r from-yellow-600 to-yellow-700 p-6 text-white">
+            <div className="rounded-md bg-gradient-to-r from-yellow-600 to-yellow-700 p-6 text-white">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-yellow-100">
@@ -267,7 +267,7 @@ const DemographicCard = () => {
               </div>
             </div>
 
-            <div className="rounded-xl bg-gradient-to-r from-red-600 to-red-700 p-6 text-white">
+            <div className="rounded-md bg-gradient-to-r from-red-600 to-red-700 p-6 text-white">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-red-100">Issues</p>

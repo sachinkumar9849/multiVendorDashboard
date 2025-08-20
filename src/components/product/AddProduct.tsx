@@ -94,60 +94,35 @@ const AddProduct = () => {
           Add New Product
         </h1>
       </div>
-      <div className="mb-6 rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-        {/* Header */}
-        {/* <div className="bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-6">
-      <h1 className="text-3xl font-bold text-white">Add New Product</h1>
-      <p className="text-blue-100 mt-2">Create and configure your product listing</p>
-    </div> */}
-
+      <div className="">
         <form className="">
-          {/* Language Tabs */}
-          {/* <div className="border-b border-gray-200">
-      <div className="flex space-x-8">
-        {languages.map((lang) => (
-          <button
-            key={lang.code}
-            type="button"
-            onClick={() => setActiveTab(lang.code)}
-            className={`pb-4 px-1 text-sm font-medium border-b-2 transition-colors ${
-              activeTab === lang.code
-                ? 'border-blue-500 text-blue-600'
-                : 'border-transparent text-gray-500 hover:text-gray-700'
-            }`}
-          >
-            {lang.name} ({lang.code})
-          </button>
-        ))}
-      </div>
-    </div> */}
-
           {/* Product Information */}
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-1">
-            <div>
-              <label className="mb-2 block text-sm font-semibold text-gray-700">
-                Product name
-              </label>
-              <input
-                type="text"
-                className="w-full rounded-lg border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
-                placeholder="Enter product name"
-              />
+          <div className="mb-6 rounded-md border border-gray-200 bg-white p-5 shadow-sm">
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-1">
+              <div>
+                <label className="mb-2 block text-sm font-semibold text-gray-700">
+                  Product name
+                </label>
+                <input
+                  type="text"
+                  className="w-full rounded-sm border border-gray-300 px-4 py-2 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                  placeholder="Enter product name"
+                />
+              </div>
+              <div className="">
+                <label className="mb-2 block text-sm font-semibold text-gray-700">
+                  Description
+                </label>
+                <textarea
+                  className="w-full rounded-sm border border-gray-300 px-4 py-2 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                  placeholder="Enter product description"
+                />
+              </div>
             </div>
           </div>
 
-          <div className="mt-3">
-            <label className="mb-2 block text-sm font-semibold text-gray-700">
-              Description
-            </label>
-            <textarea
-              className="w-full rounded-lg border border-gray-300 px-4 py-3 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter product description"
-            />
-          </div>
-
           {/* General Setup */}
-          <div className="mt-3 rounded-xl bg-gray-50 p-3 md:p-6">
+          <div className="mb-6 rounded-md border border-gray-200 bg-white p-5 shadow-sm">
             <h3 className="mb-4 text-lg font-semibold text-gray-800">
               General Setup
             </h3>
@@ -156,7 +131,7 @@ const AddProduct = () => {
                 <label className="mb-2 block text-sm font-semibold text-gray-700">
                   Category *
                 </label>
-                <select className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-blue-500">
+                <select className="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-blue-500">
                   <option>Select category</option>
                   {categories.map((cat) => (
                     <option key={cat} value={cat}>
@@ -169,7 +144,7 @@ const AddProduct = () => {
                 <label className="mb-2 block text-sm font-semibold text-gray-700">
                   Sub Category
                 </label>
-                <select className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-blue-500">
+                <select className="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-blue-500">
                   <option>Select Sub Category</option>
                 </select>
               </div>
@@ -177,7 +152,7 @@ const AddProduct = () => {
                 <label className="mb-2 block text-sm font-semibold text-gray-700">
                   Sub Sub Category
                 </label>
-                <select className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-blue-500">
+                <select className="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-blue-500">
                   <option>Select Sub Sub Category</option>
                 </select>
               </div>
@@ -188,7 +163,7 @@ const AddProduct = () => {
                 <label className="mb-2 block text-sm font-semibold text-gray-700">
                   Brand
                 </label>
-                <select className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-blue-500">
+                <select className="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-blue-500">
                   <option>Select Brand</option>
                   {brands.map((brand) => (
                     <option key={brand} value={brand}>
@@ -201,7 +176,7 @@ const AddProduct = () => {
                 <label className="mb-2 block text-sm font-semibold text-gray-700">
                   Unit *
                 </label>
-                <select className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-blue-500">
+                <select className="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-blue-500">
                   {units.map((unit) => (
                     <option key={unit} value={unit}>
                       {unit}
@@ -237,7 +212,7 @@ const AddProduct = () => {
           </div>
 
           {/* Pricing & Others */}
-          <div className="mt-3 rounded-xl bg-blue-50 p-6">
+          <div className="mb-6 rounded-md border border-gray-200 bg-white p-5 shadow-sm">
             <h3 className="mb-4 text-lg font-semibold text-gray-800">
               Pricing & Others
             </h3>
@@ -248,7 +223,7 @@ const AddProduct = () => {
                 </label>
                 <input
                   type="number"
-                  className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-blue-500"
                   placeholder="0.00"
                 />
               </div>
@@ -258,7 +233,7 @@ const AddProduct = () => {
                 </label>
                 <input
                   type="number"
-                  className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-blue-500"
                   placeholder="1"
                 />
               </div>
@@ -268,7 +243,7 @@ const AddProduct = () => {
                 </label>
                 <input
                   type="number"
-                  className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-blue-500"
                   placeholder="0"
                 />
               </div>
@@ -304,7 +279,7 @@ const AddProduct = () => {
                 </label>
                 <input
                   type="number"
-                  className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-blue-500"
                   placeholder="0.00"
                 />
               </div>
@@ -317,7 +292,7 @@ const AddProduct = () => {
                 </label>
                 <input
                   type="number"
-                  className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-blue-500"
                   placeholder="0"
                 />
               </div>
@@ -327,7 +302,7 @@ const AddProduct = () => {
                 </label>
                 <input
                   type="number"
-                  className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-blue-500"
                   placeholder="0.00"
                 />
               </div>
@@ -372,7 +347,7 @@ const AddProduct = () => {
           </div>
 
           {/* Product Variation Setup */}
-          <div className="mt-3 rounded-xl bg-purple-50 p-6">
+          <div className="mb-6 rounded-md border border-gray-200 bg-white p-5 shadow-sm">
             <h3 className="mb-4 text-lg font-semibold text-gray-800">
               Product Variation Setup
             </h3>
@@ -468,7 +443,7 @@ const AddProduct = () => {
           </div>
 
           {/* Images */}
-          <div className="mt-3 rounded-xl bg-green-50 p-6">
+          <div className="mb-6 rounded-md border border-gray-200 bg-white p-5 shadow-sm">
             <h3 className="mb-4 text-lg font-semibold text-gray-800">
               Product Images
             </h3>
@@ -485,7 +460,7 @@ const AddProduct = () => {
           </div>
 
           {/* Product Video */}
-          <div className="rounded-xl bg-yellow-50 p-6">
+          <div className="mb-6 rounded-md border border-gray-200 bg-white p-5 shadow-sm">
             <h3 className="mb-4 text-lg font-semibold text-gray-800">
               Product Video
             </h3>
@@ -496,7 +471,7 @@ const AddProduct = () => {
               </label>
               <input
                 type="url"
-                className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                className="w-full rounded-md border border-gray-300 px-4 py-3 focus:border-transparent focus:ring-2 focus:ring-blue-500"
                 placeholder="https://www.youtube.com/embed/..."
               />
             </div>

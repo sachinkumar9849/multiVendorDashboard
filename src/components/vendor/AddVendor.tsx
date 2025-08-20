@@ -42,7 +42,7 @@ export default function AddVendor() {
       <div className="space-y-8">
         {/* Vendor Information Card */}
         <div className="overflow-hidden rounded-md border border-gray-100 bg-white pb-5 shadow-sm">
-          <div className="px-6 py-4">
+          <div className="px-6 py-2">
             <div className="flex items-center">
               <User className="mr-3 h-6 w-6 text-black" />
               <h2 className="text-xl font-semibold text-black">
@@ -117,7 +117,7 @@ export default function AddVendor() {
 
         {/* Account Information Card */}
         <div className="overflow-hidden rounded-md border border-gray-100 bg-white shadow-sm">
-          <div className="px-6 py-4">
+          <div className="px-6 py-2">
             <div className="flex items-center">
               <User className="mr-3 h-6 w-6 text-black" />
               <h2 className="text-xl font-semibold text-black">
@@ -207,7 +207,7 @@ export default function AddVendor() {
 
         {/* Shop Information Card */}
         <div className="overflow-hidden rounded-md border border-gray-100 bg-white shadow-sm">
-          <div className="px-6 py-4">
+          <div className="px-6 py-2">
             <div className="flex items-center">
               <Store className="mr-3 h-6 w-6 text-black" />
               <h2 className="text-xl font-semibold text-black">
@@ -272,7 +272,7 @@ export default function AddVendor() {
 
         {/* Business TIN Card */}
         <div className="overflow-hidden rounded-md border border-gray-100 bg-white shadow-sm">
-          <div className="px-6 py-4">
+          <div className="px-6 py-2">
             <div className="flex items-center">
               <FileText className="mr-3 h-6 w-6 text-black" />
               <h2 className="text-xl font-semibold text-black">Business PAN</h2>

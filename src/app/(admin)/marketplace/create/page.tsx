@@ -1,11 +1,10 @@
-import VendorsList from "@/components/marketplace/vendors/VendorsList";
-
+import StoreCreate from "@/components/marketplace/stores/StoreCreate";
 import React from "react";
 
 const page = () => {
   return (
     <>
-      <VendorsList />
+      <StoreCreate />
     </>
   );
 };

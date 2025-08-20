@@ -275,7 +275,7 @@ const VendorDashboard = () => {
               <tbody className="divide-y divide-gray-200 bg-white">
                 {filteredVendors.map((vendor) => (
                   <tr key={vendor.id} className="hover:bg-gray-50">
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-6 py-2 whitespace-nowrap">
                       <div>
                         <div className="text-sm font-medium text-gray-900">
                           {vendor.name}
@@ -285,7 +285,7 @@ const VendorDashboard = () => {
                         </div>
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-6 py-2 whitespace-nowrap">
                       <div className="text-sm text-gray-900">
                         {vendor.email}
                       </div>
@@ -293,12 +293,12 @@ const VendorDashboard = () => {
                         {vendor.phone}
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-6 py-2 whitespace-nowrap">
                       <span className="inline-flex items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-800">
                         {vendor.category}
                       </span>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-6 py-2 whitespace-nowrap">
                       <select
                         value={vendor.status}
                         onChange={(e) =>
@@ -311,13 +311,13 @@ const VendorDashboard = () => {
                         <option value="Suspended">Suspended</option>
                       </select>
                     </td>
-                    <td className="px-6 py-4 text-sm whitespace-nowrap text-gray-900">
+                    <td className="px-6 py-2 text-sm whitespace-nowrap text-gray-900">
                       <div>{vendor.totalOrders} orders</div>
                       <div className="font-medium text-green-600">
                         ${vendor.revenue.toLocaleString()}
                       </div>
                     </td>
-                    <td className="px-6 py-4 text-sm font-medium whitespace-nowrap">
+                    <td className="px-6 py-2 text-sm font-medium whitespace-nowrap">
                       <div className="flex items-center gap-2">
                         <button className="text-blue-600 hover:text-blue-900">
                           <Edit2 className="h-4 w-4" />

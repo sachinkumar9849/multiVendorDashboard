@@ -9,8 +9,9 @@ import {
   Filter,
   Plus,
 } from "lucide-react";
-import { Button } from "../ui/button";
+// import { Button } from "../ui/button";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 interface Product {
   id: number;
@@ -27,7 +28,7 @@ interface Product {
   createdAt: string;
 }
 
-const BrandList: React.FC = () => {
+const StoreList: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedBrand, setSelectedBrand] = useState("All brand");
   const [selectedCategory, setSelectedCategory] = useState("Select category");
@@ -183,15 +184,14 @@ const BrandList: React.FC = () => {
         <div className="rounded-md border border-gray-200 bg-white shadow-sm">
           <div className="flex flex-col items-start justify-between gap-4 p-6 md:flex-row md:items-center">
             <div className="flex gap-3">
-              <p className="text-xl font-semibold text-gray-900">Brands</p>
+              <p className="text-xl font-semibold text-gray-900">Stores</p>
               <p className="rounded-md bg-gray-200 px-2 py-1 text-[12px]">
                 {filteredProducts.length}
               </p>
             </div>
             <div className="flex max-w-lg flex-1 gap-2">
-              <Link href="/brand/add-new">
+              <Link href="/marketplace/create">
                 <Button className="bgBlue">
-                  {" "}
                   <Plus /> Create
                 </Button>
               </Link>
@@ -391,10 +391,19 @@ const BrandList: React.FC = () => {
                       Name
                     </th>
                     <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
-                      Is Featured
+                      Earnings
                     </th>
                     <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
                       Created at
+                    </th>
+                    <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
+                      Products Count
+                    </th>
+                    <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
+                      Vendor
+                    </th>
+                    <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
+                      Created At
                     </th>
                     <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
                       Status
@@ -412,28 +421,30 @@ const BrandList: React.FC = () => {
                       </td>
                       <td className="px-6 py-2 text-sm text-gray-900">
                         <img
-                          className="h-[50px] w-[50px] rounded-sm"
-                          src="https://mapandfire.com/wp-content/uploads/2021/09/apple-brand-logo.jpg"
+                          className="w-[50px]"
+                          src="https://nest.botble.com/storage/stores/1-150x150.png"
                           alt=""
                         />
                       </td>
-                      <td className="px-6 py-2 text-sm text-gray-900">Apple</td>
-
                       <td className="px-6 py-2 text-sm text-gray-900">
-                        <span
-                          className={`rounded-sm px-2 py-1 text-[10px] text-white ${
-                            product.isRequired ? "bg-green-600" : "bg-red-600"
-                          }`}
-                        >
-                          {product.isRequired ? "Yes" : "No"}
-                        </span>
+                        {product.name}
+                      </td>
+                      <td className="px-6 py-2 text-sm text-gray-900">
+                        Rs: 345454
+                      </td>
+                      <td className="px-6 py-2 text-sm text-gray-900">
+                        {new Date(product.createdAt).toLocaleDateString()}
+                      </td>
+                      <td className="px-6 py-2 text-sm text-gray-900">43</td>
+                      <td className="px-6 py-2 text-sm text-gray-900">
+                        Dr. Chloe Towne
                       </td>
                       <td className="px-6 py-2 text-sm text-gray-900">
                         {new Date(product.createdAt).toLocaleDateString()}
                       </td>
                       <td className="px-6 py-2 text-sm text-gray-900">
-                        <span className="rounded-sm bg-green-600 px-2 py-1 text-[12px] text-white capitalize">
-                          published
+                        <span className="rounded-sm bg-green-600 px-2 py-1 text-white">
+                          Approved
                         </span>
                       </td>
                       <td className="px-6 py-2">
@@ -474,4 +485,4 @@ const BrandList: React.FC = () => {
   );
 };
 
-export default BrandList;
+export default StoreList;

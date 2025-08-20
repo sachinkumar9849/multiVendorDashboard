@@ -118,7 +118,7 @@ const SubSubCategory: React.FC = () => {
           </div>
 
           {/* Filter Section */}
-          <div className="mb-6 rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+          <div className="mb-6 rounded-md border border-gray-200 bg-white p-6 shadow-sm">
             <div className="mb-6 grid gap-4 md:grid-cols-4">
               {/* Brand Filter */}
               <div>
@@ -141,7 +141,7 @@ const SubSubCategory: React.FC = () => {
                 <select
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
                 >
                   {mainCategory.map((category) => (
                     <option key={category} value={category}>
@@ -157,7 +157,7 @@ const SubSubCategory: React.FC = () => {
                 <select
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
                 >
                   {mainCategory.map((category) => (
                     <option key={category} value={category}>
@@ -173,7 +173,7 @@ const SubSubCategory: React.FC = () => {
                 <select
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
                 >
                   {setPriority.map((category) => (
                     <option key={category} value={category}>
@@ -200,9 +200,9 @@ const SubSubCategory: React.FC = () => {
 
           {/* Search and Actions */}
         </div>
-        {/* bg-white rounded-xl shadow-sm border border-gray-200 */}
+        {/* bg-white rounded-md shadow-sm border border-gray-200 */}
         {/* Product Table */}
-        <div className="rounded-xl border border-gray-200 bg-white shadow-sm">
+        <div className="rounded-md border border-gray-200 bg-white shadow-sm">
           <div className="flex flex-col items-start justify-between gap-4 p-6 md:flex-row md:items-center">
             <div className="flex gap-3">
               <p className="text-xl font-semibold text-gray-900">
@@ -228,27 +228,27 @@ const SubSubCategory: React.FC = () => {
               </button>
             </div>
           </div>
-          <div className="overflow-hidden rounded-xl bg-white shadow-sm">
+          <div className="overflow-hidden rounded-md bg-white shadow-sm">
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
+                    <th className="px-6 py-2 text-left text-sm font-semibold text-gray-900">
                       ID
                     </th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
+                    <th className="px-6 py-2 text-left text-sm font-semibold text-gray-900">
                       Sub sub category name
                     </th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
+                    <th className="px-6 py-2 text-left text-sm font-semibold text-gray-900">
                       Sub category name
                     </th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
+                    <th className="px-6 py-2 text-left text-sm font-semibold text-gray-900">
                       Category name
                     </th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
+                    <th className="px-6 py-2 text-left text-sm font-semibold text-gray-900">
                       Priority
                     </th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">
+                    <th className="px-6 py-2 text-left text-sm font-semibold text-gray-900">
                       Action
                     </th>
                   </tr>
@@ -256,21 +256,21 @@ const SubSubCategory: React.FC = () => {
                 <tbody className="divide-y divide-gray-200">
                   {filteredProducts.map((product, index) => (
                     <tr key={product.id} className="hover:bg-gray-50">
-                      <td className="px-6 py-4 text-sm text-gray-900">
+                      <td className="px-6 py-2 text-sm text-gray-900">
                         {index + 1}
                       </td>
 
-                      <td className="px-6 py-4 text-sm text-gray-900">
+                      <td className="px-6 py-2 text-sm text-gray-900">
                         {product.name}
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-900">
+                      <td className="px-6 py-2 text-sm text-gray-900">
                         Bags & Shoes
                       </td>
-                      <td className="px-6 py-4 text-sm text-gray-900">
+                      <td className="px-6 py-2 text-sm text-gray-900">
                         Women Fashion
                       </td>
-                      <td className="px-6 py-4">1</td>
-                      <td className="px-6 py-4">
+                      <td className="px-6 py-2">1</td>
+                      <td className="px-6 py-2">
                         <div className="flex items-center gap-2">
                           <button className="rounded-lg p-2 text-gray-600 transition-colors hover:bg-gray-50">
                             <Edit className="h-4 w-4" />

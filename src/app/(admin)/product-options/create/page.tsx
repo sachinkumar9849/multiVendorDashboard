@@ -1,11 +1,10 @@
-import VendorsList from "@/components/marketplace/vendors/VendorsList";
-
+import AddNewOptions from "@/components/productOptions/AddNewOptions";
 import React from "react";
 
 const page = () => {
   return (
     <>
-      <VendorsList />
+      <AddNewOptions />
     </>
   );
 };
