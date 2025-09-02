@@ -48,6 +48,18 @@ const StoreCreate: React.FC = () => {
                   <div className="col-span-1">
                     <div>
                       <label className="mb-2 block text-sm font-semibold text-gray-700">
+                        Shop URL
+                      </label>
+                      <input
+                        type="text"
+                        className="w-full rounded-sm border border-gray-300 px-4 py-2 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                        placeholder="Shop URL"
+                      />
+                    </div>
+                  </div>
+                  <div className="col-span-1">
+                    <div>
+                      <label className="mb-2 block text-sm font-semibold text-gray-700">
                         Email
                       </label>
                       <input
@@ -117,15 +129,15 @@ const StoreCreate: React.FC = () => {
                       />
                     </div>
                   </div>
-                  <div className="col-span-1">
+                  <div className="col-span-2">
                     <div>
                       <label className="mb-2 block text-sm font-semibold text-gray-700">
-                        Tax ID
+                        Pan number
                       </label>
                       <input
                         type="text"
                         className="w-full rounded-sm border border-gray-300 px-4 py-2 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
-                        placeholder="Tax ID
+                        placeholder="Pan number
 "
                       />
                     </div>
@@ -196,17 +208,40 @@ const StoreCreate: React.FC = () => {
                       <label className="mb-2 block text-sm font-semibold text-gray-700">
                         Description
                       </label>
-                      {/* <input
-                                                type="text"
-                                                className="w-full rounded-sm border border-gray-300 px-4 py-2 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
-                                                placeholder="Short description"
-                                            /> */}
+
                       <TextArea placeholder="Short description" />
                     </div>
                   </div>
                 </div>
               </div>
+              <div className="mb-6 rounded-md border border-gray-200 bg-white p-5 shadow-sm">
+                <p className="mb-3 text-xl font-semibold text-gray-900">
+                  Search Engine Optimize
+                </p>
+                <div className="grid grid-cols-1 gap-3 md:grid-cols-1">
+                  <div>
+                    <label className="mb-2 block text-sm font-semibold text-gray-700">
+                      Seo Title
+                    </label>
+                    <input
+                      type="text"
+                      className="w-full rounded-sm border border-gray-300 px-4 py-2 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                      placeholder="Enter product name"
+                    />
+                  </div>
+                  <div className="">
+                    <label className="mb-2 block text-sm font-semibold text-gray-700">
+                      Seo Description
+                    </label>
+                    <textarea
+                      className="w-full rounded-sm border border-gray-300 px-4 py-2 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                      placeholder="Enter product description"
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
+
             <div className="col-span-3">
               <div className="mb-6 rounded-md border border-gray-200 bg-white shadow-sm">
                 <p className="p-3"> Publish</p>
@@ -243,8 +278,8 @@ const StoreCreate: React.FC = () => {
                       <SelectValue placeholder="Select a store owner..." />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="published">Dr. Chloe Towne</SelectItem>
-                      <SelectItem value="draft">Carlee Mann</SelectItem>
+                      <SelectItem value="published">Rahul Sharma</SelectItem>
+                      <SelectItem value="draft">Bikash kumar</SelectItem>
                       <SelectItem value="pending">Carolina Maggio</SelectItem>
                     </SelectContent>
                   </Select>

@@ -45,7 +45,7 @@ const StoreList: React.FC = () => {
   const products: Product[] = [
     {
       id: 1,
-      name: "Size",
+      name: "Global Store",
       type: "Digital",
       price: 40.0,
       verifyStatus: "Approved",
@@ -59,7 +59,7 @@ const StoreList: React.FC = () => {
     },
     {
       id: 2,
-      name: "Type",
+      name: "	Young Shop",
       type: "Digital",
       price: 150.0,
       verifyStatus: "Approved",
@@ -73,7 +73,7 @@ const StoreList: React.FC = () => {
     },
     {
       id: 3,
-      name: "Color",
+      name: "	Global Office",
       type: "Physical",
       price: 25.0,
       verifyStatus: "Pending",
@@ -382,7 +382,7 @@ const StoreList: React.FC = () => {
                 <thead className="bg-gray-50">
                   <tr>
                     <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
-                      SL
+                      ID
                     </th>
                     <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
                       Logo
@@ -393,6 +393,7 @@ const StoreList: React.FC = () => {
                     <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
                       Earnings
                     </th>
+
                     <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
                       Created at
                     </th>
@@ -437,7 +438,7 @@ const StoreList: React.FC = () => {
                       </td>
                       <td className="px-6 py-2 text-sm text-gray-900">43</td>
                       <td className="px-6 py-2 text-sm text-gray-900">
-                        Dr. Chloe Towne
+                        Rahul sharma
                       </td>
                       <td className="px-6 py-2 text-sm text-gray-900">
                         {new Date(product.createdAt).toLocaleDateString()}
