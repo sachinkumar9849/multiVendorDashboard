@@ -4,7 +4,7 @@ import { Search, Plus, Download, Eye, Edit, Trash2 } from "lucide-react";
 
 import Link from "next/link";
 
-interface Product {
+export interface Product {
   id: number;
   name: string;
   type: "Digital" | "Physical";

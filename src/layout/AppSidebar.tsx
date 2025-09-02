@@ -134,19 +134,20 @@ const marketplaceItems: NavItem[] = [
     name: "Marketplace",
     subItems: [
       { name: "Stores", path: "/marketplace/stores-list", pro: false },
+      { name: "Vendors", path: "/vendor/list", pro: false },
       // { name: "Stores Create", path: "/marketplace/store-create", pro: false },
       // { name: "Vendor Performance", path: "/marketplace/analytics/vendor-performance", pro: false },
     ],
   },
 
-  {
-    icon: <UserCog />,
-    name: "Vendors",
-    subItems: [
-      { name: "List", path: "/vendor/list", pro: false },
-      { name: "Create", path: "/vendor/add", pro: false },
-    ],
-  },
+  // {
+  //   icon: <UserCog />,
+  //   name: "Vendors",
+  //   subItems: [
+  //     { name: "List", path: "/vendor/list", pro: false },
+  //     { name: "Create", path: "/vendor/add", pro: false },
+  //   ],
+  // },
 ];
 
 const userManagement: NavItem[] = [
