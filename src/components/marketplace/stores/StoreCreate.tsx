@@ -20,7 +20,7 @@ const StoreCreate: React.FC = () => {
         <div className="mb-8">
           <div className="grid grid-cols-12 gap-5">
             <div className="col-span-9">
-              <div className="mb-6 rounded-md border border-gray-200 bg-white p-6 shadow-sm">
+              <div className="mb-4 rounded-md border border-gray-200 bg-white p-6 shadow-sm">
                 <div className="flex justify-between">
                   <p className="mb-3 text-xl font-semibold text-gray-900">
                     New Stores
@@ -226,7 +226,7 @@ const StoreCreate: React.FC = () => {
                     <input
                       type="text"
                       className="w-full rounded-sm border border-gray-300 px-4 py-2 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
-                      placeholder="Enter product name"
+                      placeholder=" Seo Title"
                     />
                   </div>
                   <div className="">
@@ -235,7 +235,7 @@ const StoreCreate: React.FC = () => {
                     </label>
                     <textarea
                       className="w-full rounded-sm border border-gray-300 px-4 py-2 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
-                      placeholder="Enter product description"
+                      placeholder="Seo Description"
                     />
                   </div>
                 </div>
