@@ -891,3 +891,14 @@ p.text-xl.font-semibold.text-gray-900 {
 body {
   background: #f9fafb;
 }
+input,
+textarea {
+  font-size: 13px;
+}
+option {
+  font-size: 13px;
+}
+
+select {
+  font-size: 13px;
+}

@@ -99,9 +99,9 @@ const othersItems: NavItem[] = [
 
   {
     icon: <GridIcon />,
-    name: "Product Attribute",
+    name: "  Product Specification",
     subItems: [
-      { name: "List ", path: "/attribute/list", pro: false },
+      { name: "Attribute ", path: "/attribute/list", pro: false },
       { name: "Create", path: "/attribute/create", pro: false },
     ],
   },
