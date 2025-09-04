@@ -12,7 +12,6 @@ import {
   X,
   Store,
   PhoneCall,
-  Trash2,
   Eye,
 } from "lucide-react";
 import type { Product } from "@/components/product/ProductList";
@@ -545,7 +544,7 @@ const VendorDetailPage: React.FC = () => {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200">
-                    {products.map((product, index) => (
+                    {products.map((product) => (
                       <tr key={product.id} className="hover:bg-gray-50">
                         <td className="px-6 py-2">
                           <div className="flex items-center gap-3">

@@ -6,14 +6,7 @@ import { usePathname } from "next/navigation";
 import { useSidebar } from "../context/SidebarContext";
 import { ChevronDownIcon, GridIcon, HorizontaLDots } from "../icons/index";
 
-import {
-  ShoppingBasket,
-  ShoppingCart,
-  Tag,
-  User,
-  UserCog,
-  Store,
-} from "lucide-react";
+import { ShoppingBasket, ShoppingCart, Tag, User, Store } from "lucide-react";
 
 type NavItem = {
   name: string;
@@ -99,10 +92,16 @@ const othersItems: NavItem[] = [
 
   {
     icon: <GridIcon />,
-    name: "  Product Specification",
+    name: "Product Specification",
     subItems: [
-      { name: "Attribute ", path: "/attribute/list", pro: false },
-      { name: "Create", path: "/attribute/create", pro: false },
+      { name: "Groups ", path: "/specification/groups", pro: false },
+      {
+        name: "Attribute ",
+        path: "/specification/attributes-list",
+        pro: false,
+      },
+      { name: "Tables ", path: "/specification/tables", pro: false },
+      // { name: "Create", path: "/specification/attributes-create", pro: false },
     ],
   },
   {

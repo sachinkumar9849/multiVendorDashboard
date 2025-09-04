@@ -1,99 +1,74 @@
-import { useState } from "react";
-import { Trash2, X, ChevronDown, Plus, Edit } from "lucide-react";
-
-interface Attribute {
-  id: number;
-  isDefault: boolean;
-  title: string;
-  color: string;
-  image: string | null;
-}
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export default function AddNewAttribute() {
-  const [attributes, setAttributes] = useState<Attribute[]>([
-    {
-      id: 1,
-      isDefault: true,
-      title: "",
-      color: "#000000",
-      image: null,
-    },
-    {
-      id: 2,
-      isDefault: false,
-      title: "",
-      color: "#000000",
-      image: null,
-    },
-  ]);
-
-  const addNewAttribute = () => {
-    const newId = Math.max(...attributes.map((attr) => attr.id)) + 1;
-    setAttributes([
-      ...attributes,
-      {
-        id: newId,
-        isDefault: false,
-        title: "",
-        color: "#000000",
-        image: null,
-      },
-    ]);
-  };
-
-  const removeAttribute = (id: number) => {
-    setAttributes(attributes.filter((attr) => attr.id !== id));
-  };
-
-  const updateAttribute = <K extends keyof Attribute>(
-    id: number,
-    field: K,
-    value: Attribute[K],
-  ) => {
-    setAttributes(
-      attributes.map((attr) =>
-        attr.id === id ? { ...attr, [field]: value } : attr,
-      ),
-    );
-  };
-
-  const handleImageUpload = (
-    id: number,
-    event: React.ChangeEvent<HTMLInputElement>,
-  ) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const result = e.target?.result;
-        if (typeof result === "string") {
-          updateAttribute(id, "image", result);
-        }
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
   return (
     <>
       <div className="mb-6 rounded-sm border border-gray-200 bg-white p-5">
         <h2 className="mb-2 text-lg font-semibold text-gray-900">
-          New product attribute
+          Create Specification Attribute
         </h2>
-        <div>
+        <div className="mb-3">
           <label className="mb-2 block text-sm font-semibold text-gray-700">
-            Title
+            Associated Group
+          </label>
+          <Select>
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder="Choose any Group" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="Dimensions">Dimensions</SelectItem>
+
+              <SelectItem value="Battery">Battery</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="mb-3">
+          <label className="mb-2 block text-sm font-semibold text-gray-700">
+            Name
           </label>
           <input
             type="text"
             className="w-full rounded-sm border border-gray-300 px-4 py-2 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
-            placeholder="Enter title"
+            placeholder="Enter Name"
+          />
+        </div>
+        <div className="mb-3">
+          <label className="mb-2 block text-sm font-semibold text-gray-700">
+            Field Type
+          </label>
+          <Select>
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder="Choose Field Type " />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="Text">Text</SelectItem>
+
+              <SelectItem value="Textarea">Textarea</SelectItem>
+              <SelectItem value="Select">Select</SelectItem>
+              <SelectItem value="Checkbox">Checkbox</SelectItem>
+              <SelectItem value="Radio">Radio</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="mb-3">
+          <label className="mb-2 block text-sm font-semibold text-gray-700">
+            Default Value
+          </label>
+          <input
+            type="text"
+            className="w-full rounded-sm border border-gray-300 px-4 py-2 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
+            placeholder="Default Value"
           />
         </div>
       </div>
-
-      <div className="overflow-hidden rounded-lg border border-gray-200 bg-white">
-        {/* Header */}
+      {/* <div className="overflow-hidden rounded-lg border border-gray-200 bg-white">
+      
         <div className="flex items-center justify-between border-b border-gray-200 p-4">
           <h2 className="text-lg font-semibold text-gray-900">
             Attributes list
@@ -106,7 +81,7 @@ export default function AddNewAttribute() {
           </button>
         </div>
 
-        {/* Table Header */}
+   
         <div className="grid grid-cols-12 gap-4 border-b border-gray-200 bg-gray-50 px-4 py-3">
           <div className="col-span-1 text-xs font-medium tracking-wider text-gray-500 uppercase">
             #
@@ -128,18 +103,18 @@ export default function AddNewAttribute() {
           </div>
         </div>
 
-        {/* Attribute Rows */}
+   
         {attributes.map((attribute, index) => (
           <div
             key={attribute.id}
             className="grid grid-cols-12 gap-4 border-b border-gray-100 px-4 py-4 hover:bg-gray-50"
           >
-            {/* Row Number */}
+         
             <div className="col-span-1 flex items-center">
               <span className="font-medium text-gray-700">{index + 1}</span>
             </div>
 
-            {/* Is Default Radio */}
+          
             <div className="col-span-2 flex items-center">
               <input
                 type="radio"
@@ -157,7 +132,7 @@ export default function AddNewAttribute() {
               />
             </div>
 
-            {/* Title Input */}
+          
             <div className="col-span-3 flex items-center">
               <input
                 type="text"
@@ -170,7 +145,7 @@ export default function AddNewAttribute() {
               />
             </div>
 
-            {/* Color Selector */}
+        
             <div className="col-span-2 flex items-center">
               <div className="relative">
                 <div
@@ -198,7 +173,7 @@ export default function AddNewAttribute() {
               </div>
             </div>
 
-            {/* Image Upload */}
+          
             <div className="col-span-3 flex items-center space-x-2">
               <div className="flex items-center space-x-2">
                 <div className="flex h-8 w-8 items-center justify-center rounded border-2 border-dashed border-gray-300 bg-gray-50">
@@ -239,7 +214,7 @@ export default function AddNewAttribute() {
               )}
             </div>
 
-            {/* Remove Button */}
+          
             <div className="col-span-1 flex items-center justify-center">
               <button
                 onClick={() => removeAttribute(attribute.id)}
@@ -257,7 +232,7 @@ export default function AddNewAttribute() {
             </div>
           </div>
         ))}
-      </div>
+      </div> */}
     </>
   );
 }

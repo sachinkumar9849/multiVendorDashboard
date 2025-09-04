@@ -15,9 +15,6 @@ import Link from "next/link";
 import AttributesManager from "./AttributesManager";
 
 const AddProduct = () => {
-  const [productType, setProductType] = useState("Physical");
-  const [discountType, setDiscountType] = useState("Flat");
-  const [taxCalculation, setTaxCalculation] = useState("Include with product");
   const [selectedColors] = useState([]);
   const [selectedAttributes] = useState([]);
   const [showDatePicker, setShowDatePicker] = useState(false);
@@ -48,25 +45,6 @@ const AddProduct = () => {
     "Automotive",
     "Digital Products",
   ];
-
-  const brands = [
-    "Francisco Electrical",
-    "Timmerman",
-    "Borcelle",
-    "ElectricVehicle",
-    "Power Energy",
-    "OTO",
-    "Speedios",
-    "Tech Connect",
-    "Cool Sneakers",
-    "UrbanEdge",
-    "Global Tech",
-    "Electronic Store",
-    "Electrical Charge",
-    "Keithston",
-  ];
-
-  const units = ["kg", "pc", "gms", "ltrs", "pair", "oz", "lb"];
 
   const colors = [
     "Red",
@@ -262,7 +240,7 @@ const AddProduct = () => {
                     placeholder="Rs. Enter cost per item"
                   />
                   <small className="font-normal text-[#6c7a91]">
-                    Customers won't see this price.
+                    Customers won t see this price.
                   </small>
                 </div>
 
