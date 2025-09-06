@@ -905,3 +905,6 @@ select {
 div#selectProduct button {
   height: 50px;
 }
+.bg-\[\#000203\] {
+  background-color: #216bc4;
+}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Trash2, Upload, X } from "lucide-react";
+import { Trash2 } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -8,13 +8,38 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
+// Type definitions
+type PriceType = "Fixed" | "Percentage";
+type OptionType = "Field" | "Dropdown" | "Radio" | "Checkbox";
+
+interface OptionRow {
+  id: number;
+  label: string;
+  price: string;
+  priceType: PriceType;
+  image: File | null;
+  imagePreview: string | null;
+}
+
+interface ProductOption {
+  id: number;
+  name: string;
+  type: OptionType;
+  isRequired: boolean;
+  isGlobal: boolean;
+  rows: OptionRow[];
+}
+
+type OptionField = keyof ProductOption;
+type RowField = keyof OptionRow;
+
 const ProductOptionsManager = () => {
-  const [options, setOptions] = useState([]);
+  const [options, setOptions] = useState<ProductOption[]>([]);
   const [selectedGlobalOption, setSelectedGlobalOption] = useState("");
 
-  const addNewOption = (e) => {
+  const addNewOption = (e?: React.FormEvent) => {
     e?.preventDefault();
-    const newOption = {
+    const newOption: ProductOption = {
       id: Date.now(),
       name: "",
       type: "Field",
@@ -37,7 +62,7 @@ const ProductOptionsManager = () => {
   const addGlobalOption = () => {
     if (!selectedGlobalOption) return;
 
-    const newOption = {
+    const newOption: ProductOption = {
       id: Date.now(),
       name: selectedGlobalOption,
       type: "Checkbox",
@@ -58,7 +83,7 @@ const ProductOptionsManager = () => {
     setSelectedGlobalOption("");
   };
 
-  const addNewRow = (optionId, e) => {
+  const addNewRow = (optionId: number, e?: React.FormEvent) => {
     e?.preventDefault();
     setOptions(
       options.map((option) => {
@@ -83,11 +108,11 @@ const ProductOptionsManager = () => {
     );
   };
 
-  const deleteOption = (optionId) => {
+  const deleteOption = (optionId: number) => {
     setOptions(options.filter((option) => option.id !== optionId));
   };
 
-  const deleteRow = (optionId, rowId) => {
+  const deleteRow = (optionId: number, rowId: number) => {
     setOptions(
       options.map((option) => {
         if (option.id === optionId) {
@@ -101,7 +126,11 @@ const ProductOptionsManager = () => {
     );
   };
 
-  const updateOption = (optionId, field, value) => {
+  const updateOption = (
+    optionId: number,
+    field: OptionField,
+    value: ProductOption[OptionField],
+  ) => {
     setOptions(
       options.map((option) => {
         if (option.id === optionId) {
@@ -112,7 +141,12 @@ const ProductOptionsManager = () => {
     );
   };
 
-  const updateRow = (optionId, rowId, field, value) => {
+  const updateRow = (
+    optionId: number,
+    rowId: number,
+    field: RowField,
+    value: OptionRow[RowField],
+  ) => {
     setOptions(
       options.map((option) => {
         if (option.id === optionId) {
@@ -129,22 +163,6 @@ const ProductOptionsManager = () => {
         return option;
       }),
     );
-  };
-
-  const handleImageUpload = (optionId, rowId, file) => {
-    if (file && file.type.startsWith("image/")) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        updateRow(optionId, rowId, "image", file);
-        updateRow(optionId, rowId, "imagePreview", e.target.result);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const removeImage = (optionId, rowId) => {
-    updateRow(optionId, rowId, "image", null);
-    updateRow(optionId, rowId, "imagePreview", null);
   };
 
   return (
@@ -204,7 +222,11 @@ const ProductOptionsManager = () => {
                 <select
                   value={option.type}
                   onChange={(e) =>
-                    updateOption(option.id, "type", e.target.value)
+                    updateOption(
+                      option.id,
+                      "type",
+                      e.target.value as OptionType,
+                    )
                   }
                   className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 >
@@ -232,7 +254,7 @@ const ProductOptionsManager = () => {
 
             {/* Rows for each option */}
             <div className="space-y-4">
-              {option.rows.map((row, rowIndex) => (
+              {option.rows.map((row) => (
                 <div
                   key={row.id}
                   className="grid grid-cols-1 gap-4 rounded-lg bg-gray-50 p-4 md:grid-cols-3"
@@ -277,7 +299,7 @@ const ProductOptionsManager = () => {
                           option.id,
                           row.id,
                           "priceType",
-                          e.target.value,
+                          e.target.value as PriceType,
                         )
                       }
                       className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none"

@@ -42,27 +42,20 @@ export default function AttributeCreate() {
     ]);
   };
 
-  const removeAttribute = (id) => {
+  const removeAttribute = (id: number) => {
     setAttributes(attributes.filter((attr) => attr.id !== id));
   };
 
-  const updateAttribute = (id, field, value) => {
+  const updateAttribute = (
+    id: number,
+    field: string,
+    value: string | boolean | null,
+  ) => {
     setAttributes(
       attributes.map((attr) =>
         attr.id === id ? { ...attr, [field]: value } : attr,
       ),
     );
-  };
-
-  const handleImageUpload = (id, event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        updateAttribute(id, "image", e.target.result);
-      };
-      reader.readAsDataURL(file);
-    }
   };
 
   return (
@@ -170,7 +163,9 @@ export default function AttributeCreate() {
                       className="flex h-8 w-12 cursor-pointer items-center justify-center rounded border border-gray-300"
                       style={{ backgroundColor: attribute.color }}
                       onClick={() =>
-                        document.getElementById(`color-${attribute.id}`).click()
+                        document
+                          .getElementById(`color-${attribute.id}`)
+                          ?.click()
                       }
                     >
                       <div
@@ -205,13 +200,7 @@ export default function AttributeCreate() {
                         <Plus className="h-4 w-4 text-gray-400" />
                       )}
                     </div>
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={(e) => handleImageUpload(attribute.id, e)}
-                      className="hidden"
-                      id={`image-${attribute.id}`}
-                    />
+
                     <label
                       htmlFor={`image-${attribute.id}`}
                       className="cursor-pointer text-gray-500 hover:text-gray-700"

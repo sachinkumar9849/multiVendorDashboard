@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { ChevronDown, Save } from "lucide-react";
+import { Save } from "lucide-react";
 import ImageComponent from "../common/ImageComponent";
 import { Switch } from "../ui/switch";
 import CategoriesList from "../attribute/CategoriesSelect";
@@ -17,12 +17,7 @@ import ProductOptionsManager from "./ProductOptionsManager";
 import { Checkbox } from "../ui/checkbox";
 
 const AddProduct = () => {
-  const [selectedColors] = useState([]);
-  const [selectedAttributes] = useState([]);
   const [showDatePicker, setShowDatePicker] = useState(false);
-
-  const [showColorPicker, setShowColorPicker] = useState(false);
-  const [showAttributePicker, setShowAttributePicker] = useState(false);
 
   const handleChoosePeriodClick = () => {
     setShowDatePicker(!showDatePicker);
@@ -47,41 +42,6 @@ const AddProduct = () => {
     "Automotive",
     "Digital Products",
   ];
-
-  const colors = [
-    "Red",
-    "Blue",
-    "Green",
-    "Yellow",
-    "Purple",
-    "Orange",
-    "Pink",
-    "Black",
-    "White",
-    "Gray",
-    "Brown",
-    "Navy",
-    "Teal",
-    "Lime",
-    "Maroon",
-    "Olive",
-    "Silver",
-    "Gold",
-    "Violet",
-    "Turquoise",
-    "Magenta",
-    "Cyan",
-    "Indigo",
-    "Crimson",
-    "Coral",
-    "Salmon",
-    "Khaki",
-    "Beige",
-    "Tan",
-    "Azure",
-  ];
-
-  const attributes = ["type", "size"];
 
   return (
     <>
