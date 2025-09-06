@@ -1,29 +1,65 @@
 import React, { useState } from "react";
-import { Trash2 } from "lucide-react";
+import { Trash2, Upload, X } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const ProductOptionsManager = () => {
   const [options, setOptions] = useState([]);
+  const [selectedGlobalOption, setSelectedGlobalOption] = useState("");
 
-  const addNewOption = ({ e }) => {
-    event?.preventDefault();
+  const addNewOption = (e) => {
+    e?.preventDefault();
     const newOption = {
       id: Date.now(),
       name: "",
       type: "Field",
       isRequired: false,
+      isGlobal: false,
       rows: [
         {
           id: Date.now(),
+          label: "",
           price: "0",
           priceType: "Fixed",
+          image: null,
+          imagePreview: null,
         },
       ],
     };
     setOptions([...options, newOption]);
   };
 
+  const addGlobalOption = () => {
+    if (!selectedGlobalOption) return;
+
+    const newOption = {
+      id: Date.now(),
+      name: selectedGlobalOption,
+      type: "Checkbox",
+      isRequired: false,
+      isGlobal: true,
+      rows: [
+        {
+          id: Date.now(),
+          label: "",
+          price: "0",
+          priceType: "Fixed",
+          image: null,
+          imagePreview: null,
+        },
+      ],
+    };
+    setOptions([...options, newOption]);
+    setSelectedGlobalOption("");
+  };
+
   const addNewRow = (optionId, e) => {
-    event?.preventDefault(e);
+    e?.preventDefault();
     setOptions(
       options.map((option) => {
         if (option.id === optionId) {
@@ -32,9 +68,12 @@ const ProductOptionsManager = () => {
             rows: [
               ...option.rows,
               {
-                id: Date.now(),
+                id: Date.now() + Math.random(),
+                label: "",
                 price: "0",
                 priceType: "Fixed",
+                image: null,
+                imagePreview: null,
               },
             ],
           };
@@ -92,6 +131,22 @@ const ProductOptionsManager = () => {
     );
   };
 
+  const handleImageUpload = (optionId, rowId, file) => {
+    if (file && file.type.startsWith("image/")) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        updateRow(optionId, rowId, "image", file);
+        updateRow(optionId, rowId, "imagePreview", e.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const removeImage = (optionId, rowId) => {
+    updateRow(optionId, rowId, "image", null);
+    updateRow(optionId, rowId, "imagePreview", null);
+  };
+
   return (
     <div className="mb-3 rounded-md border border-gray-200 bg-white p-5">
       <h1 className="mb-4 text-lg font-semibold text-gray-800">
@@ -105,9 +160,16 @@ const ProductOptionsManager = () => {
             className="rounded-lg border border-gray-200 bg-white p-6"
           >
             <div className="mb-2 flex items-center justify-between">
-              <h2 className="text-xl font-medium text-gray-700">
-                #{optionIndex + 1}
-              </h2>
+              <div className="flex items-center gap-2">
+                <h2 className="text-xl font-medium text-gray-700">
+                  #{optionIndex + 1} {option.name}
+                </h2>
+                {option.isGlobal && (
+                  <span className="rounded-full bg-blue-100 px-2 py-1 text-xs font-medium text-blue-800">
+                    Global
+                  </span>
+                )}
+              </div>
               {options.length > 1 && (
                 <button
                   onClick={() => deleteOption(option.id)}
@@ -118,7 +180,7 @@ const ProductOptionsManager = () => {
               )}
             </div>
 
-            <div className="mb-6 grid grid-cols-1 gap-4 md:grid-cols-3">
+            <div className="mb-4 grid grid-cols-1 gap-4 md:grid-cols-3">
               <div>
                 <label className="mb-2 block text-sm font-medium text-gray-600">
                   Name
@@ -131,6 +193,7 @@ const ProductOptionsManager = () => {
                   }
                   placeholder="Name"
                   className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  disabled={option.isGlobal}
                 />
               </div>
 
@@ -176,6 +239,21 @@ const ProductOptionsManager = () => {
                 >
                   <div>
                     <label className="mb-1 block text-xs font-medium tracking-wide text-gray-500 uppercase">
+                      LABEL
+                    </label>
+                    <input
+                      type="text"
+                      value={row.label}
+                      onChange={(e) =>
+                        updateRow(option.id, row.id, "label", e.target.value)
+                      }
+                      placeholder="Enter label"
+                      className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-transparent focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="mb-1 block text-xs font-medium tracking-wide text-gray-500 uppercase">
                       PRICE
                     </label>
                     <input
@@ -209,22 +287,22 @@ const ProductOptionsManager = () => {
                     </select>
                   </div>
 
-                  <div className="flex items-end">
-                    {option.rows.length > 1 && (
+                  {option.rows.length > 1 && (
+                    <div className="flex items-end justify-end md:col-span-4">
                       <button
                         onClick={() => deleteRow(option.id, row.id)}
                         className="rounded-lg bg-red-500 p-2 text-white transition-colors hover:bg-red-600"
                       >
                         <Trash2 size={18} />
                       </button>
-                    )}
-                  </div>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
 
             <button
-              onClick={() => addNewRow(option.id)}
+              onClick={(e) => addNewRow(option.id, e)}
               className="mt-4 rounded-lg border border-gray-300 bg-white px-4 py-2 text-gray-700 transition-colors hover:bg-gray-50"
             >
               Add new row
@@ -232,12 +310,39 @@ const ProductOptionsManager = () => {
           </div>
         ))}
 
-        <button
-          onClick={addNewOption}
-          className="rounded-lg border border-gray-300 bg-white px-6 py-3 font-medium text-gray-700 transition-colors hover:bg-gray-50"
-        >
-          Add new option
-        </button>
+        <div className="flex items-center gap-4">
+          <button
+            onClick={addNewOption}
+            className="rounded-lg border border-gray-300 bg-white px-6 py-3 font-medium text-gray-700 transition-colors hover:bg-gray-50"
+          >
+            Add new option
+          </button>
+
+          <div className="flex items-center gap-2" id="selectProduct">
+            <Select
+              value={selectedGlobalOption}
+              onValueChange={setSelectedGlobalOption}
+            >
+              <SelectTrigger className="w-48">
+                <SelectValue placeholder="Select Global Option" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="Warranty">Warranty</SelectItem>
+                <SelectItem value="Ram">Ram</SelectItem>
+                <SelectItem value="CPU">CPU</SelectItem>
+                <SelectItem value="HDD">HDD</SelectItem>
+              </SelectContent>
+            </Select>
+
+            <button
+              onClick={addGlobalOption}
+              disabled={!selectedGlobalOption}
+              className="rounded-lg border border-gray-300 bg-white px-6 py-3 font-medium text-gray-700 transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              Add Global Option
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -902,3 +902,6 @@ option {
 select {
   font-size: 13px;
 }
+div#selectProduct button {
+  height: 50px;
+}

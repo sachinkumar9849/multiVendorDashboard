@@ -14,6 +14,7 @@ import {
 import Link from "next/link";
 import AttributesManager from "./AttributesManager";
 import ProductOptionsManager from "./ProductOptionsManager";
+import { Checkbox } from "../ui/checkbox";
 
 const AddProduct = () => {
   const [selectedColors] = useState([]);
@@ -318,7 +319,7 @@ const AddProduct = () => {
           </form>
         </div>
         <div className="col-span-3">
-          <div className="mb-6 rounded-md border border-gray-200 bg-white shadow-sm">
+          <div className="mb-4 rounded-md border border-gray-200 bg-white shadow-sm">
             <p className="p-3"> Publish</p>
             <hr />
             <div className="p-3">
@@ -327,7 +328,7 @@ const AddProduct = () => {
               </button>
             </div>
           </div>
-          <div className="mb-6 rounded-md border border-gray-200 bg-white shadow-sm">
+          <div className="mb-4 rounded-md border border-gray-200 bg-white shadow-sm">
             <p className="p-3"> Status</p>
             <hr />
             <div className="p-3">
@@ -343,21 +344,102 @@ const AddProduct = () => {
               </Select>
             </div>
           </div>
-          <div className="mb-6 rounded-md border border-gray-200 bg-white shadow-sm">
-            <p className="p-3"> Logo</p>
+          <div className="mb-4 rounded-md border border-gray-200 bg-white shadow-sm">
+            <p className="p-3"> Store</p>
             <hr />
             <div className="p-3">
-              <ImageComponent />
+              <Select>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Select a store" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Global">Global Office</SelectItem>
+                  <SelectItem value="GlobalStore">Global Store</SelectItem>
+                  <SelectItem value="pending">Pending</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
           </div>
-          <div className="mb-6 rounded-md border border-gray-200 bg-white shadow-sm">
+          <div className="mb-4 rounded-md border border-gray-200 bg-white shadow-sm">
             <p className="p-3"> Is featured?</p>
             <hr />
             <div className="p-3">
               <Switch />
             </div>
           </div>
-          <div className="mb-6 rounded-md border border-gray-200 bg-white shadow-sm">
+          <div className="mb-4 rounded-md border border-gray-200 bg-white shadow-sm">
+            <p className="p-3"> Brand</p>
+            <hr />
+            <div className="p-3">
+              <Select>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Select a store" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Apple">Apple</SelectItem>
+                  <SelectItem value="Samsung">Samsung</SelectItem>
+                  <SelectItem value="Nokia">Nokia</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+          <div className="mb-4 rounded-md border border-gray-200 bg-white shadow-sm">
+            <p className="p-3"> Featured image (optional)</p>
+            <hr />
+            <div className="p-3">
+              <ImageComponent />
+            </div>
+          </div>
+          <div className="mb-4 rounded-md border border-gray-200 bg-white shadow-sm">
+            <p className="p-3"> Product collections</p>
+            <hr />
+            <div className="p-4">
+              <div className="flex">
+                <Checkbox />
+                <label className="mt-[-2px] mb-2 ml-2 block text-sm font-normal text-gray-700">
+                  New Arrival
+                </label>
+              </div>
+              <div className="flex">
+                <Checkbox />
+                <label className="mt-[-2px] mb-2 ml-2 block text-sm font-normal text-gray-700">
+                  Best Sellers
+                </label>
+              </div>
+              <div className="flex">
+                <Checkbox />
+                <label className="mt-[-2px] mb-2 ml-2 block text-sm font-normal text-gray-700">
+                  Spicial Offer
+                </label>
+              </div>
+            </div>
+          </div>
+          <div className="mb-4 rounded-md border border-gray-200 bg-white shadow-sm">
+            <p className="p-3"> Labels</p>
+            <hr />
+            <div className="p-4">
+              <div className="flex">
+                <Checkbox />
+                <label className="mt-[-2px] mb-2 ml-2 block text-sm font-normal text-gray-700">
+                  Hot
+                </label>
+              </div>
+              <div className="flex">
+                <Checkbox />
+                <label className="mt-[-2px] mb-2 ml-2 block text-sm font-normal text-gray-700">
+                  New
+                </label>
+              </div>
+              <div className="flex">
+                <Checkbox />
+                <label className="mt-[-2px] mb-2 ml-2 block text-sm font-normal text-gray-700">
+                  Sale
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div className="mb-4 rounded-md border border-gray-200 bg-white shadow-sm">
             <p className="p-3"> Categories</p>
             <hr />
             <div className="p-3">
