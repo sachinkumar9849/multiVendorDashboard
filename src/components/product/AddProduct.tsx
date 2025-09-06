@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/select";
 import Link from "next/link";
 import AttributesManager from "./AttributesManager";
+import ProductOptionsManager from "./ProductOptionsManager";
 
 const AddProduct = () => {
   const [selectedColors] = useState([]);
@@ -305,139 +306,15 @@ const AddProduct = () => {
             <div className="mb-3 rounded-md border border-gray-200 bg-white">
               <AttributesManager />
             </div>
-            {/* Product Variation Setup */}
-            <div className="mb-3 rounded-md border border-gray-200 bg-white p-5">
-              <h3 className="mb-4 text-lg font-semibold text-gray-800">
-                Product Variation Setup
-              </h3>
-
-              {/* Colors */}
-              <div className="grid gap-5 md:grid-cols-2">
-                <div className="col-span-1">
-                  <div className="">
-                    <label className="mb-2 block text-sm font-semibold text-gray-700">
-                      Select colors:
-                    </label>
-                    <div className="relative">
-                      <button
-                        type="button"
-                        onClick={() => setShowColorPicker(!showColorPicker)}
-                        className="flex w-full items-center justify-between rounded-lg border border-gray-300 px-4 py-3 text-left focus:border-transparent focus:ring-2 focus:ring-blue-500"
-                      >
-                        <span className="text-gray-700">
-                          {selectedColors.length > 0
-                            ? `${selectedColors.length} colors selected`
-                            : "Select colors"}
-                        </span>
-                        <ChevronDown className="h-5 w-5 text-gray-400" />
-                      </button>
-
-                      {showColorPicker && (
-                        <div className="absolute z-10 mt-1 max-h-64 w-full overflow-y-auto rounded-lg border border-gray-300 bg-white shadow-sm">
-                          <div className="grid grid-cols-4 gap-2 p-4">
-                            {colors.map((color) => (
-                              <label
-                                key={color}
-                                className="flex cursor-pointer items-center rounded p-2 hover:bg-gray-50"
-                              >
-                                <input
-                                  type="checkbox"
-                                  className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                                />
-                                <span className="ml-2 text-sm text-gray-700">
-                                  {color}
-                                </span>
-                              </label>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
-                <div className="col-span-1">
-                  {/* Attributes */}
-                  <div>
-                    <label className="mb-2 block text-sm font-semibold text-gray-700">
-                      Select attributes:
-                    </label>
-                    <div className="relative">
-                      <button
-                        type="button"
-                        onClick={() =>
-                          setShowAttributePicker(!showAttributePicker)
-                        }
-                        className="flex w-full items-center justify-between rounded-lg border border-gray-300 px-4 py-3 text-left focus:border-transparent focus:ring-2 focus:ring-blue-500"
-                      >
-                        <span className="text-gray-700">
-                          {selectedAttributes.length > 0
-                            ? selectedAttributes.join(", ")
-                            : "Select attributes"}
-                        </span>
-                        <ChevronDown className="h-5 w-5 text-gray-400" />
-                      </button>
-
-                      {showAttributePicker && (
-                        <div className="absolute z-10 mt-1 w-full rounded-lg border border-gray-300 bg-white shadow-sm">
-                          <div className="p-4">
-                            {attributes.map((attr) => (
-                              <label
-                                key={attr}
-                                className="flex cursor-pointer items-center rounded p-2 hover:bg-gray-50"
-                              >
-                                <input
-                                  type="checkbox"
-                                  className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                                />
-                                <span className="ml-2 text-gray-700">
-                                  {attr}
-                                </span>
-                              </label>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
 
             {/* Images */}
-
-            {/* Product Video */}
-            <div className="mb-3 rounded-md border border-gray-200 bg-white p-5">
+            {/* product options  */}
+            {/* <div className="mb-3 rounded-md border border-gray-200 bg-white p-5">
               <h3 className="mb-4 text-lg font-semibold text-gray-800">
-                Product Video
+                Product options
               </h3>
-              <div>
-                <label className="mb-2 block text-sm font-semibold text-gray-700">
-                  Youtube video link (Optional - please provide embed link not
-                  direct link)
-                </label>
-                <input
-                  type="url"
-                  className="w-full rounded-md border border-gray-300 px-4 py-2 focus:border-transparent focus:ring-2 focus:ring-blue-500"
-                  placeholder="https://www.youtube.com/embed/..."
-                />
-              </div>
-            </div>
-
-            {/* Action Buttons */}
-            <div className="flex gap-4 pt-6">
-              <button
-                type="submit"
-                className="bgBlue flex-1 transform rounded-lg px-8 py-2 font-semibold text-white shadow-sm transition-all hover:scale-[1.02] hover:from-blue-700 hover:to-purple-700"
-              >
-                Add Product
-              </button>
-              <button
-                type="button"
-                className="rounded-lg border border-gray-300 px-8 py-3 font-semibold text-gray-700 transition-colors hover:bg-gray-50"
-              >
-                Cancel
-              </button>
-            </div>
+            </div> */}
+            <ProductOptionsManager />
           </form>
         </div>
         <div className="col-span-3">

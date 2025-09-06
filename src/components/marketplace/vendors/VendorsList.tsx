@@ -191,11 +191,6 @@ const VendorsList: React.FC = () => {
               </p>
             </div>
             <div className="flex max-w-lg flex-1 gap-2">
-              <Link href="/vendor/add">
-                <Button className="bgBlue">
-                  <Plus /> Create
-                </Button>
-              </Link>
               {/* Filters Button with Dropdown */}
               <div className="relative" ref={filtersRef}>
                 <button

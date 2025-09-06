@@ -101,7 +101,18 @@ const othersItems: NavItem[] = [
         pro: false,
       },
       { name: "Tables ", path: "/specification/tables", pro: false },
-      // { name: "Create", path: "/specification/attributes-create", pro: false },
+    ],
+  },
+  {
+    icon: <GridIcon />,
+    name: "Product Attributes",
+    subItems: [
+      { name: "Create ", path: "/attributes/create", pro: false },
+      {
+        name: "List ",
+        path: "/attributes/list",
+        pro: false,
+      },
     ],
   },
   {
