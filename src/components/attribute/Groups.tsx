@@ -16,7 +16,7 @@ interface Product {
   subSubCategory: string;
 }
 
-const Attribute: React.FC = () => {
+const Groups: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedBrand] = useState("All brand");
   const [selectedCategory] = useState("Select category");
@@ -24,7 +24,7 @@ const Attribute: React.FC = () => {
   const products: Product[] = [
     {
       id: 1,
-      name: "	Resolution",
+      name: "Battery",
       type: "Digital",
       price: 40.0,
       verifyStatus: "Approved",
@@ -36,7 +36,7 @@ const Attribute: React.FC = () => {
     },
     {
       id: 2,
-      name: "Screen Size",
+      name: "Dimensions",
       type: "Digital",
       price: 150.0,
       verifyStatus: "Approved",
@@ -70,7 +70,7 @@ const Attribute: React.FC = () => {
           <div className="flex flex-col items-start justify-between gap-4 p-6 md:flex-row md:items-center">
             <div className="flex gap-3">
               <p className="text-xl font-semibold text-gray-900">
-                Specification Attributes
+                Specification Groups
               </p>
               <p className="rounded-md bg-gray-200 px-2 py-1 text-[12px]">2</p>
             </div>
@@ -85,7 +85,7 @@ const Attribute: React.FC = () => {
                   className="w-full rounded-sm border border-gray-300 py-2 pr-4 pl-10 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
                 />
               </div>
-              <Link href="/specification/attributes-create">
+              <Link href="/specification/groups-create">
                 <button className="bgBlue flex items-center gap-2 rounded-sm px-4 py-2 font-medium text-white transition-colors hover:bg-blue-700">
                   <Plus className="h-4 w-4" />
                   Create
@@ -105,7 +105,7 @@ const Attribute: React.FC = () => {
                       Name
                     </th>
                     <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
-                      Field Type
+                      Description
                     </th>
 
                     <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
@@ -123,23 +123,23 @@ const Attribute: React.FC = () => {
                       <td className="px-6 py-2 text-sm text-gray-900">
                         {index + 1}
                       </td>
+
                       <td className="px-6 py-2 text-sm text-gray-900">
                         {product.name}
                       </td>
                       <td className="px-6 py-2 text-sm text-gray-900">
-                        Select
+                        lorem ipsum
                       </td>
-
                       <td className="px-6 py-2 text-sm text-gray-900">
                         10-05-2025
                       </td>
 
                       <td className="px-6 py-2">
                         <div className="flex items-center gap-2">
-                          <button className="rounded-sm p-2 text-gray-600 transition-colors hover:bg-gray-50">
+                          <button className="rounded-lg p-2 text-gray-600 transition-colors hover:bg-gray-50">
                             <Edit className="h-4 w-4" />
                           </button>
-                          <button className="rounded-sm p-2 text-red-600 transition-colors hover:bg-red-50">
+                          <button className="rounded-lg p-2 text-red-600 transition-colors hover:bg-red-50">
                             <Trash2 className="h-4 w-4" />
                           </button>
                         </div>
@@ -164,4 +164,4 @@ const Attribute: React.FC = () => {
   );
 };
 
-export default Attribute;
+export default Groups;

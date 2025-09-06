@@ -6,14 +6,7 @@ import { usePathname } from "next/navigation";
 import { useSidebar } from "../context/SidebarContext";
 import { ChevronDownIcon, GridIcon, HorizontaLDots } from "../icons/index";
 
-import {
-  ShoppingBasket,
-  ShoppingCart,
-  Tag,
-  User,
-  UserCog,
-  Store,
-} from "lucide-react";
+import { ShoppingBasket, ShoppingCart, Tag, User, Store } from "lucide-react";
 
 type NavItem = {
   name: string;
@@ -99,10 +92,27 @@ const othersItems: NavItem[] = [
 
   {
     icon: <GridIcon />,
-    name: "Product Attribute",
+    name: "Product Specification",
     subItems: [
-      { name: "List ", path: "/attribute/list", pro: false },
-      { name: "Create", path: "/attribute/create", pro: false },
+      { name: "Groups ", path: "/specification/groups", pro: false },
+      {
+        name: "Attribute ",
+        path: "/specification/attributes-list",
+        pro: false,
+      },
+      { name: "Tables ", path: "/specification/tables", pro: false },
+    ],
+  },
+  {
+    icon: <GridIcon />,
+    name: "Product Attributes",
+    subItems: [
+      { name: "Create ", path: "/attributes/create", pro: false },
+      {
+        name: "List ",
+        path: "/attributes/list",
+        pro: false,
+      },
     ],
   },
   {
@@ -134,19 +144,20 @@ const marketplaceItems: NavItem[] = [
     name: "Marketplace",
     subItems: [
       { name: "Stores", path: "/marketplace/stores-list", pro: false },
+      { name: "Vendors", path: "/vendor/list", pro: false },
       // { name: "Stores Create", path: "/marketplace/store-create", pro: false },
       // { name: "Vendor Performance", path: "/marketplace/analytics/vendor-performance", pro: false },
     ],
   },
 
-  {
-    icon: <UserCog />,
-    name: "Vendors",
-    subItems: [
-      { name: "List", path: "/vendor/list", pro: false },
-      { name: "Create", path: "/vendor/add", pro: false },
-    ],
-  },
+  // {
+  //   icon: <UserCog />,
+  //   name: "Vendors",
+  //   subItems: [
+  //     { name: "List", path: "/vendor/list", pro: false },
+  //     { name: "Create", path: "/vendor/add", pro: false },
+  //   ],
+  // },
 ];
 
 const userManagement: NavItem[] = [

@@ -7,12 +7,10 @@ import {
   ChevronDown,
   X,
   Filter,
-  Plus,
   Eye,
 } from "lucide-react";
-// import { Button } from "../ui/button";
+
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 
 interface Product {
   id: number;
@@ -191,11 +189,6 @@ const VendorsList: React.FC = () => {
               </p>
             </div>
             <div className="flex max-w-lg flex-1 gap-2">
-              <Link href="/vendor/add">
-                <Button className="bgBlue">
-                  <Plus /> Create
-                </Button>
-              </Link>
               {/* Filters Button with Dropdown */}
               <div className="relative" ref={filtersRef}>
                 <button
@@ -383,7 +376,7 @@ const VendorsList: React.FC = () => {
                 <thead className="bg-gray-50">
                   <tr>
                     <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
-                      SL
+                      ID
                     </th>
                     <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
                       Image
@@ -395,12 +388,15 @@ const VendorsList: React.FC = () => {
                       Email
                     </th>
                     <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
-                      Created at
+                      Store Phone
+                    </th>
+                    <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
+                      Products
+                    </th>
+                    <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
+                      Total Revenue
                     </th>
 
-                    <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
-                      Status
-                    </th>
                     <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
                       Store name
                     </th>
@@ -426,18 +422,22 @@ const VendorsList: React.FC = () => {
                         Rahul Sharma
                       </td>
                       <td className="px-6 py-2 text-sm text-gray-900">
-                        kjhasachin@gmail.com
+                        rahul@gmail.com
                       </td>
                       <td className="px-6 py-2 text-sm text-gray-900">
-                        {new Date(product.createdAt).toLocaleDateString()}
+                        01-2102031
                       </td>
                       <td className="px-6 py-2 text-sm text-gray-900">
                         <span className="bgBlue rounded-sm px-2 py-1 text-white">
-                          Activated
+                          80
                         </span>
                       </td>
                       <td className="px-6 py-2 text-sm text-gray-900">
-                        Dr. Chloe Towne
+                        Rs. 5,473.00
+                      </td>
+
+                      <td className="px-6 py-2 text-sm text-gray-900">
+                        Global Store
                       </td>
 
                       <td className="px-6 py-2">

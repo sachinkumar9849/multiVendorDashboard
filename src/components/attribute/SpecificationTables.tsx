@@ -16,7 +16,7 @@ interface Product {
   subSubCategory: string;
 }
 
-const Attribute: React.FC = () => {
+const SpecificationTables: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedBrand] = useState("All brand");
   const [selectedCategory] = useState("Select category");
@@ -24,7 +24,7 @@ const Attribute: React.FC = () => {
   const products: Product[] = [
     {
       id: 1,
-      name: "	Resolution",
+      name: "	Technical Specification",
       type: "Digital",
       price: 40.0,
       verifyStatus: "Approved",
@@ -36,7 +36,7 @@ const Attribute: React.FC = () => {
     },
     {
       id: 2,
-      name: "Screen Size",
+      name: "	General Specification",
       type: "Digital",
       price: 150.0,
       verifyStatus: "Approved",
@@ -70,7 +70,7 @@ const Attribute: React.FC = () => {
           <div className="flex flex-col items-start justify-between gap-4 p-6 md:flex-row md:items-center">
             <div className="flex gap-3">
               <p className="text-xl font-semibold text-gray-900">
-                Specification Attributes
+                Create Specification Table
               </p>
               <p className="rounded-md bg-gray-200 px-2 py-1 text-[12px]">2</p>
             </div>
@@ -85,7 +85,7 @@ const Attribute: React.FC = () => {
                   className="w-full rounded-sm border border-gray-300 py-2 pr-4 pl-10 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
                 />
               </div>
-              <Link href="/specification/attributes-create">
+              <Link href="/specification/tables-create">
                 <button className="bgBlue flex items-center gap-2 rounded-sm px-4 py-2 font-medium text-white transition-colors hover:bg-blue-700">
                   <Plus className="h-4 w-4" />
                   Create
@@ -105,11 +105,14 @@ const Attribute: React.FC = () => {
                       Name
                     </th>
                     <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
-                      Field Type
+                      Description
                     </th>
 
                     <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
-                      Created at
+                      Created At
+                    </th>
+                    <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
+                      Assigned Groups
                     </th>
 
                     <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
@@ -127,12 +130,13 @@ const Attribute: React.FC = () => {
                         {product.name}
                       </td>
                       <td className="px-6 py-2 text-sm text-gray-900">
-                        Select
+                        description
                       </td>
 
                       <td className="px-6 py-2 text-sm text-gray-900">
-                        10-05-2025
+                        01-02-2025
                       </td>
+                      <td className="px-6 py-2 text-sm text-gray-900">2</td>
 
                       <td className="px-6 py-2">
                         <div className="flex items-center gap-2">
@@ -164,4 +168,4 @@ const Attribute: React.FC = () => {
   );
 };
 
-export default Attribute;
+export default SpecificationTables;

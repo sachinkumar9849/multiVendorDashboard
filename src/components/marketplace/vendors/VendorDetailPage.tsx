@@ -10,7 +10,11 @@ import {
   CheckCircle,
   Upload,
   X,
+  Store,
+  PhoneCall,
+  Eye,
 } from "lucide-react";
+import type { Product } from "@/components/product/ProductList";
 
 interface Review {
   id: string;
@@ -51,10 +55,62 @@ const VendorDetailPage: React.FC = () => {
   const [, setSelectedImage] = useState<string | null>(null);
   const [isEditingImage, setIsEditingImage] = useState(false);
 
+  // Sample data based on your image
+  const products: Product[] = [
+    {
+      id: 1,
+      name: "Norton Utilities Ultimate",
+      type: "Digital",
+      price: 40.0,
+      verifyStatus: "Approved",
+      activeStatus: true,
+      brand: "Norton",
+      category: "Electronics & Gadgets",
+      subCategory: "Software",
+      subSubCategory: "Security",
+    },
+    {
+      id: 2,
+      name: "Office 2021 Professional",
+      type: "Digital",
+      price: 150.0,
+      verifyStatus: "Approved",
+      activeStatus: true,
+      brand: "Microsoft",
+      category: "Electronics & Gadgets",
+      subCategory: "Software",
+      subSubCategory: "Productivity",
+    },
+    {
+      id: 3,
+      name: "125 Childrens AudioBooks",
+      type: "Digital",
+      price: 50.0,
+      verifyStatus: "Approved",
+      activeStatus: true,
+      brand: "AudioPress",
+      category: "Books & Stationery",
+      subCategory: "AudioBooks",
+      subSubCategory: "Children",
+    },
+    {
+      id: 4,
+      name: "Kill Code Fiction",
+      type: "Physical",
+      price: 16.0,
+      verifyStatus: "Approved",
+      activeStatus: true,
+      brand: "BookPress",
+      category: "Books & Stationery",
+      subCategory: "Fiction",
+      subSubCategory: "Thriller",
+    },
+  ];
+
   // Mock data based on the image
   const vendorData: VendorData = {
     id: "1",
-    name: "Afton Braun I",
+    name: "Rahul Sharma",
     email: "johns.lula@example.org",
     phone: "+18042072053",
     profileImage: "/api/placeholder/120/120",
@@ -122,7 +178,7 @@ const VendorDetailPage: React.FC = () => {
     addresses: [
       {
         id: "1",
-        name: "Afton Braun I",
+        name: "Rahul sharma",
         isDefault: true,
         address: "Sour, East Moshe, Louisiana 71639",
       },
@@ -154,7 +210,7 @@ const VendorDetailPage: React.FC = () => {
   const getStatusColor = (status: string) => {
     switch (status) {
       case "Activated":
-        return "bg-blue-100 text-blue-800";
+        return "bg-green-100 text-blue-800";
       case "Deactivated":
         return "bg-red-100 text-red-800";
       case "Pending":
@@ -167,23 +223,18 @@ const VendorDetailPage: React.FC = () => {
   return (
     <div className="bg-gray-50">
       <div className="mx-auto max-w-7xl">
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
           {/* Left Column - Customer Information */}
-          <div className="lg:col-span-1">
-            <div className="rounded-lg bg-white p-6 shadow-sm">
+          <div className="lg:col-span-3">
+            <div className="rounded-md bg-white p-3 shadow-sm">
               <h2 className="mb-6 flex items-center text-lg font-semibold">
-                <User className="mr-2 h-5 w-5" />
-                Customer Information
+                <User className="mr-2 h-4 w-4" />
+                Vendor Information
               </h2>
 
               {/* Profile Image */}
               <div className="mb-6 flex flex-col items-center">
                 <div className="relative">
-                  {/* <img
-                    src={selectedImage || vendorData.profileImage}
-                    alt={vendorData.name}
-                    className="w-24 h-24 rounded-full object-cover border-4 border-gray-200"
-                  /> */}
                   <img
                     src="https://nest.botble.com/storage/customers/8-150x150.jpg"
                     alt={vendorData.name}
@@ -310,31 +361,64 @@ const VendorDetailPage: React.FC = () => {
                 </button>
               </div>
             </div>
-
-            {/* Addresses Section */}
-            <div className="mt-6 rounded-lg bg-white p-6 shadow-sm">
+            <div className="mt-6 rounded-md bg-white p-3 shadow-sm">
               <h2 className="mb-4 flex items-center text-lg font-semibold">
-                <MapPin className="mr-2 h-5 w-5" />
-                Addresses
+                <Store className="mr-2 h-4 w-4" />
+                Store information
               </h2>
+              <hr />
 
               {vendorData.addresses.map((address) => (
                 <div
                   key={address.id}
-                  className="border-b pb-4 last:border-b-0 last:pb-0"
+                  className="border-b py-4 last:border-b-0 last:pb-0"
+                >
+                  <img
+                    className="mx-auto"
+                    style={{ width: "50px", height: "50px" }}
+                    src="https://nest.botble.com/storage/stores/6-150x150.png"
+                    alt=""
+                  />
+                  <div className="flex items-center justify-center">
+                    <div>
+                      <h3 className="font-medium">Global Store</h3>
+                    </div>
+                  </div>
+                  <p className="mt-2 text-sm text-gray-600">
+                    strosin.rachelle@example.com
+                  </p>
+                  <p className="mx-auto mt-2 flex justify-center text-sm text-gray-600">
+                    <PhoneCall className="mr-2 h-4 w-4" />
+                    +16402355633
+                  </p>
+                </div>
+              ))}
+            </div>
+            {/* Addresses Section */}
+            <div className="mt-6 rounded-md bg-white p-3 shadow-sm">
+              <h2 className="mb-4 flex items-center text-lg font-semibold">
+                <MapPin className="mr-2 h-4 w-4" />
+                Addresses
+              </h2>
+              <hr />
+
+              {vendorData.addresses.map((address) => (
+                <div
+                  key={address.id}
+                  className="border-b py-4 last:border-b-0 last:pb-0"
                 >
                   <div className="flex items-center justify-between">
                     <div>
                       <h3 className="font-medium">{address.name}</h3>
-                      {address.isDefault && (
-                        <span className="mt-1 inline-block rounded-full bg-green-100 px-2 py-1 text-xs text-green-800">
-                          Default
-                        </span>
-                      )}
                     </div>
                   </div>
                   <p className="mt-2 text-sm text-gray-600">
                     {address.address}
+                  </p>
+
+                  <p className="mt-2 flex text-sm text-gray-600">
+                    <PhoneCall className="mr-2 h-4 w-4" />
+                    +16402355633
                   </p>
                 </div>
               ))}
@@ -342,56 +426,173 @@ const VendorDetailPage: React.FC = () => {
           </div>
 
           {/* Right Column - Statistics and Reviews */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-9">
             {/* Top Statistics Cards */}
             <div className="mb-6 grid grid-cols-2 gap-4 md:grid-cols-4">
-              <div className="rounded-lg bg-white p-6 shadow-sm">
-                <div className="text-center">
-                  <div className="mb-1 text-sm tracking-wide text-gray-500 uppercase">
-                    Total Orders
+              <div className="rounded-md bg-white p-3 shadow-sm">
+                <div className="">
+                  <div className="mb-1 text-[13px] tracking-wide text-gray-500 uppercase">
+                    Store Products
                   </div>
-                  <div className="text-3xl font-bold text-gray-900">
-                    {vendorData.totalOrders}
-                  </div>
-                </div>
-              </div>
-
-              <div className="rounded-lg bg-white p-6 shadow-sm">
-                <div className="text-center">
-                  <div className="mb-1 text-sm tracking-wide text-gray-500 uppercase">
-                    Completed Orders
-                  </div>
-                  <div className="text-3xl font-bold text-gray-900">
-                    {vendorData.completedOrders}
+                  <div className="text-[20px] font-semibold text-gray-900">
+                    5
                   </div>
                 </div>
               </div>
 
-              <div className="rounded-lg bg-white p-6 shadow-sm">
-                <div className="text-center">
-                  <div className="mb-1 text-sm tracking-wide text-gray-500 uppercase">
-                    Total Products
+              <div className="rounded-md bg-white p-3 shadow-sm">
+                <div className="">
+                  <div className="mb-1 text-[13px] tracking-wide text-gray-500 uppercase">
+                    Store Orders
                   </div>
-                  <div className="text-3xl font-bold text-gray-900">
-                    {vendorData.totalProducts}
+                  <div className="text-[20px] font-semibold text-gray-900">
+                    15
                   </div>
                 </div>
               </div>
 
-              <div className="rounded-lg bg-white p-6 shadow-sm">
-                <div className="text-center">
-                  <div className="mb-1 text-sm tracking-wide text-gray-500 uppercase">
-                    Total Spent
+              <div className="rounded-md bg-white p-3 shadow-sm">
+                <div className="">
+                  <div className="mb-1 text-[13px] tracking-wide text-gray-500 uppercase">
+                    Total Revenue
                   </div>
-                  <div className="text-3xl font-bold text-gray-900">
-                    ${vendorData.totalSpent.toFixed(2)}
+                  <div className="text-[20px] font-semibold text-gray-900">
+                    Rs.5,473.00
+                  </div>
+                </div>
+              </div>
+
+              <div className="rounded-md bg-white p-3 shadow-sm">
+                <div className="">
+                  <div className="mb-1 text-[13px] tracking-wide text-gray-500 uppercase">
+                    Total Earnings
+                  </div>
+                  <div className="text-[20px] font-semibold text-gray-900">
+                    Rs. 5,473.00
+                  </div>
+                </div>
+              </div>
+              <div className="rounded-md bg-white p-3 shadow-sm">
+                <div className="">
+                  <div className="mb-1 text-[13px] tracking-wide text-gray-500 uppercase">
+                    Withdrawals
+                  </div>
+                  <div className="text-[20px] font-semibold text-gray-900">
+                    Rs. 5,473.00
+                  </div>
+                </div>
+              </div>
+              <div className="rounded-md bg-white p-3 shadow-sm">
+                <div className="">
+                  <div className="mb-1 text-[13px] tracking-wide text-gray-500 uppercase">
+                    Pending Withdrawals
+                  </div>
+                  <div className="text-[20px] font-semibold text-gray-900">
+                    Rs. 5,473.00
+                  </div>
+                </div>
+              </div>
+              <div className="rounded-md bg-white p-3 shadow-sm">
+                <div className="">
+                  <div className="mb-1 text-[13px] tracking-wide text-gray-500 uppercase">
+                    Balance
+                  </div>
+                  <div className="text-[20px] font-semibold text-gray-900">
+                    Rs. 5,473.00
+                  </div>
+                </div>
+              </div>
+              <div className="rounded-md bg-white p-3 shadow-sm">
+                <div className="">
+                  <div className="mb-1 text-[13px] tracking-wide text-gray-500 uppercase">
+                    Completed orders
+                  </div>
+                  <div className="text-[20px] font-semibold text-gray-900">
+                    0
                   </div>
                 </div>
               </div>
             </div>
 
+            <div className="mb-4 overflow-hidden rounded-md bg-white shadow-sm">
+              <h2 className="mx-4 mt-3 mb-2 text-lg font-semibold">Products</h2>
+
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      <th className="px-6 py-2 text-left text-sm font-semibold text-gray-900">
+                        Product Name
+                      </th>
+
+                      <th className="px-6 py-2 text-left text-sm font-semibold text-gray-900">
+                        Quantity
+                      </th>
+                      <th className="px-6 py-2 text-left text-sm font-semibold text-gray-900">
+                        Created
+                      </th>
+                      <th className="px-6 py-2 text-left text-sm font-semibold text-gray-900">
+                        Price
+                      </th>
+                      <th className="px-6 py-2 text-left text-sm font-semibold text-gray-900">
+                        Status
+                      </th>
+
+                      <th className="px-6 py-2 text-left text-sm font-semibold text-gray-900">
+                        Action
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-200">
+                    {products.map((product) => (
+                      <tr key={product.id} className="hover:bg-gray-50">
+                        <td className="px-6 py-2">
+                          <div className="flex items-center gap-3">
+                            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-blue-100 to-blue-200">
+                              <img
+                                src="https://sb.kaleidousercontent.com/67418/1920x1100/0135fd63fd/transparent-boots.png"
+                                alt=""
+                              />
+                            </div>
+                            <span className="text-sm font-medium text-gray-900">
+                              {product.name} ({product.type})
+                            </span>
+                          </div>
+                        </td>
+
+                        <td className="px-6 py-2 text-sm font-medium text-gray-900">
+                          44
+                        </td>
+                        <td className="px-6 py-2 text-sm font-medium text-gray-900">
+                          2025
+                        </td>
+                        <td className="px-6 py-2 text-sm font-medium text-gray-900">
+                          Rs. 323
+                        </td>
+                        <td className="px-6 py-2">
+                          <span
+                            className={`inline-flex rounded-full border px-2 py-1 text-xs font-medium ${getStatusColor(product.verifyStatus)}`}
+                          >
+                            {product.verifyStatus}
+                          </span>
+                        </td>
+
+                        <td className="px-6 py-2">
+                          <div className="flex items-center gap-2">
+                            <button className="rounded-lg p-2 text-cyan-600 transition-colors hover:bg-cyan-50">
+                              <Eye className="h-4 w-4" />
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
             {/* Recent Reviews */}
-            <div className="rounded-lg bg-white p-6 shadow-sm">
+            <div className="rounded-md bg-white p-3 shadow-sm">
               <h2 className="mb-6 text-lg font-semibold">
                 Recent Reviews ({vendorData.reviews.length})
               </h2>

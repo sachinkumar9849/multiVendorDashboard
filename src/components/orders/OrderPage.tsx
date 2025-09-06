@@ -103,7 +103,7 @@ const OrderPage = () => {
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <div className="mb-8">
-          <div className="mb-6 flex flex-col md:flex-row md:items-center md:justify-between">
+          <div className="mb-4 flex flex-col md:flex-row md:items-center md:justify-between">
             <div>
               <h1 className="text-[25px] font-semibold text-gray-900">
                 All Orders

@@ -1,10 +1,10 @@
 "use client";
 import React, { useState, useMemo } from "react";
-import { Search, Plus, Download, Eye, Edit, Trash2 } from "lucide-react";
+import { Search, Plus, Edit, Trash2 } from "lucide-react";
 
 import Link from "next/link";
 
-interface Product {
+export interface Product {
   id: number;
   name: string;
   type: "Digital" | "Physical";
@@ -152,7 +152,7 @@ const ProductList: React.FC = () => {
     <div className="">
       <div className="mx-auto max-w-7xl">
         {/* Header */}
-        <div className="mb-8">
+        <div className="mb-5">
           <div className="mb-6 flex items-center gap-3">
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-orange-400 to-red-500">
               <div className="h-4 w-4 rounded-sm bg-white"></div>
@@ -164,7 +164,7 @@ const ProductList: React.FC = () => {
           </div>
 
           {/* Filter Section */}
-          <div className="mb-6 rounded-md border border-gray-200 bg-white p-6 shadow-sm">
+          <div className="mb-2 rounded-md border border-gray-200 bg-white p-6 shadow-sm">
             <h2 className="mb-4 text-lg font-semibold text-gray-900">
               Filter Products
             </h2>
@@ -274,21 +274,17 @@ const ProductList: React.FC = () => {
                   placeholder="Search by Product Name"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full rounded-lg border border-gray-300 py-2 pr-4 pl-10 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+                  className="w-full rounded-md border border-gray-300 py-2 pr-4 pl-10 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
                 />
               </div>
-              <button className="bgBlue rounded-lg px-6 py-2 font-medium text-white transition-colors hover:bg-blue-700">
+              <button className="bgBlue rounded-md px-6 py-2 font-medium text-white transition-colors hover:bg-blue-700">
                 Search
               </button>
             </div>
 
             <div className="flex gap-3">
-              <button className="flex items-center gap-2 rounded-lg bg-green-600 px-4 py-2 font-medium text-white transition-colors hover:bg-green-700">
-                <Download className="h-4 w-4" />
-                Export
-              </button>
               <Link href="/products/add-product">
-                <button className="bgBlue flex items-center gap-2 rounded-lg px-4 py-2 font-medium text-white transition-colors hover:bg-blue-700">
+                <button className="bgBlue flex items-center gap-2 rounded-md px-4 py-2 font-medium text-white transition-colors hover:bg-blue-700">
                   <Plus className="h-4 w-4" />
                   Add new product
                 </button>
@@ -300,30 +296,33 @@ const ProductList: React.FC = () => {
               <table className="w-full">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th className="px-6 py-2 text-left text-sm font-semibold text-gray-900">
-                      SL
+                    <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
+                      ID
                     </th>
-                    <th className="px-6 py-2 text-left text-sm font-semibold text-gray-900">
+                    <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
                       Product Name
                     </th>
 
-                    <th className="px-6 py-2 text-left text-sm font-semibold text-gray-900">
-                      Stock status
+                    <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
+                      Stock
                     </th>
-                    <th className="px-6 py-2 text-left text-sm font-semibold text-gray-900">
+                    <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
                       Quantity
                     </th>
-                    <th className="px-6 py-2 text-left text-sm font-semibold text-gray-900">
-                      Created At
+                    <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
+                      Sku
                     </th>
-                    <th className="px-6 py-2 text-left text-sm font-semibold text-gray-900">
+                    <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
+                      Created
+                    </th>
+                    <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
                       Price
                     </th>
-                    <th className="px-6 py-2 text-left text-sm font-semibold text-gray-900">
+                    <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
                       Status
                     </th>
 
-                    <th className="px-6 py-2 text-left text-sm font-semibold text-gray-900">
+                    <th className="px-6 py-2 text-left text-[12px] font-semibold text-gray-900 uppercase">
                       Action
                     </th>
                   </tr>
@@ -331,7 +330,7 @@ const ProductList: React.FC = () => {
                 <tbody className="divide-y divide-gray-200">
                   {filteredProducts.map((product, index) => (
                     <tr key={product.id} className="hover:bg-gray-50">
-                      <td className="px-6 py-2 text-sm text-gray-900">
+                      <td className="px-6 py-2 text-[13px] text-gray-900">
                         {index + 1}
                       </td>
                       <td className="px-6 py-2">
@@ -348,16 +347,20 @@ const ProductList: React.FC = () => {
                         </div>
                       </td>
 
-                      <td className="px-6 py-2 text-sm font-medium text-[#31b345]">
+                      <td className="px-6 py-2 text-[13px] font-medium text-[#31b345]">
                         In Stock
                       </td>
-                      <td className="px-6 py-2 text-sm font-medium text-gray-900">
+                      <td className="px-6 py-2 text-[13px] font-medium text-gray-900">
                         44
                       </td>
-                      <td className="px-6 py-2 text-sm font-medium text-gray-900">
+                      <td className="px-6 py-2 text-[13px] font-medium text-gray-900">
+                        EJ-139-A1
+                      </td>
+                      <td className="px-6 py-2 text-[13px] font-medium text-gray-900">
                         2025
                       </td>
-                      <td className="px-6 py-2 text-sm font-medium text-gray-900">
+
+                      <td className="px-6 py-2 text-[13px] font-medium text-gray-900">
                         Rs. 323
                       </td>
                       <td className="px-6 py-2">
@@ -370,9 +373,6 @@ const ProductList: React.FC = () => {
 
                       <td className="px-6 py-2">
                         <div className="flex items-center gap-2">
-                          <button className="rounded-lg p-2 text-cyan-600 transition-colors hover:bg-cyan-50">
-                            <Eye className="h-4 w-4" />
-                          </button>
                           <button className="rounded-lg p-2 text-gray-600 transition-colors hover:bg-gray-50">
                             <Edit className="h-4 w-4" />
                           </button>
