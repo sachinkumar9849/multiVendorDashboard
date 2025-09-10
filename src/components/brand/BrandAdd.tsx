@@ -125,13 +125,6 @@ const BrandAdd: React.FC = () => {
                 <Switch />
               </div>
             </div>
-            <div className="mb-6 rounded-md border border-gray-200 bg-white shadow-sm">
-              <p className="p-3"> Categories</p>
-              <hr />
-              <div className="p-3">
-                <CategoriesList />
-              </div>
-            </div>
           </div>
         </div>
       </div>
