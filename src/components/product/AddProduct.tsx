@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { Save } from "lucide-react";
 import ImageComponent from "../common/ImageComponent";
 import { Switch } from "../ui/switch";
-import CategoriesList from "../attribute/CategoriesSelect";
 import {
   Select,
   SelectContent,
@@ -276,6 +275,32 @@ const AddProduct = () => {
               </h3>
             </div> */}
             <ProductOptionsManager />
+            <div className="mb-6 rounded-md border border-gray-200 bg-white p-5 shadow-sm">
+              <p className="mb-3 text-xl font-semibold text-gray-900">
+                Search Engine Optimize
+              </p>
+              <div className="grid grid-cols-1 gap-3 md:grid-cols-1">
+                <div>
+                  <label className="mb-2 block text-sm font-semibold text-gray-700">
+                    Seo Title
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full rounded-sm border border-gray-300 px-4 py-2 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                    placeholder=" Seo Title"
+                  />
+                </div>
+                <div className="">
+                  <label className="mb-2 block text-sm font-semibold text-gray-700">
+                    Seo Description
+                  </label>
+                  <textarea
+                    className="w-full rounded-sm border border-gray-300 px-4 py-2 transition-all focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                    placeholder="Seo Description"
+                  />
+                </div>
+              </div>
+            </div>
           </form>
         </div>
         <div className="col-span-3">

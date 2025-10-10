@@ -10,7 +10,6 @@ import {
 import { Switch } from "@/components/ui/switch";
 import ImageComponent from "../common/ImageComponent";
 import TextArea from "../form/input/TextArea";
-import CategoriesList from "../attribute/CategoriesSelect";
 import { Save } from "lucide-react";
 
 const BrandAdd: React.FC = () => {

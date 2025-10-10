@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { Save } from "lucide-react";
 import ImageComponent from "../common/ImageComponent";
 import { Switch } from "../ui/switch";
-import CategoriesList from "../attribute/CategoriesSelect";
 import {
   Select,
   SelectContent,

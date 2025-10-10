@@ -10,7 +10,6 @@ import {
 import { Switch } from "@/components/ui/switch";
 import ImageComponent from "../common/ImageComponent";
 import TextArea from "../form/input/TextArea";
-import CategoriesList from "../attribute/CategoriesSelect";
 import { Save } from "lucide-react";
 
 const BrandEdit: React.FC = () => {
@@ -22,7 +21,6 @@ const BrandEdit: React.FC = () => {
             <div className="mb-6 rounded-md border border-gray-200 bg-white p-6 shadow-sm">
               <div className="mb-3">
                 <p className="text-xl font-semibold text-gray-900">
-                  {" "}
                   Brand Edit
                 </p>
               </div>

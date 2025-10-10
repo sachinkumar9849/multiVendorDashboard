@@ -450,9 +450,11 @@ const StoreList: React.FC = () => {
                       </td>
                       <td className="px-6 py-2">
                         <div className="flex items-center gap-2">
-                          <button className="rounded-md p-2 text-gray-600 transition-colors hover:bg-gray-50">
-                            <Edit className="h-4 w-4" />
-                          </button>
+                          <Link href={`/marketplace/stores-list/${product.id}`}>
+                            <button className="rounded-md p-2 text-gray-600 transition-colors hover:bg-gray-50">
+                              <Edit className="h-4 w-4" />
+                            </button>
+                          </Link>
                           <button className="rounded-md p-2 text-red-600 transition-colors hover:bg-red-50">
                             <Trash2 className="h-4 w-4" />
                           </button>
