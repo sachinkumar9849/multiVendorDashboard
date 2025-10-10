@@ -16,11 +16,11 @@ export const registerSchema = Yup.object({
     .email("Invalid email address")
     .required("Email is required"),
   password: Yup.string()
-    .min(8, "Password must be at least 8 characters")
-    .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
-      "Password must contain at least one uppercase letter, one lowercase letter, and one number",
-    )
+    // .min(8, "Password must be at least 8 characters")
+    // .matches(
+    //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
+    //   "Password must contain at least one uppercase letter, one lowercase letter, and one number",
+    // )
     .required("Password is required"),
   current_role: Yup.string()
     .oneOf(["customer", "vendor"], "Please select a valid role")
@@ -34,4 +34,12 @@ export const activateUserSchema = Yup.object({
   code: Yup.string()
     .matches(/^[0-9]{4}$/, "Activation code must be exactly 4 digits")
     .required("Activation code is required"),
+});
+export const signInSchema = Yup.object({
+  phone: Yup.string()
+    .matches(/^[0-9]{10}$/, "Phone number must be exactly 10 digits")
+    .required("Phone number is required"),
+  password: Yup.string()
+    .min(6, "Password must be at least 6 characters")
+    .required("Password is required"),
 });

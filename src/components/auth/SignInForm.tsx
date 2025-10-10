@@ -1,4 +1,5 @@
 "use client";
+
 import Checkbox from "@/components/form/input/Checkbox";
 import Input from "@/components/form/input/InputField";
 import Label from "@/components/form/Label";
@@ -6,10 +7,30 @@ import Button from "@/components/ui/button/Button";
 import { ChevronLeftIcon, EyeCloseIcon, EyeIcon } from "@/icons";
 import Link from "next/link";
 import React, { useState } from "react";
+import { useFormik } from "formik";
+import { signInSchema } from "@/validation/auth.schema";
+import { useSignIn } from "@/hooks/useSignIn";
+import { SignInPayload } from "@/types/auth.types";
+import { storage } from "@/utils/storage";
 
 export default function SignInForm() {
   const [showPassword, setShowPassword] = useState(false);
-  const [isChecked, setIsChecked] = useState(false);
+  const { mutate: signIn, isPending } = useSignIn();
+
+  const formik = useFormik<SignInPayload & { rememberMe: boolean }>({
+    initialValues: {
+      phone: "",
+      password: "",
+      rememberMe: storage.getRememberMe(),
+    },
+    validationSchema: signInSchema,
+    onSubmit: (values) => {
+      storage.setRememberMe(values.rememberMe);
+      const { rememberMe, ...credentials } = values;
+      signIn(credentials);
+    },
+  });
+
   return (
     <div className="flex w-full flex-1 flex-col lg:w-1/2">
       <div className="mx-auto mb-5 w-full max-w-md sm:pt-10">
@@ -28,7 +49,7 @@ export default function SignInForm() {
               Sign In
             </h1>
             <p className="text-sm text-gray-500 dark:text-gray-400">
-              Enter your email and password to sign in!
+              Enter your phone number and password to sign in!
             </p>
           </div>
           <div>
@@ -42,22 +63,41 @@ export default function SignInForm() {
                 </span>
               </div>
             </div>
-            <form>
+            <form onSubmit={formik.handleSubmit}>
               <div className="space-y-6">
                 <div>
-                  <Label>
-                    Email <span className="text-error-500">*</span>{" "}
+                  <Label htmlFor="phone">
+                    Phone Number <span className="text-error-500">*</span>
                   </Label>
-                  <Input placeholder="info@gmail.com" type="email" />
+                  <Input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    placeholder="9851953405"
+                    value={formik.values.phone}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    maxLength={10}
+                  />
+                  {formik.touched.phone && formik.errors.phone && (
+                    <p className="text-error-500 mt-1 text-xs">
+                      {formik.errors.phone}
+                    </p>
+                  )}
                 </div>
                 <div>
-                  <Label>
-                    Password <span className="text-error-500">*</span>{" "}
+                  <Label htmlFor="password">
+                    Password <span className="text-error-500">*</span>
                   </Label>
                   <div className="relative">
                     <Input
+                      id="password"
+                      name="password"
                       type={showPassword ? "text" : "password"}
                       placeholder="Enter your password"
+                      value={formik.values.password}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
                     />
                     <span
                       onClick={() => setShowPassword(!showPassword)}
@@ -70,10 +110,20 @@ export default function SignInForm() {
                       )}
                     </span>
                   </div>
+                  {formik.touched.password && formik.errors.password && (
+                    <p className="text-error-500 mt-1 text-xs">
+                      {formik.errors.password}
+                    </p>
+                  )}
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <Checkbox checked={isChecked} onChange={setIsChecked} />
+                    <Checkbox
+                      checked={formik.values.rememberMe}
+                      onChange={(checked) =>
+                        formik.setFieldValue("rememberMe", checked)
+                      }
+                    />
                     <span className="text-theme-sm block font-normal text-gray-700 dark:text-gray-400">
                       Keep me logged in
                     </span>
@@ -86,8 +136,38 @@ export default function SignInForm() {
                   </Link>
                 </div>
                 <div>
-                  <Button className="w-full" size="sm">
-                    Sign in
+                  <Button
+                    type="submit"
+                    className="w-full"
+                    size="sm"
+                    disabled={isPending || !formik.isValid}
+                  >
+                    {isPending ? (
+                      <>
+                        <svg
+                          className="mr-2 -ml-1 h-4 w-4 animate-spin"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                          />
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                          />
+                        </svg>
+                        Signing in...
+                      </>
+                    ) : (
+                      "Sign in"
+                    )}
                   </Button>
                 </div>
               </div>
@@ -95,7 +175,7 @@ export default function SignInForm() {
 
             <div className="mt-5">
               <p className="text-center text-sm font-normal text-gray-700 sm:text-start dark:text-gray-400">
-                Don&apos;t have an account? {""}
+                Don&apos;t have an account?{" "}
                 <Link
                   href="/signup"
                   className="text-brand-500 hover:text-brand-600 dark:text-brand-400"

@@ -4,24 +4,36 @@ import {
   ActivateUserResponse,
   RegisterPayload,
   RegisterResponse,
+  SignInPayload,
+  SignInResponse,
 } from "@/types/auth.types";
+import axiosInstance from "@/lib/axios";
 
 const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_URL || "https://api.kapilstore.com.np/api/v1";
 
 export const authAPI = {
   register: async (payload: RegisterPayload): Promise<RegisterResponse> => {
-    const { data } = await axios.post<RegisterResponse>(
-      `${API_BASE_URL}/register-user`,
+    const { data } = await axiosInstance.post<RegisterResponse>(
+      "/register-user",
       payload,
     );
     return data;
   },
+
+  signIn: async (payload: SignInPayload): Promise<SignInResponse> => {
+    const { data } = await axiosInstance.post<SignInResponse>(
+      "/login",
+      payload,
+    );
+    return data;
+  },
+
   activateUser: async (
     payload: ActivateUserPayload,
   ): Promise<ActivateUserResponse> => {
-    const { data } = await axios.post<ActivateUserResponse>(
-      `${API_BASE_URL}/activate-user`,
+    const { data } = await axiosInstance.post<ActivateUserResponse>(
+      "/activate-user",
       payload,
     );
     return data;

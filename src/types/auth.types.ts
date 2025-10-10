@@ -33,3 +33,25 @@ export interface ActivateUserPayload {
 export interface ActivateUserResponse {
   message: string;
 }
+export interface SignInPayload {
+  phone: string;
+  password: string;
+}
+
+export interface User {
+  id: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+  profile_image: string;
+  is_active: boolean;
+  is_blacklisted: boolean;
+  current_role: "customer" | "vendor";
+  created_at: string;
+  updated_at: string;
+  phone: string;
+}
+
+export interface SignInResponse extends User {
+  token: string;
+}
