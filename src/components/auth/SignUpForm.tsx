@@ -6,6 +6,8 @@ import { ChevronLeftIcon, EyeCloseIcon, EyeIcon } from "@/icons";
 import Link from "next/link";
 import React, { useState } from "react";
 
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+
 export default function SignUpForm() {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -103,6 +105,23 @@ export default function SignUpForm() {
                     </span>
                   </div>
                 </div>
+                <RadioGroup
+                  defaultValue="option-one"
+                  className="flex items-center"
+                >
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="option-one" id="option-one" />
+                    <Label className="mb-0" htmlFor="option-one">
+                      Vendors
+                    </Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <RadioGroupItem value="option-two" id="option-two" />
+                    <Label className="mb-0" htmlFor="option-two">
+                      Customer
+                    </Label>
+                  </div>
+                </RadioGroup>
 
                 <div>
                   <button className="bg-brand-500 shadow-theme-xs hover:bg-brand-600 flex w-full items-center justify-center rounded-lg px-4 py-3 text-sm font-medium text-white transition">
