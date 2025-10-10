@@ -5,11 +5,30 @@ import Label from "@/components/form/Label";
 import { ChevronLeftIcon, EyeCloseIcon, EyeIcon } from "@/icons";
 import Link from "next/link";
 import React, { useState } from "react";
-
+import { useFormik } from "formik";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { registerSchema } from "@/validation/auth.schema";
+import { useRegister } from "@/hooks/useRegister";
+import { RegisterPayload } from "@/types/auth.types";
 
 export default function SignUpForm() {
   const [showPassword, setShowPassword] = useState(false);
+  const { mutate: register, isPending } = useRegister();
+
+  const formik = useFormik<RegisterPayload>({
+    initialValues: {
+      first_name: "",
+      last_name: "",
+      phone: "",
+      email: "",
+      password: "",
+      current_role: "customer",
+    },
+    validationSchema: registerSchema,
+    onSubmit: (values) => {
+      register(values);
+    },
+  });
 
   return (
     <div className="no-scrollbar flex w-full flex-1 flex-col overflow-y-auto lg:w-1/2">
@@ -43,37 +62,72 @@ export default function SignUpForm() {
                 </span>
               </div>
             </div>
-            <form>
+            <form onSubmit={formik.handleSubmit}>
               <div className="space-y-5">
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                  {/* <!-- First Name --> */}
                   <div className="sm:col-span-1">
-                    <Label>
+                    <Label htmlFor="first_name">
                       First Name<span className="text-error-500">*</span>
                     </Label>
                     <Input
                       type="text"
-                      id="fname"
-                      name="fname"
+                      id="first_name"
+                      name="first_name"
                       placeholder="Enter your first name"
+                      value={formik.values.first_name}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
                     />
+                    {formik.touched.first_name && formik.errors.first_name && (
+                      <p className="text-error-500 mt-1 text-xs">
+                        {formik.errors.first_name}
+                      </p>
+                    )}
                   </div>
 
                   <div className="sm:col-span-1">
-                    <Label>
+                    <Label htmlFor="last_name">
                       Last Name<span className="text-error-500">*</span>
                     </Label>
                     <Input
                       type="text"
-                      id="lname"
-                      name="lname"
+                      id="last_name"
+                      name="last_name"
                       placeholder="Enter your last name"
+                      value={formik.values.last_name}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
                     />
+                    {formik.touched.last_name && formik.errors.last_name && (
+                      <p className="text-error-500 mt-1 text-xs">
+                        {formik.errors.last_name}
+                      </p>
+                    )}
                   </div>
                 </div>
 
                 <div>
-                  <Label>
+                  <Label htmlFor="phone">
+                    Phone Number<span className="text-error-500">*</span>
+                  </Label>
+                  <Input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="Enter your phone number"
+                    value={formik.values.phone}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                  />
+                  {formik.touched.phone && formik.errors.phone && (
+                    <p className="text-error-500 mt-1 text-xs">
+                      {formik.errors.phone}
+                    </p>
+                  )}
+                </div>
+
+                <div>
+                  <Label htmlFor="email">
                     Email<span className="text-error-500">*</span>
                   </Label>
                   <Input
@@ -81,17 +135,30 @@ export default function SignUpForm() {
                     id="email"
                     name="email"
                     placeholder="Enter your email"
+                    value={formik.values.email}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
                   />
+                  {formik.touched.email && formik.errors.email && (
+                    <p className="text-error-500 mt-1 text-xs">
+                      {formik.errors.email}
+                    </p>
+                  )}
                 </div>
 
                 <div>
-                  <Label>
+                  <Label htmlFor="password">
                     Password<span className="text-error-500">*</span>
                   </Label>
                   <div className="relative">
                     <Input
+                      id="password"
+                      name="password"
                       placeholder="Enter your password"
                       type={showPassword ? "text" : "password"}
+                      value={formik.values.password}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
                     />
                     <span
                       onClick={() => setShowPassword(!showPassword)}
@@ -104,28 +171,52 @@ export default function SignUpForm() {
                       )}
                     </span>
                   </div>
+                  {formik.touched.password && formik.errors.password && (
+                    <p className="text-error-500 mt-1 text-xs">
+                      {formik.errors.password}
+                    </p>
+                  )}
                 </div>
-                <RadioGroup
-                  defaultValue="option-one"
-                  className="flex items-center"
-                >
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="option-one" id="option-one" />
-                    <Label className="mb-0" htmlFor="option-one">
-                      Vendors
-                    </Label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="option-two" id="option-two" />
-                    <Label className="mb-0" htmlFor="option-two">
-                      Customer
-                    </Label>
-                  </div>
-                </RadioGroup>
 
                 <div>
-                  <button className="bg-brand-500 shadow-theme-xs hover:bg-brand-600 flex w-full items-center justify-center rounded-lg px-4 py-3 text-sm font-medium text-white transition">
-                    Sign Up
+                  <Label>
+                    Select Role<span className="text-error-500">*</span>
+                  </Label>
+                  <RadioGroup
+                    value={formik.values.current_role}
+                    onValueChange={(value) =>
+                      formik.setFieldValue("current_role", value)
+                    }
+                    className="flex items-center gap-4"
+                  >
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="vendor" id="vendor" />
+                      <Label className="mb-0" htmlFor="vendor">
+                        Vendor
+                      </Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="customer" id="customer" />
+                      <Label className="mb-0" htmlFor="customer">
+                        Customer
+                      </Label>
+                    </div>
+                  </RadioGroup>
+                  {formik.touched.current_role &&
+                    formik.errors.current_role && (
+                      <p className="text-error-500 mt-1 text-xs">
+                        {formik.errors.current_role}
+                      </p>
+                    )}
+                </div>
+
+                <div>
+                  <button
+                    type="submit"
+                    disabled={isPending || !formik.isValid}
+                    className="bg-brand-500 shadow-theme-xs hover:bg-brand-600 disabled:bg-brand-300 flex w-full items-center justify-center rounded-lg px-4 py-3 text-sm font-medium text-white transition disabled:cursor-not-allowed"
+                  >
+                    {isPending ? "Signing Up..." : "Sign Up"}
                   </button>
                 </div>
               </div>
@@ -133,7 +224,7 @@ export default function SignUpForm() {
 
             <div className="mt-5">
               <p className="text-center text-sm font-normal text-gray-700 sm:text-start dark:text-gray-400">
-                Already have an account?
+                Already have an account?{" "}
                 <Link
                   href="/signin"
                   className="text-brand-500 hover:text-brand-600 dark:text-brand-400"
