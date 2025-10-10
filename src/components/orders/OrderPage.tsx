@@ -4,7 +4,6 @@ import {
   Search,
   Filter,
   Download,
-  Eye,
   Edit,
   Trash2,
   ChevronDown,
@@ -12,6 +11,7 @@ import {
 } from "lucide-react";
 import { DatePickerDemo } from "../common/DatePicker";
 import { Button } from "../ui/button";
+import Link from "next/link";
 
 const OrderPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -20,7 +20,7 @@ const OrderPage = () => {
 
   const orders = [
     {
-      id: "ORD-001",
+      id: "1",
       date: "15/08/2024",
       customer: {
         name: "John Doe",
@@ -32,7 +32,7 @@ const OrderPage = () => {
       type: "online",
     },
     {
-      id: "ORD-002",
+      id: "2",
       date: "14/08/2024",
       customer: {
         name: "Sarah Smith",
@@ -44,7 +44,7 @@ const OrderPage = () => {
       type: "offline",
     },
     {
-      id: "ORD-003",
+      id: "3",
       date: "13/08/2024",
       customer: {
         name: "Mike Johnson",
@@ -56,7 +56,7 @@ const OrderPage = () => {
       type: "online",
     },
     {
-      id: "ORD-004",
+      id: "4",
       date: "12/08/2024",
       customer: {
         name: "Emily Davis",
@@ -68,7 +68,7 @@ const OrderPage = () => {
       type: "online",
     },
     {
-      id: "ORD-005",
+      id: "5",
       date: "11/08/2024",
       customer: {
         name: "David Wilson",
@@ -236,7 +236,7 @@ const OrderPage = () => {
                   <th className="px-6 py-2 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
                     SL
                   </th>
-                  <th className="px-6 py-2 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
+                  <th className="px-2 py-2 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
                     Order ID
                   </th>
                   <th className="px-6 py-2 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
@@ -246,7 +246,10 @@ const OrderPage = () => {
                     Customer Info
                   </th>
                   <th className="px-6 py-2 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
-                    Total Amount
+                    Amount
+                  </th>
+                  <th className="px-6 py-2 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
+                    Order Status
                   </th>
                   <th className="px-6 py-2 text-left text-xs font-medium tracking-wider text-gray-500 uppercase">
                     Order Status
@@ -292,6 +295,11 @@ const OrderPage = () => {
                       </div>
                     </td>
                     <td className="px-6 py-2 whitespace-nowrap">
+                      <span className="inline-flex rounded-full border bg-[#31b345] px-3 py-1 text-xs font-medium text-white">
+                        Completed
+                      </span>
+                    </td>
+                    <td className="px-6 py-2 whitespace-nowrap">
                       <span
                         className={`inline-flex rounded-full border px-3 py-1 text-xs font-medium ${getStatusColor(order.status)}`}
                       >
@@ -299,14 +307,15 @@ const OrderPage = () => {
                           order.status.slice(1)}
                       </span>
                     </td>
+
                     <td className="px-6 py-2 whitespace-nowrap">
                       <div className="flex items-center gap-2">
-                        <button className="rounded-md p-2 text-blue-600 transition-colors hover:bg-blue-50">
-                          <Eye className="h-4 w-4" />
-                        </button>
-                        <button className="rounded-md p-2 text-green-600 transition-colors hover:bg-green-50">
-                          <Edit className="h-4 w-4" />
-                        </button>
+                        <Link href={`/order/list-all/${order.id}`}>
+                          <button className="rounded-md p-2 text-green-600 transition-colors hover:bg-green-50">
+                            <Edit className="h-4 w-4" />
+                          </button>
+                        </Link>
+
                         <button className="rounded-md p-2 text-red-600 transition-colors hover:bg-red-50">
                           <Trash2 className="h-4 w-4" />
                         </button>

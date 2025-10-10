@@ -10,7 +10,6 @@ import {
 import { Switch } from "@/components/ui/switch";
 import ImageComponent from "../common/ImageComponent";
 import TextArea from "../form/input/TextArea";
-import CategoriesList from "../attribute/CategoriesSelect";
 import { Save } from "lucide-react";
 
 const BrandAdd: React.FC = () => {
@@ -123,13 +122,6 @@ const BrandAdd: React.FC = () => {
               <hr />
               <div className="p-3">
                 <Switch />
-              </div>
-            </div>
-            <div className="mb-6 rounded-md border border-gray-200 bg-white shadow-sm">
-              <p className="p-3"> Categories</p>
-              <hr />
-              <div className="p-3">
-                <CategoriesList />
               </div>
             </div>
           </div>

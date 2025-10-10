@@ -143,7 +143,8 @@ const marketplaceItems: NavItem[] = [
     icon: <Store />,
     name: "Marketplace",
     subItems: [
-      { name: "Stores", path: "/marketplace/stores-list", pro: false },
+      { name: "Stores List", path: "/marketplace/stores-list", pro: false },
+      { name: "Stores Create", path: "/marketplace/create", pro: false },
       { name: "Vendors", path: "/vendor/list", pro: false },
       // { name: "Stores Create", path: "/marketplace/store-create", pro: false },
       // { name: "Vendor Performance", path: "/marketplace/analytics/vendor-performance", pro: false },

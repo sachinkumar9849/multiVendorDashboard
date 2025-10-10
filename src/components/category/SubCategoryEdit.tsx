@@ -1,0 +1,97 @@
+"use client";
+import React, { useState } from "react";
+
+import ImageComponent from "../common/ImageComponent";
+
+const SubCategoryEdit: React.FC = () => {
+  const [, setSearchTerm] = useState("");
+  const [, setSelectedBrand] = useState("All brand");
+  const [selectedCategory, setSelectedCategory] = useState("Select category");
+
+  const categories = ["Set priority", "1", "2", "3", "4", "5", "6"];
+
+  const resetFilters = () => {
+    setSearchTerm("");
+    setSelectedBrand("All brand");
+    setSelectedCategory("Select category");
+    setSelectedCategory("Select Sub Category");
+    setSelectedCategory("Select Sub Sub Category");
+  };
+
+  return (
+    <div className="">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-8">
+          <div className="mb-6 flex items-center gap-3">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-orange-400 to-red-500">
+              <div className="h-4 w-4 rounded-sm bg-white"></div>
+            </div>
+            <h1 className="text-2xl font-bold text-gray-900">
+              Sub Category Edit
+            </h1>
+          </div>
+
+          <div className="mb-6 rounded-md border border-gray-200 bg-white p-6 shadow-sm">
+            <div className="grid gap-5 md:grid-cols-2">
+              <div className="col-span-1">
+                <div className="mb-6 grid grid-cols-1 gap-4">
+                  <div>
+                    <label className="mb-2 block text-sm font-medium text-gray-700">
+                      Sub Category Name<span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="lastName"
+                      className="w-full rounded-lg border border-gray-300 px-4 py-2 transition-all duration-200 focus:border-transparent focus:ring-2 focus:ring-blue-500"
+                      placeholder="New Category"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label className="mb-2 block text-sm font-medium text-gray-700">
+                      Priority
+                    </label>
+                    <select
+                      value={selectedCategory}
+                      onChange={(e) => setSelectedCategory(e.target.value)}
+                      className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+                    >
+                      {categories.map((category) => (
+                        <option key={category} value={category}>
+                          {category}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div className="col-span-1">
+                <div>
+                  <label className="mb-2 block text-sm font-medium text-gray-700">
+                    Category logo
+                  </label>
+                  <ImageComponent />
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-3 flex justify-end gap-3">
+              <button
+                onClick={resetFilters}
+                className="rounded-lg bg-gray-100 px-4 py-2 font-medium text-gray-700 transition-colors hover:bg-gray-200"
+              >
+                Reset
+              </button>
+              <button className="bgBlue rounded-lg px-6 py-2 font-medium text-white transition-colors">
+                Submit
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default SubCategoryEdit;
